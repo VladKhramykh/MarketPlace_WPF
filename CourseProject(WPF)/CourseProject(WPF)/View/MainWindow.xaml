@@ -1,0 +1,31 @@
+﻿<Window x:Class="CourseProject_WPF_.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseProject_WPF_.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="21*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="minScreenButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" />
+                </Button>
+                <Button x:Name="fullScreenButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="fullScreenButton_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="Fullscreen" Height="25" Width="25" />                    
+                </Button>
+                <Button x:Name="buttonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="buttonClose_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="Close" Height="25" Width="25" />
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
