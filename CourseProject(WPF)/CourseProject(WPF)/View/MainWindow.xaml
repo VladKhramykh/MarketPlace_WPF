@@ -8,24 +8,44 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None" >
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
 
+        <Grid x:Name="navigationBar" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button x:Name="backButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="KeyboardReturn" Height="25" Width="25" />
+                </Button>
+                <Button x:Name="updateButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="fullScreenButton_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="Restart" Height="25" Width="25" />
+                </Button>
+            </StackPanel>
+        </Grid>
 
-        <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown">
+        <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="personalAreaButton" Content="Кабинет" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="152.5" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White"  Height="Auto" FontSize="20">
+                    
+                </Button>
                 <Button x:Name="minScreenButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" />
                 </Button>
                 <Button x:Name="fullScreenButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="fullScreenButton_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="Fullscreen" Height="25" Width="25" />                    
+                    <materialDesign:PackIcon Kind="Fullscreen" Height="25" Width="25" />
                 </Button>
                 <Button x:Name="buttonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="buttonClose_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="Close" Height="25" Width="25" />
                 </Button>
             </StackPanel>
         </Grid>
+
+        <ListBox x:Name="listBox" Grid.Row="1" Grid.Column="1" Margin="30,50,0,0"></ListBox>
     </Grid>
 </Window>

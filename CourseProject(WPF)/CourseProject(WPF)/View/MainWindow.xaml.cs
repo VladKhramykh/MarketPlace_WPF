@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CourseProject_WPF_.DataBase;
+using CourseProject_WPF_.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +23,15 @@ namespace CourseProject_WPF_.View
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            EFUserRepository userRepository = new EFUserRepository();
+
+            foreach (User u in userRepository.getUsers())
+            {
+                listBox.Items.Add(u.ToString());              
+            }
+                
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)

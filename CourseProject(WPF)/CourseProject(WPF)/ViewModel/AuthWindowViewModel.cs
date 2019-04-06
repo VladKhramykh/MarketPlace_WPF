@@ -18,6 +18,8 @@ namespace CourseProject_WPF_.ViewModel
             users = User.getUsers();
         }
 
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string propertyName)

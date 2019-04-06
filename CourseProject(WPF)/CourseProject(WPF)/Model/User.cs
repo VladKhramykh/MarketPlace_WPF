@@ -76,6 +76,13 @@ namespace CourseProject_WPF_.Model
             return result;
         }
 
+        public override string ToString()
+        {
+            return $"Имя: {firstName}\n" +
+                $"Фамилия: {secondName}\n" +
+                $"mail: {mail}\n";
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string propertyName)

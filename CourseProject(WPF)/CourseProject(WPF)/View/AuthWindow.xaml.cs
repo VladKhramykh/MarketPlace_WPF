@@ -37,6 +37,11 @@ namespace CourseProject_WPF_.View
             DragMove();
         }
 
+        private void collapseClose_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
         private void authButton_Click(object sender, RoutedEventArgs e)
         {
             
@@ -46,5 +51,7 @@ namespace CourseProject_WPF_.View
         {
 
         }
+
+       
     }
 }
