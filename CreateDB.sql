@@ -7,12 +7,13 @@ create table Users
 	firstName nvarchar(30),
 	secondName nvarchar(30),
 	mail nvarchar(50),
+	password nvarchar(100),
 	telNumber varchar(20),
 	about nvarchar(1000),
 	privilege nvarchar(5) default 'user'
 );
 
-create table actualProduct
+create table ActualProduct
 (
 	id int primary key identity(1,1),
 	name nvarchar(50),
@@ -22,7 +23,7 @@ create table actualProduct
 	cost money
 );
 
-create table tmpProduct
+create table TmpProduct
 (
 	id int primary key identity(1,1),
 	name nvarchar(50),

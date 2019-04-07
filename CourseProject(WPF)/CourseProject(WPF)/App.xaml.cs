@@ -17,8 +17,8 @@ namespace CourseProject_WPF_
         {
             View.AuthWindow authWindow = new View.AuthWindow();
             View.MainWindow mainWindow = new View.MainWindow();
-            authWindow.Show();
-            //mainWindow.Show();
+            //authWindow.Show();
+            mainWindow.Show();
         }
     }
 }

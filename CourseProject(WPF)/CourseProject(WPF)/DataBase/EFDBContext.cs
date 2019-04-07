@@ -7,9 +7,8 @@ namespace CourseProject_WPF_.DataBase
 {
     public class EFDBContext: DbContext
     {
-        public EFDBContext(string connectionString)
+        public EFDBContext() : base("DbConnectionString") 
         {            
-            Database.Connection.ConnectionString = connectionString;
         }
         
         public DbSet<User> Users { get; set; }

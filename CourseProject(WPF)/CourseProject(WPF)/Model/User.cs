@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,19 +10,26 @@ namespace CourseProject_WPF_.Model
 {
     public class User : INotifyPropertyChanged
     {
+        [Key]
+        public int Id { get; set; }
+
         private string firstName;
         private string secondName;
         private string mail;
         private string password;
         private string telNumber;
-        
+        private string about;
+        private string privilege;
+
+        public virtual ICollection<Announcement> Announcements { get; set; }
+
         public  string FirstName
         {
             get { return firstName; }
             set
             {
                 firstName = value;
-                OnPropertyChanged("Firstname");
+                OnPropertyChanged("FirstName");
             }
         }
 
@@ -31,7 +39,7 @@ namespace CourseProject_WPF_.Model
             set
             {
                 secondName = value;
-                OnPropertyChanged("Secondname");
+                OnPropertyChanged("SecondName");
             }
         }
         public string Mail
@@ -52,6 +60,27 @@ namespace CourseProject_WPF_.Model
                 OnPropertyChanged("Password");
             }
         }
+
+        public string About
+        {
+            get { return about; }
+            set
+            {
+                about = value;
+                OnPropertyChanged("About");
+            }
+        }
+
+        public string Privilege
+        {
+            get { return privilege; }
+            set
+            {
+                privilege = value;
+                OnPropertyChanged("Privilege");
+            }
+        }
+
         public string TelNumber
         {
             get { return telNumber; }
@@ -88,8 +117,7 @@ namespace CourseProject_WPF_.Model
         void OnPropertyChanged(string propertyName)
         {
             if(PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-           
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));           
         }
        
 

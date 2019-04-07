@@ -29,7 +29,7 @@ namespace CourseProject_WPF_.View
 
             foreach (User u in userRepository.getUsers())
             {
-                listBox.Items.Add(u.ToString());              
+                listBox.Items.Add(u.ToString());         
             }
                 
         }

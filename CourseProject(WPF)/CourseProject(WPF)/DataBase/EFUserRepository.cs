@@ -14,7 +14,7 @@ namespace CourseProject_WPF_.DataBase
 
         public EFUserRepository()
         {
-            context = new EFDBContext(DBConfig.connectionString);
+            context = new EFDBContext();
         }
 
         public IEnumerable<User> getUsers()
