@@ -49,7 +49,9 @@ namespace CourseProject_WPF_.View
 
         private void regButton_Click(object sender, RoutedEventArgs e)
         {
-
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            Hide();
+            registrationWindow.Show();
         }
 
        

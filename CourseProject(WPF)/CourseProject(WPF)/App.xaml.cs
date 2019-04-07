@@ -13,12 +13,19 @@ namespace CourseProject_WPF_
     /// </summary>
     public partial class App : Application
     {
+        public static View.AuthWindow authWindow;
+        public static View.MainWindow mainWindow;
+        public static View.RegistrationWindow registrationWindow;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            View.AuthWindow authWindow = new View.AuthWindow();
-            View.MainWindow mainWindow = new View.MainWindow();
-            //authWindow.Show();
-            mainWindow.Show();
+            authWindow = new View.AuthWindow();
+            mainWindow = new View.MainWindow();
+            registrationWindow = new View.RegistrationWindow();
+
+            authWindow.Show();
+            //mainWindow.Show();
+            //registrationWindow.Show();
         }
     }
 }
