@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_WPF_.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CourseProject_WPF_.ViewModel;
 
 namespace CourseProject_WPF_.View
 {
@@ -19,9 +21,11 @@ namespace CourseProject_WPF_.View
     /// </summary>
     public partial class RegistrationWindow : Window
     {
+        AuthWindowViewModel authWindowViewModel;
         public RegistrationWindow()
         {
-            InitializeComponent();
+            InitializeComponent();           
+            authWindowViewModel = new AuthWindowViewModel();            
         }
 
         private void collapseClose_Click(object sender, RoutedEventArgs e)
@@ -36,13 +40,87 @@ namespace CourseProject_WPF_.View
 
         private void registrationButton_Click(object sender, RoutedEventArgs e)
         {
-            infoLabel.Content = "Соси мой член!";
+            if (authWindowViewModel.registration(firstNameTextBox.Text, secondNameTextBox.Text, mailTextBox.Text, pass1NameTextBox.Password, pass2NameTextBox.Password))
+            {
+                infoLabel.Foreground = Brushes.LimeGreen;
+                infoLabel.Content = "Регистрация успешно выполнена!";
+            }                
+            else
+            {
+                infoLabel.Foreground = Brushes.Red;
+                infoLabel.Content = "Проверьте введённые данные!";
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             App.authWindow.Show();
+        }
+
+        private void firstNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(firstNameTextBox.Text))
+                firstNameTextBox.BorderBrush = Brushes.Red;
+            else
+                firstNameTextBox.BorderBrush = Brushes.LimeGreen;
+        }
+
+        private void secondNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(secondNameTextBox.Text))
+                secondNameTextBox.BorderBrush = Brushes.Red;
+            else
+                secondNameTextBox.BorderBrush = Brushes.LimeGreen;
+        }
+
+        private void mailTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(mailTextBox.Text))
+                mailTextBox.BorderBrush = Brushes.Red;
+            else
+                mailTextBox.BorderBrush = Brushes.LimeGreen;
+        }
+
+        private void pass1NameTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password) && !String.IsNullOrEmpty(pass1NameTextBox.Password))
+            {
+                pass1NameTextBox.BorderBrush = Brushes.LimeGreen;
+                pass2NameTextBox.BorderBrush = Brushes.LimeGreen;
+                registrationButton.IsEnabled = true;
+            }
+            else
+            {
+                pass1NameTextBox.BorderBrush = Brushes.Red;
+                pass2NameTextBox.BorderBrush = Brushes.Red;
+                registrationButton.IsEnabled = false;
+            }
+            
+        }
+
+        private void pass2NameTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+            if (pass1NameTextBox.Password.Equals(pass2NameTextBox.Password) && !String.IsNullOrEmpty(pass2NameTextBox.Password))
+            {
+                pass1NameTextBox.BorderBrush = Brushes.LimeGreen;
+                pass2NameTextBox.BorderBrush = Brushes.LimeGreen;
+                registrationButton.IsEnabled = true;
+            }
+            else
+            {
+                pass1NameTextBox.BorderBrush = Brushes.Red;
+                pass2NameTextBox.BorderBrush = Brushes.Red;
+                registrationButton.IsEnabled = false;
+            }
+             
+        }
+
+        private void registrationButton_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
         }
     }
 }

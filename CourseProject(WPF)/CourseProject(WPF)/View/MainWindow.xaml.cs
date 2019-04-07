@@ -2,6 +2,7 @@
 using CourseProject_WPF_.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,17 +22,17 @@ namespace CourseProject_WPF_.View
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            personalAreaComboBox.Items.Add("Все объявления");
+            personalAreaComboBox.Items.Add("Мой кабинет");
+            personalAreaComboBox.Items.Add("Мои объявления");
+            personalAreaComboBox.Items.Add("Админ");
 
-            EFUserRepository userRepository = new EFUserRepository();
+            personalAreaComboBox.SelectedIndex = 0;
 
-            foreach (User u in userRepository.getUsers())
-            {
-                listBox.Items.Add(u.ToString());         
-            }
-                
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -58,5 +59,6 @@ namespace CourseProject_WPF_.View
         {
             WindowState = WindowState.Minimized;
         }
-    }
+}
+    
 }

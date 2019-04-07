@@ -32,3 +32,4 @@ create table TmpProduct
 	about nvarchar(1000),
 	cost money
 );
+

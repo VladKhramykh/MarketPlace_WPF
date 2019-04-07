@@ -22,7 +22,13 @@ namespace CourseProject_WPF_.DataBase
             return context.Users;
         }
 
-        public User getUserById(string mail)
+        public void addUser(User user)
+        {
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
+
+        public User getUserByMail(string mail)
         {
             return context.Users.FirstOrDefault(x => x.Mail == mail);
         }

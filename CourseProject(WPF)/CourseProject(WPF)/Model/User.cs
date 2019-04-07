@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,6 +62,16 @@ namespace CourseProject_WPF_.Model
             }
         }
 
+        public string TelNumber
+        {
+            get { return telNumber; }
+            set
+            {
+                telNumber = value;
+                OnPropertyChanged("TelNumber");
+            }
+        }
+
         public string About
         {
             get { return about; }
@@ -81,29 +92,20 @@ namespace CourseProject_WPF_.Model
             }
         }
 
-        public string TelNumber
+        
+        public User() { }
+        public User(string firstName, string secondName, string mail, string password)
         {
-            get { return telNumber; }
-            set
-            {
-                telNumber = value;
-                OnPropertyChanged("TelNumber");
-            }
+            FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+            SecondName = secondName ?? throw new ArgumentNullException(nameof(secondName));
+            Mail = mail ?? throw new ArgumentNullException(nameof(mail));
+            Password = password ?? throw new ArgumentNullException(nameof(password));
+            TelNumber = "";
+            About = "";
+            Privilege = "user";
+
         }
 
-        
-        
-        public static User[] getUsers()
-        {
-            var result = new[]
-            {
-                new User() {FirstName ="1",SecondName="1",Mail="1",Password="1",TelNumber="1"},
-                new User() {FirstName ="2",SecondName="2",Mail="2",Password="2",TelNumber="2"},
-                new User() {FirstName ="3",SecondName="3",Mail="3",Password="3",TelNumber="3"},
-
-            };
-            return result;
-        }
 
         public override string ToString()
         {
@@ -119,10 +121,19 @@ namespace CourseProject_WPF_.Model
             if(PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));           
         }
-       
 
-            
-
-
+        public static string getHash(string password)
+        {
+            if (String.IsNullOrEmpty(password))
+            {
+                return "-1";
+            }
+            else
+            {
+                var md5 = MD5.Create();
+                var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hash);
+            }
+        }
     }
 }

@@ -31,9 +31,7 @@
 
         <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="personalAreaButton" Content="Кабинет" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="152.5" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White"  Height="Auto" FontSize="20">
-                    
-                </Button>
+                <ComboBox x:Name="personalAreaComboBox" VerticalAlignment="Bottom"  Width="152.5" Foreground="White"  Height="35" FontSize="16"/>
                 <Button x:Name="minScreenButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" />
                 </Button>

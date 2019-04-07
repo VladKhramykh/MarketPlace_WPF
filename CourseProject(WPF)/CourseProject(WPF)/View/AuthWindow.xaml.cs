@@ -21,10 +21,11 @@ namespace CourseProject_WPF_.View
     /// </summary>
     public partial class AuthWindow : Window
     {
+        AuthWindowViewModel authWindowViewModel;
         public AuthWindow()
         {
             InitializeComponent();
-            DataContext = new AuthWindowViewModel();
+            authWindowViewModel = new AuthWindowViewModel();
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -44,16 +45,35 @@ namespace CourseProject_WPF_.View
 
         private void authButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (!String.IsNullOrEmpty(passwordBox.Password) && !String.IsNullOrEmpty(mailTextBox.Text) && authWindowViewModel.compareDataOfUser(mailTextBox.Text, passwordBox.Password))
+            {
+                Hide();
+                App.mainWindow.Show();
+            }
+            else
+                infoLabel.Content = "Проверьте введённые данные!";
         }
 
         private void regButton_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationWindow registrationWindow = new RegistrationWindow();
             Hide();
-            registrationWindow.Show();
+            App.registrationWindow.Show();
         }
 
-       
+        private void mailTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(mailTextBox.Text))           
+                mailTextBox.BorderBrush = Brushes.Red; 
+            else           
+                mailTextBox.BorderBrush = Brushes.LimeGreen;
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(passwordBox.Password))
+                passwordBox.BorderBrush= Brushes.Red;
+            else
+                passwordBox.BorderBrush= Brushes.LimeGreen;           
+        }
     }
 }
