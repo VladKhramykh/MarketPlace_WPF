@@ -22,17 +22,29 @@ namespace CourseProject_WPF_.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        EFUserRepository eF = new EFUserRepository();
+
+        IEnumerable<User> users = new ObservableCollection<User>();
+        ObservableCollection<User> tmp = new ObservableCollection<User>();
+
+        public ObservableCollection<User> Users
+        {
+            get { return tmp; }
+        }
+     
 
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
             personalAreaComboBox.Items.Add("Все объявления");
             personalAreaComboBox.Items.Add("Мой кабинет");
             personalAreaComboBox.Items.Add("Мои объявления");
             personalAreaComboBox.Items.Add("Админ");
-
             personalAreaComboBox.SelectedIndex = 0;
 
+            
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -59,6 +71,21 @@ namespace CourseProject_WPF_.View
         {
             WindowState = WindowState.Minimized;
         }
-}
+
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            users = eF.getUsers();
+            tmp.Clear();
+            foreach (User user in users)
+                tmp.Add(user);
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            App.authWindow.Show();
+        }
+    }
     
 }

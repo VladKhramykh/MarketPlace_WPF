@@ -23,8 +23,8 @@ namespace CourseProject_WPF_
             mainWindow = new View.MainWindow();
             registrationWindow = new View.RegistrationWindow();
 
-            //authWindow.Show();
-            mainWindow.Show();
+            authWindow.Show();
+            //mainWindow.Show();
             //registrationWindow.Show();
         }
     }

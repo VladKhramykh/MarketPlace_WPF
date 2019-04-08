@@ -118,9 +118,9 @@ namespace CourseProject_WPF_.View
              
         }
 
-        private void registrationButton_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            DragMove();
         }
     }
 }

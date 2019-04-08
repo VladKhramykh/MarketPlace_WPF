@@ -20,10 +20,10 @@
 
         <Grid x:Name="navigationBar" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button x:Name="backButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
+                <Button x:Name="backButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="backButton_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="KeyboardReturn" Height="25" Width="25" />
                 </Button>
-                <Button x:Name="updateButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="fullScreenButton_Click" Height="Auto">
+                <Button x:Name="updateButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="updateButton_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="Restart" Height="25" Width="25" />
                 </Button>
             </StackPanel>
@@ -44,6 +44,6 @@
             </StackPanel>
         </Grid>
 
-        <ListBox x:Name="listBox" Grid.Row="1" Grid.Column="1" Margin="30,50,0,0"></ListBox>
+        <ListBox x:Name="listBox" ItemsSource="{Binding Path=Users}" Grid.Row="1" Grid.Column="1" Margin="30,50,0,0"></ListBox>
     </Grid>
 </Window>
