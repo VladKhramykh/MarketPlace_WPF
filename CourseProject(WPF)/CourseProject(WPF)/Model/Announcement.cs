@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.Model
 {
+    [Table("Announcements")]
     public class Announcement : INotifyPropertyChanged
     {
         [Key]
         public int Id { get; set; }
 
         private string name;
-        private string seller;
+        private User seller;
         private string category;
         private string about;
         private decimal cost;
+
+        public virtual User Users { get; set; }
 
         public string Name
         {
@@ -29,7 +33,7 @@ namespace CourseProject_WPF_.Model
             }
         }
 
-        public string Seller
+        public User Seller
         {
             get { return seller; }
             set
@@ -68,7 +72,11 @@ namespace CourseProject_WPF_.Model
                 OnPropertyChanged("Cost");
             }
         }
-        
+
+        public override string ToString()
+        {
+            return $"Инфо {Name}\nSeller {Seller.ToString()}";
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

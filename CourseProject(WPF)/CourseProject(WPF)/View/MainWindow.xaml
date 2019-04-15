@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
+        x:Name="MainWindowss"
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None" >
-    <Grid>
+    <Grid>        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
@@ -18,32 +19,67 @@
             <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
 
+        <Grid  Grid.Row="1">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Purple" Offset="0"/>
+                    <GradientStop Color="#FF210B21" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+        </Grid>
+        
         <Grid x:Name="navigationBar" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button x:Name="backButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="backButton_Click" Height="Auto">
+                <Button x:Name="backButton"  Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="backButton_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="KeyboardReturn" Height="25" Width="25" />
-                </Button>
-                <Button x:Name="updateButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="updateButton_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="Restart" Height="25" Width="25" />
                 </Button>
             </StackPanel>
         </Grid>
 
         <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <ComboBox x:Name="personalAreaComboBox" VerticalAlignment="Bottom"  Width="152.5" Foreground="White"  Height="35" FontSize="16"/>
-                <Button x:Name="minScreenButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" />
+                <!--
+                    <Menu Height="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}">
+                        <MenuItem Header="Меню" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40">
+                            <MenuItem Header="Все объявления"  Background="Purple" VerticalAlignment="Top"/>
+                            <MenuItem Header="Мои объявления"  Background="Purple" />
+                            <MenuItem Header="Личный кабинет"  Background="Purple" />
+                            <MenuItem Header="Меню админа"  Background="Purple" />
+                        </MenuItem>
+                    
+                    </Menu>
+                -->
+
+                <ComboBox x:Name="personalAreaComboBox" Width="150" Height="40" FontSize="16" Foreground="White" SelectionChanged="personalAreaComboBox_SelectionChanged"></ComboBox>
+                
+                <Button x:Name="minScreenButton"  Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" HorizontalAlignment="Center"/>
                 </Button>
-                <Button x:Name="fullScreenButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="fullScreenButton_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="Fullscreen" Height="25" Width="25" />
+                <Button x:Name="fullScreenButton"  Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="fullScreenButton_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="Fullscreen" Height="25" Width="25" HorizontalAlignment="Center"/>
                 </Button>
-                <Button x:Name="buttonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="buttonClose_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="Close" Height="25" Width="25" />
+                <Button x:Name="buttonClose"  Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="buttonClose_Click" Height="Auto">
+                    <materialDesign:PackIcon Kind="Close" Height="25" Width="25" HorizontalAlignment="Center"/>
                 </Button>
             </StackPanel>
         </Grid>
 
-        <ListBox x:Name="listBox" ItemsSource="{Binding Path=Users}" Grid.Row="1" Grid.Column="1" Margin="30,50,0,0"></ListBox>
+        <!-- <ListBox x:Name="listBox" ItemsSource="{Binding Path=Users}" Grid.Row="1" Grid.Column="1" Margin="30,50,0,0"></ListBox> -->
+        <!--
+        
+        <ListBox x:Name="listView" Grid.Row="1" Grid.Column="1" FontSize="16" Margin="30,0,10,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Users}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock x:Name="text" Text="{Binding}" />
+                        <Button Content="Подробнее" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Click="listViewButton_Click"></Button>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        -->
+        <Grid x:Name="GridPage" Grid.Row="1" Grid.Column="1">
+            <Frame x:Name="MainContent" NavigationUIVisibility="Hidden"/> 
+        </Grid>
     </Grid>
 </Window>

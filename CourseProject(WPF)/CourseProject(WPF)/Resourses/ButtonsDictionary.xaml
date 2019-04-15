@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="RegButton" TargetType="Button">
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="FontSize" Value="18"/>        
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+                            BorderThickness="0"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+            
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Foreground" Value="Purple"/>
+            <Trigger Property="FontSize" Value="19"/>
+        </Style.Triggers> 
+    </Style>
+    
+</ResourceDictionary>

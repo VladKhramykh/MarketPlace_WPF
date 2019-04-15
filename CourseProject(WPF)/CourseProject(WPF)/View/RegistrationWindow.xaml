@@ -6,16 +6,17 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="800" Width="500" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="RegistrationWindow" Height="600" Width="350" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="70*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
-            <RowDefinition Height="120*"/>            
+            <RowDefinition Height="150*"/>            
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="Purple" MouseDown="Grid_MouseDown">
@@ -36,29 +37,25 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <Label Content="Введите имя" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,40,0,0"/>
-            <TextBox x:Name="firstNameTextBox" VerticalAlignment="Bottom" Width="380" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="20" TextChanged="firstNameTextBox_TextChanged" ></TextBox>
-        </Grid>
-        <Grid Grid.Row="2">
-            <Label Content="Введите фамилию" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,40,0,0"/>
-            <TextBox x:Name="secondNameTextBox" VerticalAlignment="Bottom" Width="380" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="20" TextChanged="secondNameTextBox_TextChanged" ></TextBox>
+        <Grid Grid.Row="2">           
+            <TextBox x:Name="firstNameTextBox" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" TextChanged="firstNameTextBox_TextChanged" ></TextBox>
         </Grid>
         <Grid Grid.Row="3">
-            <Label Content="Введите mail" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,40,0,0"/>
-            <TextBox x:Name="mailTextBox" VerticalAlignment="Bottom" Width="380" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="20" TextChanged="mailTextBox_TextChanged" ></TextBox>
+
+            <TextBox x:Name="secondNameTextBox" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" TextChanged="secondNameTextBox_TextChanged" ></TextBox>
         </Grid>
         <Grid Grid.Row="4">
-            <Label Content="Введите пароль" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,40,0,0"/>
-            <PasswordBox x:Name="pass1NameTextBox" VerticalAlignment="Bottom" Width="380" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="20" PasswordChanged="pass1NameTextBox_PasswordChanged" ></PasswordBox>
+            <TextBox x:Name="mailTextBox" materialDesign:HintAssist.Hint="Mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" TextChanged="mailTextBox_TextChanged" ></TextBox>
         </Grid>
         <Grid Grid.Row="5">
-            <Label Content="Повторите пароль" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,40,0,0"/>
-            <PasswordBox x:Name="pass2NameTextBox" VerticalAlignment="Bottom" Width="380" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2"  BorderBrush="Red" FontSize="20" PasswordChanged="pass2NameTextBox_PasswordChanged" ></PasswordBox>
+            <PasswordBox x:Name="pass1NameTextBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" PasswordChanged="pass1NameTextBox_PasswordChanged" ></PasswordBox>
         </Grid>
         <Grid Grid.Row="6">
-            <Button x:Name="registrationButton" Content="Регистрация" VerticalAlignment="Top" Width="200" Height="70" FontSize="22" Margin="0,20,0,0" Background="Purple" BorderBrush="{x:Null}" Foreground="White" IsEnabled="False" Click="registrationButton_Click" ></Button>
-            <Label x:Name="infoLabel" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Margin="0,0,0,30" Foreground="LimeGreen" FontWeight="Bold"></Label>
+            <PasswordBox x:Name="pass2NameTextBox" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2"  BorderBrush="Red" FontSize="18" PasswordChanged="pass2NameTextBox_PasswordChanged" ></PasswordBox>
+        </Grid>
+        <Grid Grid.Row="7">
+            <Button x:Name="registrationButton" Content="Регистрация" VerticalAlignment="Top" Width="150" Height="50" FontSize="18" Margin="0,25,0,0" Background="Purple" BorderBrush="{x:Null}" Foreground="White" IsEnabled="False" Click="registrationButton_Click" ></Button>
+            <Label x:Name="infoLabel" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,0,25" FontWeight="Bold"></Label>
         </Grid>
     </Grid>
 </Window>

@@ -8,58 +8,16 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CourseProject_WPF_.View.AuthWindow"
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="MainWindow" Height="600" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="130*"/>
-            <RowDefinition Height="55*"/>
-            <RowDefinition Height="55*"/>
-            <RowDefinition Height="55*"/>
-            <RowDefinition Height="55*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="130*"/>            
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
-
-
-
-        <Grid Grid.Row="1">
-            
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Label Content="Mail" VerticalAlignment="Bottom" Margin="50,0,202,0" FontSize="20"/>
-        </Grid>
-
-        <Grid Grid.Row="3">
-            <TextBox x:Name="mailTextBox" Margin="50,10,50,10" BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" TextChanged="mailTextBox_TextChanged"/>
-        </Grid>
-
-        <Grid Grid.Row="4">
-            <Label Content="Пароль" VerticalAlignment="Bottom" Margin="50,0,202,0" FontSize="20"/>
-        </Grid>
-
-        <Grid Grid.Row="5">
-            <PasswordBox x:Name="passwordBox" Margin="50,10,50,10"  BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" PasswordChanged="passwordBox_PasswordChanged"/>
-        </Grid>
-
-        <Grid Grid.Row="7">
-            <Label x:Name="infoLabel" Foreground="PaleVioletRed" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></Label>
-        </Grid>
-        
-        <Grid Grid.Row="6" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Button x:Name="regButton" Content="Регистрация" Width="150" Height="70" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Purple" Foreground="White" FontSize="18" BorderBrush="{x:Null}" Click="regButton_Click"/>
-
-            </Grid>
-            <Grid Grid.Column="1">
-                <Button x:Name="authButton" Content="Войти" Width="150" Height="70" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Background="Purple" Foreground="White" FontSize="18" BorderBrush="{x:Null}" Click="authButton_Click"/>
-            </Grid>
-        </Grid>
 
         <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -71,6 +29,29 @@
                 </Button>
             </StackPanel>
         </Grid>
+
+        <Grid Grid.Row="1">
+            
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <TextBox x:Name="mailTextBox" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="50,10,50,10" BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" TextChanged="mailTextBox_TextChanged"/>
+        </Grid>
+        
+        <Grid Grid.Row="3">
+            <PasswordBox x:Name="passwordBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource  MaterialDesignFloatingHintPasswordBox}" Margin="50,10,50,10"  BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" PasswordChanged="passwordBox_PasswordChanged"/>
+        </Grid>       
+        
+        <Grid Grid.Row="4" >
+            <Button x:Name="authButton"  Content="Войти" Width="170" Height="40"  HorizontalAlignment="Center" VerticalAlignment="Top"  Background="Purple" Foreground="White" FontSize="18" Margin="0,20,0,0" BorderBrush="{x:Null}" Click="authButton_Click"/>
+            <Button x:Name="regButton"  Style="{DynamicResource RegButton}" Content="Регистрация" Width="140" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="regButton_Click"/>            
+        </Grid>
+        
+        <Grid Grid.Row="5">
+            <Label x:Name="infoLabel" Foreground="PaleVioletRed" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></Label>
+        </Grid>
+
+        
     </Grid>
 
 </Window>

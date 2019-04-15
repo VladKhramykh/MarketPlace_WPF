@@ -12,11 +12,15 @@ namespace CourseProject_WPF_.ViewModel
     public class AuthWindowViewModel : INotifyPropertyChanged
     {
         IEnumerable<User> users;        
-        EFUserRepository eFUser = new EFUserRepository();        
+        EFUserRepository eFUser = new EFUserRepository();
+
+        IEnumerable<Announcement> announcements;
+        EFAnnouncementRepository eFAnnouncement = new EFAnnouncementRepository();
 
         public AuthWindowViewModel()
         {
             users = eFUser.getUsers();
+            announcements = eFAnnouncement.getAnnouncements();
         }
 
         public bool registration(string firstName, string secondName, string mail, string password1, string password2)

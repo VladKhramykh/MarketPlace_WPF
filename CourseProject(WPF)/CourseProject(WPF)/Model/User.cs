@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.Model 
 {
+    [Table("Users")]
     public class User : INotifyPropertyChanged
     {
         [Key]
@@ -23,6 +25,9 @@ namespace CourseProject_WPF_.Model
         private string privilege;
 
         public virtual ICollection<Announcement> Announcements { get; set; }
+        //public virtual ICollection<TmpProduct> TmpProduct { get; set; }
+
+
 
         public  string FirstName
         {

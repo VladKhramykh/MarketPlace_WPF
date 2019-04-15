@@ -85,7 +85,11 @@ namespace CourseProject_WPF_.View
         private void pass1NameTextBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
 
-            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password) && !String.IsNullOrEmpty(pass1NameTextBox.Password))
+            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password) &&
+                !String.IsNullOrEmpty(pass1NameTextBox.Password) &&
+                !String.IsNullOrEmpty(firstNameTextBox.Text) &&
+                !String.IsNullOrEmpty(secondNameTextBox.Text) &&
+                !String.IsNullOrEmpty(mailTextBox.Text))
             {
                 pass1NameTextBox.BorderBrush = Brushes.LimeGreen;
                 pass2NameTextBox.BorderBrush = Brushes.LimeGreen;
@@ -103,7 +107,11 @@ namespace CourseProject_WPF_.View
         private void pass2NameTextBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
 
-            if (pass1NameTextBox.Password.Equals(pass2NameTextBox.Password) && !String.IsNullOrEmpty(pass2NameTextBox.Password))
+            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password) &&
+                !String.IsNullOrEmpty(pass1NameTextBox.Password) &&
+                !String.IsNullOrEmpty(firstNameTextBox.Text) &&
+                !String.IsNullOrEmpty(secondNameTextBox.Text) &&
+                !String.IsNullOrEmpty(mailTextBox.Text))
             {
                 pass1NameTextBox.BorderBrush = Brushes.LimeGreen;
                 pass2NameTextBox.BorderBrush = Brushes.LimeGreen;

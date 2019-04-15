@@ -1,6 +1,7 @@
 ﻿using CourseProject_WPF_.Model;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 
 namespace CourseProject_WPF_.DataBase
@@ -10,8 +11,11 @@ namespace CourseProject_WPF_.DataBase
         public EFDBContext() : base("DbConnectionString") 
         {            
         }
-        
-        public DbSet<User> Users { get; set; }
+
+
+        public virtual DbSet<Announcement> Announcements { get; set; }
+        //public virtual DbSet<TmpProduct> TmpProduct { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
     }
 }

@@ -15,8 +15,7 @@ namespace CourseProject_WPF_.DataBase
         const string dbServerName = "LENOVOIDEAPAD51";
         const string dbConnUser = "CourseProject";
         const string dbPassword = "12345678";
-        const string dbName = "MarketPlace";
-        const string db = "";
+        const string dbName = "MarketPlace";        
 
         public static string connectionString = $"Data Source={dbServerName};initial catalog={dbName};Persist Security Info=true;User ID={dbConnUser};Password={dbPassword}";
 
