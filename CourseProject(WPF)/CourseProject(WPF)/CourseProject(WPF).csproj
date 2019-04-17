@@ -117,15 +117,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="DataBase\DBConfig.cs" />
     <Compile Include="DataBase\EFAnnouncementRepository.cs" />
-    <Compile Include="DataBase\EFDBContext.cs" />
     <Compile Include="DataBase\EFUserRepository.cs" />
+    <Compile Include="Model\Announcement.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TmpProduct.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\AllAnnouncement.xaml.cs">
       <DependentUpon>AllAnnouncement.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyAnnouncementPage.xaml.cs">
+      <DependentUpon>MyAnnouncementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PersonAreaPage.xaml.cs">
       <DependentUpon>PersonAreaPage.xaml</DependentUpon>
@@ -158,6 +185,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MyAnnouncementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PersonAreaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,8 +199,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Announcement.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -187,6 +216,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\DataModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DataModels.edmx.diagram">
+      <DependentUpon>DataModels.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,6 +236,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DataModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModels.edmx</DependentUpon>
+      <LastGenOutput>DataModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\DataModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModels.edmx</DependentUpon>
+      <LastGenOutput>DataModels.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

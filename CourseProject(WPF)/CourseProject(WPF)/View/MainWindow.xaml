@@ -38,20 +38,9 @@
 
         <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <!--
-                    <Menu Height="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}">
-                        <MenuItem Header="Меню" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40">
-                            <MenuItem Header="Все объявления"  Background="Purple" VerticalAlignment="Top"/>
-                            <MenuItem Header="Мои объявления"  Background="Purple" />
-                            <MenuItem Header="Личный кабинет"  Background="Purple" />
-                            <MenuItem Header="Меню админа"  Background="Purple" />
-                        </MenuItem>
-                    
-                    </Menu>
-                -->
 
-                <ComboBox x:Name="personalAreaComboBox" Width="150" Height="40" FontSize="16" Foreground="White" SelectionChanged="personalAreaComboBox_SelectionChanged"></ComboBox>
-                
+                <ComboBox x:Name="personalAreaComboBox" Width="150" Height="40" FontSize="16" Foreground="White" SelectionChanged="personalAreaComboBox_SelectionChanged"/>
+
                 <Button x:Name="minScreenButton"  Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" HorizontalAlignment="Center"/>
                 </Button>
@@ -64,20 +53,6 @@
             </StackPanel>
         </Grid>
 
-        <!-- <ListBox x:Name="listBox" ItemsSource="{Binding Path=Users}" Grid.Row="1" Grid.Column="1" Margin="30,50,0,0"></ListBox> -->
-        <!--
-        
-        <ListBox x:Name="listView" Grid.Row="1" Grid.Column="1" FontSize="16" Margin="30,0,10,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Users}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel>
-                        <TextBlock x:Name="text" Text="{Binding}" />
-                        <Button Content="Подробнее" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Click="listViewButton_Click"></Button>
-                    </DockPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        -->
         <Grid x:Name="GridPage" Grid.Row="1" Grid.Column="1">
             <Frame x:Name="MainContent" NavigationUIVisibility="Hidden"/> 
         </Grid>

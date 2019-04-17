@@ -1,4 +1,5 @@
-﻿using CourseProject_WPF_.ViewModel;
+﻿using CourseProject_WPF_.Model;
+using CourseProject_WPF_.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+
     public partial class AuthWindow : Window
     {
         AuthWindowViewModel authWindowViewModel;
@@ -45,10 +44,14 @@ namespace CourseProject_WPF_.View
 
         private void authButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(passwordBox.Password) && !String.IsNullOrEmpty(mailTextBox.Text) && authWindowViewModel.compareDataOfUser(mailTextBox.Text, passwordBox.Password))
+            User currentUser = authWindowViewModel.compareDataOfUser(mailTextBox.Text, passwordBox.Password);
+
+            if (!String.IsNullOrEmpty(passwordBox.Password) && !String.IsNullOrEmpty(mailTextBox.Text) && currentUser != null)
             {
                 Hide();
-                App.mainWindow.Show();
+                CurrentUser.User = currentUser;
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
             }
             else
                 infoLabel.Content = "Проверьте введённые данные!";
@@ -56,8 +59,9 @@ namespace CourseProject_WPF_.View
 
         private void regButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
-            App.registrationWindow.Show();
+            this.Close();
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();            
         }
 
         private void mailTextBox_TextChanged(object sender, TextChangedEventArgs e)

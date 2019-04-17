@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
 using CourseProject_WPF_.Model;
 
 namespace CourseProject_WPF_.DataBase
 {
     class EFUserRepository
     {
-        private EFDBContext context;       
+        private MarketPlaceEntities context;       
 
         public EFUserRepository()
         {
-            context = new EFDBContext();
+            context = new MarketPlaceEntities();
         }
 
         public IEnumerable<User> getUsers()
         {
             return context.Users;
-        }
+        }                                                                                                                       
 
         public void addUser(User user)
         {
@@ -30,7 +26,18 @@ namespace CourseProject_WPF_.DataBase
 
         public User getUserByMail(string mail)
         {
-            return context.Users.FirstOrDefault(x => x.Mail == mail);
+            return context.Users.FirstOrDefault(x =>x.mail == mail);
+        }
+
+        public void changeUserData(User oldUser, User newUser)
+        {
+            var tmp = context.Users.FirstOrDefault(x => x.id == oldUser.id);
+            tmp.firstName = newUser.firstName;
+            tmp.secondName = newUser.secondName;
+            tmp.mail = newUser.mail;           
+            tmp.about = newUser.about;
+            tmp.telNumber = newUser.telNumber;
+            context.SaveChanges();
         }
     }
 }

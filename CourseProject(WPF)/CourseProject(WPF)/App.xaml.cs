@@ -19,13 +19,8 @@ namespace CourseProject_WPF_
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            authWindow = new View.AuthWindow();
-            mainWindow = new View.MainWindow();
-            registrationWindow = new View.RegistrationWindow();
-
+            authWindow = new View.AuthWindow(); 
             authWindow.Show();
-            //mainWindow.Show();
-            //registrationWindow.Show();
         }
     }
 }

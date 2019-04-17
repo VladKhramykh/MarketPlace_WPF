@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CourseProject_WPF_.Model;
+using CourseProject_WPF_.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
 {
-    /// <summary>
-    /// Логика взаимодействия для PersonAreaPage.xaml
-    /// </summary>
     public partial class PersonAreaPage : Page
     {
+        User user = CurrentUser.User;
+
+        AuthWindowViewModel authWindowViewModel;
+
+        public User User
+        {
+            get { return user; }
+        }
+
         public PersonAreaPage()
         {
             InitializeComponent();
+            DataContext = this;
+            authWindowViewModel = new AuthWindowViewModel();
+        }
+
+        private void saveChangesButton_Click(object sender, RoutedEventArgs e)
+        {
+            authWindowViewModel.changeDataOfUser(User, new User(firstNameTextBox.Text, secondNameTextBox.Text, mailTextBox.Text, telNumberTextBox.Text, aboutTextBox.Text, User.Privilege));
         }
     }
 }

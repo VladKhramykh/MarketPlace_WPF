@@ -17,29 +17,23 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
-{  
-    public partial class AllAnnouncement : Page
+{   
+    public partial class MyAnnouncementPage : Page
     {
         User User = CurrentUser.User;
 
-        EFUserRepository userRepository = new EFUserRepository();
-        EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
-
-        ObservableCollection<User> tmpUser = new ObservableCollection<User>();
-        ObservableCollection<Announcement> tmpAnnouncement = new ObservableCollection<Announcement>();
-
         MarketPlaceEntities entities = new MarketPlaceEntities();
-
-        public ObservableCollection<User> Users
-        {
-            get { return tmpUser; }
-        }
+        EFUserRepository userRepository = new EFUserRepository();
+        EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();    
+        
+        ObservableCollection<Announcement> tmpAnnouncement = new ObservableCollection<Announcement>();        
+        
         public ObservableCollection<Announcement> Announcements
         {
             get { return tmpAnnouncement; }
         }
 
-        public AllAnnouncement()
+        public MyAnnouncementPage()
         {            
             InitializeComponent();
             DataContext = this;
@@ -49,13 +43,7 @@ namespace CourseProject_WPF_.View
             tmpAnnouncement.Clear();
             foreach (Announcement a in announcements)
                 tmpAnnouncement.Add(a);
-
-        }
-
-        private void listItemButton_Click(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show(listView.SelectedItem.ToString());
-        }
+        }    
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
@@ -63,7 +51,26 @@ namespace CourseProject_WPF_.View
             tmpAnnouncement.Clear();
             foreach (Announcement a in announcements)
                 tmpAnnouncement.Add(a);           
+        }
 
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void viewItemButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteItemButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void changeItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.ViewModel
 {
-    public class AuthWindowViewModel : INotifyPropertyChanged
+    public class AuthWindowViewModel
     {
+
         IEnumerable<User> users;        
         EFUserRepository eFUser = new EFUserRepository();
 
@@ -38,7 +39,7 @@ namespace CourseProject_WPF_.ViewModel
             return false;
         }
 
-        public bool compareDataOfUser(string mail, string password)
+        public User compareDataOfUser(string mail, string password)
         {
             users = eFUser.getUsers();
 
@@ -47,22 +48,18 @@ namespace CourseProject_WPF_.ViewModel
                 User tmp = eFUser.getUserByMail(mail);                
                 if (tmp != null)
                 {
-                    if (User.getHash(password).Equals(tmp.Password))
-                        return true;
+                    if (User.getHash(password).Equals(tmp.password))
+                        return tmp;
                 }
                 else
-                    return false;
+                    return null;
             }
-            return false;
+            return null;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged(string propertyName)
+        public void changeDataOfUser(User oldUser, User newUser)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-
+            eFUser.changeUserData(oldUser, newUser);
         }
     }
 }

@@ -9,11 +9,11 @@ namespace CourseProject_WPF_.DataBase
 {
     class EFAnnouncementRepository
     {
-        private EFDBContext context;
+        private MarketPlaceEntities context;
 
         public EFAnnouncementRepository()
         {
-            context = new EFDBContext();
+            context = new MarketPlaceEntities();
         }
 
         public IEnumerable<Announcement> getAnnouncements()
@@ -29,17 +29,19 @@ namespace CourseProject_WPF_.DataBase
 
         public Announcement getAnnouncementByName(string name)
         {
-            return context.Announcements.FirstOrDefault(x => x.Name == name);
+            return context.Announcements.FirstOrDefault(x => x.name == name);
         }
 
-        public Announcement getAnnouncementBySeller(string sellerMail)
+        /*
+        public Announcements getAnnouncementBySeller(string seller)
         {
-            return context.Announcements.FirstOrDefault(x => x.Seller.Mail == sellerMail);
+            return context.Announcements.FirstOrDefault(x => x.seller == seller);
         }
+        */
 
         public Announcement getAnnouncementByCost(decimal cost)
         {
-            return context.Announcements.FirstOrDefault(x => x.Cost == cost);
+            return context.Announcements.FirstOrDefault(x => x.cost == cost);
         }
     }
 }

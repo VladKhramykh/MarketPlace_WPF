@@ -1,29 +1,13 @@
-﻿using CourseProject_WPF_.DataBase;
-using CourseProject_WPF_.Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CourseProject_WPF_.Model;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        
-     
+        User User = CurrentUser.User;
 
         public MainWindow()
         {
@@ -51,7 +35,7 @@ namespace CourseProject_WPF_.View
 
         private void fullScreenButton_Click(object sender, RoutedEventArgs e)
         {
-            this.MaxHeight = SystemParameters.WorkArea.Height+20;
+            this.MaxHeight = SystemParameters.WorkArea.Height+10;
 
             if (WindowState == WindowState.Maximized)
                 WindowState = WindowState.Normal;
@@ -62,17 +46,14 @@ namespace CourseProject_WPF_.View
         private void minScreenButton_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
-        }
-
-        
+        }        
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
-            App.authWindow.Show();
-        }
-
-       
+            this.Close();
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+        }       
 
         private void personalAreaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -82,13 +63,13 @@ namespace CourseProject_WPF_.View
             MainContent.MaxHeight = GridPage.MaxHeight;
 
             if (personalAreaComboBox.SelectedIndex == 0)
-                MainContent.Content = new AllAnnouncement();           
+                MainContent.Content = new AllAnnouncement();
             if (personalAreaComboBox.SelectedIndex == 1)
                 MainContent.Content = new PersonAreaPage();
             if (personalAreaComboBox.SelectedIndex == 2)
-                MainContent.Content = new AllAnnouncement();
+                MainContent.Content = new MyAnnouncementPage();
             if (personalAreaComboBox.SelectedIndex == 3)
-                MainContent.Content = new AllAnnouncement();
+                MainContent.Content = new PersonAreaPage();
         }
     }
     
