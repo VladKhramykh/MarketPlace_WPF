@@ -20,11 +20,11 @@ namespace CourseProject_WPF_.View
 
     public partial class AuthWindow : Window
     {
-        AuthWindowViewModel authWindowViewModel;
+        ViewModel.ViewModel authWindowViewModel;
         public AuthWindow()
         {
             InitializeComponent();
-            authWindowViewModel = new AuthWindowViewModel();
+            authWindowViewModel = new ViewModel.ViewModel();
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)

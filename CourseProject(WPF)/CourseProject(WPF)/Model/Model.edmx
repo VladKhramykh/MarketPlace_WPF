@@ -16,7 +16,7 @@
           <Property Name="about" Type="nvarchar" MaxLength="1000" />
           <Property Name="cost" Type="money" />
         </EntityType>
-        <EntityType Name="TmpProduct">
+        <EntityType Name="TmpAnnouncements">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -54,19 +54,19 @@
         </Association>
         <Association Name="FK__TmpProduc__selle__628FA481">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="TmpProduct" Type="Self.TmpProduct" Multiplicity="*" />
+          <End Role="TmpAnnouncements" Type="Self.TmpAnnouncements" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TmpProduct">
+            <Dependent Role="TmpAnnouncements">
               <PropertyRef Name="seller" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище MarketPlaceModelContainer">
           <EntitySet Name="Announcements" EntityType="Self.Announcements" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TmpProduct" EntityType="Self.TmpProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TmpAnnouncements" EntityType="Self.TmpAnnouncements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__ActualPro__selle__5FB337D6" Association="Self.FK__ActualPro__selle__5FB337D6">
             <End Role="Users" EntitySet="Users" />
@@ -74,7 +74,7 @@
           </AssociationSet>
           <AssociationSet Name="FK__TmpProduc__selle__628FA481" Association="Self.FK__TmpProduc__selle__628FA481">
             <End Role="Users" EntitySet="Users" />
-            <End Role="TmpProduct" EntitySet="TmpProduct" />
+            <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -94,7 +94,7 @@
           <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="User" Relationship="Self.FK__ActualPro__selle__5FB337D6" FromRole="Announcements" ToRole="Users" />
         </EntityType>
-        <EntityType Name="TmpProduct">
+        <EntityType Name="TmpAnnouncement">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -104,7 +104,7 @@
           <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="User" Relationship="Self.FK__TmpProduc__selle__628FA481" FromRole="TmpProduct" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Self.FK__TmpProduc__selle__628FA481" FromRole="TmpAnnouncements" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -119,7 +119,7 @@
           <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="privilege" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Announcements" Relationship="Self.FK__ActualPro__selle__5FB337D6" FromRole="Users" ToRole="Announcements" />
-          <NavigationProperty Name="TmpProducts" Relationship="Self.FK__TmpProduc__selle__628FA481" FromRole="Users" ToRole="TmpProduct" />
+          <NavigationProperty Name="TmpAnnouncements" Relationship="Self.FK__TmpProduc__selle__628FA481" FromRole="Users" ToRole="TmpAnnouncements" />
         </EntityType>
         <Association Name="FK__ActualPro__selle__5FB337D6">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
@@ -135,19 +135,19 @@
         </Association>
         <Association Name="FK__TmpProduc__selle__628FA481">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="TmpProduct" Type="Self.TmpProduct" Multiplicity="*" />
+          <End Role="TmpAnnouncements" Type="Self.TmpAnnouncement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TmpProduct">
+            <Dependent Role="TmpAnnouncements">
               <PropertyRef Name="seller" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MarketPlaceEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Announcements" EntityType="Self.Announcement" />
-          <EntitySet Name="TmpProducts" EntityType="Self.TmpProduct" />
+          <EntitySet Name="TmpAnnouncements" EntityType="Self.TmpAnnouncement" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK__ActualPro__selle__5FB337D6" Association="Self.FK__ActualPro__selle__5FB337D6">
             <End Role="Users" EntitySet="Users" />
@@ -155,7 +155,7 @@
           </AssociationSet>
           <AssociationSet Name="FK__TmpProduc__selle__628FA481" Association="Self.FK__TmpProduc__selle__628FA481">
             <End Role="Users" EntitySet="Users" />
-            <End Role="TmpProduct" EntitySet="TmpProducts" />
+            <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -176,9 +176,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TmpProducts">
-            <EntityTypeMapping TypeName="MarketPlaceModel.TmpProduct">
-              <MappingFragment StoreEntitySet="TmpProduct">
+          <EntitySetMapping Name="TmpAnnouncements">
+            <EntityTypeMapping TypeName="MarketPlaceModel.TmpAnnouncement">
+              <MappingFragment StoreEntitySet="TmpAnnouncements">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="seller" ColumnName="seller" />

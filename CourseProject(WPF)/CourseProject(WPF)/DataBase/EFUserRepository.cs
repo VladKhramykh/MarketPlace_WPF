@@ -16,13 +16,13 @@ namespace CourseProject_WPF_.DataBase
         public IEnumerable<User> getUsers()
         {
             return context.Users;
-        }                                                                                                                       
+        }
 
         public void addUser(User user)
         {
             context.Users.Add(user);
             context.SaveChanges();
-        }
+        }        
 
         public User getUserByMail(string mail)
         {

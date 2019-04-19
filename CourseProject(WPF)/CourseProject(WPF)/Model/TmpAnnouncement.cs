@@ -1,9 +1,8 @@
 namespace CourseProject_WPF_.Model
 {
-    using System;
-    using System.Collections.Generic;
+    using System;    
 
-    public partial class Announcement
+    public partial class TmpAnnouncement
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -14,9 +13,9 @@ namespace CourseProject_WPF_.Model
 
         public virtual User User { get; set; }
 
-        public Announcement() { }
+        public TmpAnnouncement() { }
 
-        public Announcement(string name, int? seller, string category, string about, decimal? cost)
+        public TmpAnnouncement(string name, int? seller, string category, string about, decimal? cost)
         {
             this.name = name ?? throw new ArgumentNullException(nameof(name));
             this.seller = seller ?? throw new ArgumentNullException(nameof(seller));

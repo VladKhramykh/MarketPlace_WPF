@@ -1,45 +1,36 @@
 ﻿using CourseProject_WPF_.DataBase;
 using CourseProject_WPF_.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
-{   
+{
     public partial class MyAnnouncementPage : Page
     {
-        User User = CurrentUser.User;
+        User User = CurrentUser.User;         
+        
+        EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();        
+        EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();        
+        ObservableCollection<Announcement> tmpAnnouncement = new ObservableCollection<Announcement>();
+        ObservableCollection<TmpAnnouncement> tmpTmpAnnouncement = new ObservableCollection<TmpAnnouncement>();
 
-        MarketPlaceEntities entities = new MarketPlaceEntities();
-        EFUserRepository userRepository = new EFUserRepository();
-        EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();    
-        
-        ObservableCollection<Announcement> tmpAnnouncement = new ObservableCollection<Announcement>();        
-        
+        public ObservableCollection<TmpAnnouncement> TmpAnnouncements
+        {
+            get { return tmpTmpAnnouncement; }
+        }
+
         public ObservableCollection<Announcement> Announcements
         {
             get { return tmpAnnouncement; }
         }
 
         public MyAnnouncementPage()
-        {            
+        {
             InitializeComponent();
             DataContext = this;
-            listView.DataContext = this;
+            var announcements = announcementRepository.getAnnouncementsBySellerId(User.id);
 
-            var announcements = entities.Announcements.ToList();
             tmpAnnouncement.Clear();
             foreach (Announcement a in announcements)
                 tmpAnnouncement.Add(a);
@@ -47,15 +38,15 @@ namespace CourseProject_WPF_.View
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            var announcements = entities.Announcements.ToList();
-            tmpAnnouncement.Clear();
-            foreach (Announcement a in announcements)
-                tmpAnnouncement.Add(a);           
+            var announcements = tmpAnnouncementRepository.getAnnouncementsBySellerId(User.id);
+            tmpTmpAnnouncement.Clear();
+            foreach (TmpAnnouncement a in announcements)
+                tmpTmpAnnouncement.Add(a);
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-
+            tmpAnnouncementRepository.addAnnouncement(new TmpAnnouncement("asda", User.id, "sasdasd", "askdfmasdf", 442));
         }
 
         private void viewItemButton_Click(object sender, RoutedEventArgs e)

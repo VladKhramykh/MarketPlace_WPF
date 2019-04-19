@@ -26,9 +26,7 @@ namespace CourseProject_WPF_.View
         EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
 
         ObservableCollection<User> tmpUser = new ObservableCollection<User>();
-        ObservableCollection<Announcement> tmpAnnouncement = new ObservableCollection<Announcement>();
-
-        MarketPlaceEntities entities = new MarketPlaceEntities();
+        ObservableCollection<Announcement> tmpAnnouncement = new ObservableCollection<Announcement>();        
 
         public ObservableCollection<User> Users
         {
@@ -45,11 +43,10 @@ namespace CourseProject_WPF_.View
             DataContext = this;
             listView.DataContext = this;
 
-            var announcements = entities.Announcements.ToList();
+            var announcements = announcementRepository.getAnnouncements().ToList();
             tmpAnnouncement.Clear();
             foreach (Announcement a in announcements)
                 tmpAnnouncement.Add(a);
-
         }
 
         private void listItemButton_Click(object sender, RoutedEventArgs e)
@@ -59,7 +56,7 @@ namespace CourseProject_WPF_.View
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            var announcements = entities.Announcements.ToList();
+            var announcements = announcementRepository.getAnnouncements().ToList();
             tmpAnnouncement.Clear();
             foreach (Announcement a in announcements)
                 tmpAnnouncement.Add(a);           

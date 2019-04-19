@@ -1,6 +1,7 @@
 ﻿using CourseProject_WPF_.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace CourseProject_WPF_.DataBase
         public IEnumerable<Announcement> getAnnouncements()
         {
             return context.Announcements;
-        }
+        }        
 
         public void addAnnouncement(Announcement announcement)
         {
@@ -31,17 +32,10 @@ namespace CourseProject_WPF_.DataBase
         {
             return context.Announcements.FirstOrDefault(x => x.name == name);
         }
-
-        /*
-        public Announcements getAnnouncementBySeller(string seller)
+        
+        public IEnumerable<Announcement> getAnnouncementsBySellerId(int sellerID)
         {
-            return context.Announcements.FirstOrDefault(x => x.seller == seller);
-        }
-        */
-
-        public Announcement getAnnouncementByCost(decimal cost)
-        {
-            return context.Announcements.FirstOrDefault(x => x.cost == cost);
-        }
+            return context.Announcements.Where(x => x.seller == sellerID).ToList();
+        }  
     }
 }

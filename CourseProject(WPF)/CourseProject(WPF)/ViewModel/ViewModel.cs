@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.ViewModel
 {
-    public class AuthWindowViewModel
+    public class ViewModel
     {
 
         IEnumerable<User> users;        
@@ -18,7 +18,7 @@ namespace CourseProject_WPF_.ViewModel
         IEnumerable<Announcement> announcements;
         EFAnnouncementRepository eFAnnouncement = new EFAnnouncementRepository();
 
-        public AuthWindowViewModel()
+        public ViewModel()
         {
             users = eFUser.getUsers();
             announcements = eFAnnouncement.getAnnouncements();
