@@ -20,11 +20,11 @@ namespace CourseProject_WPF_.View
 
     public partial class AuthWindow : Window
     {
-        ViewModel.ViewModel authWindowViewModel;
+        ViewModel.UserViewModel authWindowViewModel;
         public AuthWindow()
         {
             InitializeComponent();
-            authWindowViewModel = new ViewModel.ViewModel();
+            authWindowViewModel = new ViewModel.UserViewModel();
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace CourseProject_WPF_.View
 
         private void regButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Hide();
             RegistrationWindow registrationWindow = new RegistrationWindow();
             registrationWindow.Show();            
         }

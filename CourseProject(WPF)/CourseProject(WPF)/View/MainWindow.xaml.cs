@@ -8,7 +8,7 @@ namespace CourseProject_WPF_.View
     public partial class MainWindow : Window
     {
         User User = CurrentUser.User;
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -17,7 +17,9 @@ namespace CourseProject_WPF_.View
             personalAreaComboBox.Items.Add("Все объявления");
             personalAreaComboBox.Items.Add("Мой кабинет");
             personalAreaComboBox.Items.Add("Мои объявления");
-            personalAreaComboBox.Items.Add("Админ");
+
+            if (User.Privilege.Equals("admin"))           
+                personalAreaComboBox.Items.Add("Админ");
 
             personalAreaComboBox.SelectedIndex = 0;
 
@@ -69,7 +71,7 @@ namespace CourseProject_WPF_.View
             if (personalAreaComboBox.SelectedIndex == 2)
                 MainContent.Content = new MyAnnouncementPage();
             if (personalAreaComboBox.SelectedIndex == 3)
-                MainContent.Content = new PersonAreaPage();
+                MainContent.Content = new AdminPage();
         }
     }
     

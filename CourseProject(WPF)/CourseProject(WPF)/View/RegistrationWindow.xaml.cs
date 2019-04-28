@@ -21,11 +21,11 @@ namespace CourseProject_WPF_.View
     /// </summary>
     public partial class RegistrationWindow : Window
     {
-        ViewModel.ViewModel authWindowViewModel;
+        ViewModel.UserViewModel authWindowViewModel;
         public RegistrationWindow()
         {
             InitializeComponent();
-            authWindowViewModel = new ViewModel.ViewModel();            
+            authWindowViewModel = new ViewModel.UserViewModel();            
         }
 
         private void collapseClose_Click(object sender, RoutedEventArgs e)

@@ -9,7 +9,7 @@ namespace CourseProject_WPF_.View
     {
         User user = CurrentUser.User;
 
-        ViewModel.ViewModel authWindowViewModel;
+        ViewModel.UserViewModel authWindowViewModel;
 
         public User User
         {
@@ -20,7 +20,7 @@ namespace CourseProject_WPF_.View
         {
             InitializeComponent();
             DataContext = this;
-            authWindowViewModel = new ViewModel.ViewModel();
+            authWindowViewModel = new ViewModel.UserViewModel();
         }
 
         private void saveChangesButton_Click(object sender, RoutedEventArgs e)

@@ -1,13 +1,9 @@
 ﻿using CourseProject_WPF_.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.DataBase
 {
-
     class EFTmpAnnouncementRepository
     {
         private MarketPlaceEntities context;
@@ -17,9 +13,27 @@ namespace CourseProject_WPF_.DataBase
             context = new MarketPlaceEntities();
         }
 
-        public IEnumerable<TmpAnnouncement> getProducts()
+        public IEnumerable<TmpAnnouncement> getAnnouncements()
         {
             return context.TmpAnnouncements;
+        }
+
+        //public bool deleteTmpAnnouncementsBySeller(User user)
+        //{
+        //    TmpAnnouncement tmp = context.TmpAnnouncements.FirstOrDefault(x => x.seller == user.id);
+        //    if (tmp != null)
+        //    {
+        //        context.TmpAnnouncements.Remove(tmp);
+        //        return true;
+        //    }
+        //    else
+        //        return false;
+        //}
+
+        public void deleteAnnouncement(TmpAnnouncement tmp)
+        {
+            context.TmpAnnouncements.Remove(tmp);
+            context.SaveChanges();
         }
 
         public void addAnnouncement(TmpAnnouncement tmpAnnouncement)

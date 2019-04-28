@@ -28,4 +28,98 @@
         </Style.Triggers> 
     </Style>
     
+    <!-- это всё для radiobutton, чтобы он отображался в виде кнопок-->
+    
+    <SolidColorBrush x:Key="FontBrush" Color="#DDDDDD"/>
+
+    <LinearGradientBrush x:Key="BgBrush1" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0" Color="#888888"/>
+        <GradientStop Offset="1" Color="#222222"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="BorderBrush1" Color="#333333"/>
+    <LinearGradientBrush x:Key="CheckedBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0" Color="#555555"/>
+        <GradientStop Offset="1" Color="#111111"/>
+    </LinearGradientBrush>
+
+
+    <ControlTemplate x:Key="ToggleButtonLeft" TargetType="{x:Type ToggleButton}">
+        <Border
+                Name="Border"
+                Background="{StaticResource BgBrush1}"
+                BorderBrush="{StaticResource BorderBrush1}"
+                BorderThickness="1"
+                CornerRadius="5,0,0,5">
+            <ContentPresenter
+                    HorizontalAlignment="Center"
+                    Margin="{TemplateBinding Padding}"
+                    VerticalAlignment="Center"
+                    Content="{TemplateBinding Content}"
+                    TextBlock.FontWeight="Bold"
+                    TextBlock.Foreground="{StaticResource FontBrush}"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#808080"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource CheckedBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    
+    <ControlTemplate x:Key="ToggleButtonMid" TargetType="{x:Type ToggleButton}">
+        <Border
+                Name="Border"
+                Background="{StaticResource BgBrush1}"
+                BorderBrush="{StaticResource BorderBrush1}"
+                BorderThickness="1"
+                CornerRadius="0,0,0,0">
+            <ContentPresenter
+                    HorizontalAlignment="Center"
+                    Margin="{TemplateBinding Padding}"
+                    VerticalAlignment="Center"
+                    Content="{TemplateBinding Content}"
+                    TextBlock.FontWeight="Bold"
+                    TextBlock.Foreground="{StaticResource FontBrush}"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#808080"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource CheckedBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- Right Button Template -->
+    <ControlTemplate x:Key="ToggleButtonRight" TargetType="{x:Type ToggleButton}">
+        <Border
+                Name="Border"
+                Background="{StaticResource BgBrush1}"
+                BorderBrush="{StaticResource BorderBrush1}"
+                BorderThickness="1"
+                CornerRadius="0,5,5,0">
+            <ContentPresenter
+                    HorizontalAlignment="Center"
+                    Margin="{TemplateBinding Padding}"
+                    VerticalAlignment="Center"
+                    Content="{TemplateBinding Content}"
+                    TextBlock.FontWeight="Bold"
+                    TextBlock.Foreground="{StaticResource FontBrush}"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#808080"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource CheckedBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+ <!-- Здесь закочилось оперделение radiobutton-->
+
 </ResourceDictionary>

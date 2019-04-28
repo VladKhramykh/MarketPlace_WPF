@@ -7,21 +7,24 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
       mc:Ignorable="d"
       d:DesignWidth="800" d:DesignHeight="600"
-      Title="AllAnnouncement" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}" >
+      Title="AllAnnouncement" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}" MaxWidth="1200" >
 
-    <Grid >
+    <Grid>        
         <Button x:Name="updateButton"  Width="60" Background="Purple" BorderBrush="{x:Null}" Foreground="White" Click="updateButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,30,0"  >
             <materialDesign:PackIcon Kind="Restart" Height="25" Width="25" />
         </Button>
-        <ListBox x:Name="listView" FontSize="14" Margin="10,70,10,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <ListBox x:Name="listView" FontSize="14" Margin="0,70,0,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionChanged="listView_SelectionChanged" Cursor="Hand">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
                         <TextBlock x:Name="text" Text="{Binding}" />
-                        <Button Content="Подробнее" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" FontSize="12" Click="listItemButton_Click"></Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Margin="10,0,0,0" x:Name="cost" Text="{Binding cost}" HorizontalAlignment="Right"/>
+                            <TextBlock Text="blr" HorizontalAlignment="Right"/>
+                        </StackPanel>                        
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+         </ListBox>
     </Grid>
 </Page>

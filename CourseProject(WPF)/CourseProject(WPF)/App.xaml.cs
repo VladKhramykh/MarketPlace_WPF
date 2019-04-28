@@ -15,11 +15,11 @@ namespace CourseProject_WPF_
     {
         public static View.AuthWindow authWindow;
         public static View.MainWindow mainWindow;
-        public static View.RegistrationWindow registrationWindow;
+        public static View.RegistrationWindow registrationWindow;       
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            authWindow = new View.AuthWindow(); 
+            authWindow = new View.AuthWindow();            
             authWindow.Show();
         }
     }

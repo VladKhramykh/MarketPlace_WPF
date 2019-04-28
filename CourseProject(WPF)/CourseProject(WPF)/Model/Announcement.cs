@@ -1,7 +1,6 @@
 namespace CourseProject_WPF_.Model
 {
-    using System;
-    using System.Collections.Generic;
+    using System;    
 
     public partial class Announcement
     {

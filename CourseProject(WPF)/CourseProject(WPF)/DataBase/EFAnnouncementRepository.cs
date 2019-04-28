@@ -20,7 +20,25 @@ namespace CourseProject_WPF_.DataBase
         public IEnumerable<Announcement> getAnnouncements()
         {
             return context.Announcements;
-        }        
+        }
+
+        //public bool deleteAnnouncementsBySeller(User user)
+        //{
+        //    Announcement tmp = context.Announcements.FirstOrDefault(x=>x.seller == user.id);
+        //    if (tmp != null)
+        //    {
+        //        context.Announcements.Remove(tmp);
+        //        return true;
+        //    }                
+        //    else
+        //        return false;
+        //}
+
+        public void deleteAnnouncement(Announcement tmp)
+        {
+            context.Announcements.Remove(tmp);
+            context.SaveChanges();
+        }       
 
         public void addAnnouncement(Announcement announcement)
         {

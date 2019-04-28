@@ -1,6 +1,6 @@
 namespace CourseProject_WPF_.Model
 {
-    using System;    
+    using System;        
 
     public partial class TmpAnnouncement
     {

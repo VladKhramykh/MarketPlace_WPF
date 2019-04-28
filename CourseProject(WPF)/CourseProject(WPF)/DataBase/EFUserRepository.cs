@@ -22,7 +22,13 @@ namespace CourseProject_WPF_.DataBase
         {
             context.Users.Add(user);
             context.SaveChanges();
-        }        
+        }    
+        
+        public void deleteUser(User user)
+        {
+            context.Users.Remove(user);
+            context.SaveChanges();
+        }
 
         public User getUserByMail(string mail)
         {
@@ -32,12 +38,17 @@ namespace CourseProject_WPF_.DataBase
         public void changeUserData(User oldUser, User newUser)
         {
             var tmp = context.Users.FirstOrDefault(x => x.id == oldUser.id);
-            tmp.firstName = newUser.firstName;
-            tmp.secondName = newUser.secondName;
-            tmp.mail = newUser.mail;           
-            tmp.about = newUser.about;
-            tmp.telNumber = newUser.telNumber;
-            context.SaveChanges();
+
+            if(tmp!= null)
+            {
+                tmp.firstName = newUser.firstName;
+                tmp.secondName = newUser.secondName;
+                tmp.mail = newUser.mail;
+                tmp.about = newUser.about;
+                tmp.telNumber = newUser.telNumber;
+                context.SaveChanges();
+            }
+            
         }
     }
 }

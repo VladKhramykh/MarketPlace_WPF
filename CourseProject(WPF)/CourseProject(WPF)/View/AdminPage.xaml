@@ -1,0 +1,45 @@
+﻿<Page x:Class="CourseProject_WPF_.View.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseProject_WPF_.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       x:Name="adminPage">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="64*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel x:Name="radioButtonStackPanel" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <RadioButton x:Name="radio1" Content="Users" Width="100" Height="30" GroupName="View" Padding="2" Checked="radio1_Checked" Template="{DynamicResource ToggleButtonLeft}"/>
+                <RadioButton x:Name="radio2" Content="Anno" Width="100" Height="30"  GroupName="View" Padding="2" Checked="radio2_Checked" Template="{DynamicResource ToggleButtonMid}"/>
+                <RadioButton x:Name="radio3" Content="TmpAnnt" Width="100" Height="30"  GroupName="View" Padding="2" Checked="radio3_Checked" Template="{DynamicResource ToggleButtonRight}"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <ListBox x:Name="listBox" FontSize="12" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2"/>
+            </Grid>
+                <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="NOButton" Content="Отклонить" VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Foreground="White" Background="Red" BorderBrush="{x:Null}" BorderThickness="0" Click="NOButton_Click"/>
+                    <Button x:Name="infoButton" Content="Подробнее"  VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40"/>
+                    <Button x:Name="OkButton" Content="Принять" VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Foreground="White" Background="LimeGreen " BorderBrush="{x:Null}" BorderThickness="0" Click="OkButton_Click"/>                    
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>
