@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CourseProject_WPF_.View"
       mc:Ignorable="d" 
       d:DesignWidth="600"
-      d:DesignHeight="400"
+      d:DesignHeight="500"
       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}"
       Title="PersonAreaPage">
 

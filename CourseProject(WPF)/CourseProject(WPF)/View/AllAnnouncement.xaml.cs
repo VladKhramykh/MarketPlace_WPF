@@ -11,45 +11,31 @@ namespace CourseProject_WPF_.View
     public partial class AllAnnouncement : Page
     {
         User User = CurrentUser.User;
-
-        AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
-                
-        EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
-        
-        ObservableCollection<Announcement> tmpAnnouncement = new ObservableCollection<Announcement>();        
-
-       
-        public ObservableCollection<Announcement> Announcements
-        {
-            get { return tmpAnnouncement; }            
-        }
+        AnnouncementViewModel viewModel;
 
         public AllAnnouncement()
         {            
             InitializeComponent();
-            DataContext = this;            
-
-            var announcements = announcementViewModel.getAnnouncements().ToList();
-            Announcements.Clear();
-            foreach (Announcement a in announcements)
-                tmpAnnouncement.Add(a);
+            viewModel = new AnnouncementViewModel();
+            DataContext = viewModel;
         }
 
-        private void updateButton_Click(object sender, RoutedEventArgs e)
-        {
-            var announcements = announcementViewModel.getAnnouncements();
-            Announcements.Clear();
-            foreach (Announcement a in announcements)
-                tmpAnnouncement.Add(a);
-        }
+        //private void updateButton_Click(object sender, RoutedEventArgs e)
+        //{
+            
+        //}
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AddWindow addWindow = new AddWindow();
-            addWindow.Show();
+            //AddWindow addWindow = new AddWindow();
+            //addWindow.Show();
+            //AlertWindow alert = new AlertWindow(listView.SelectedItem.ToString());
+            //alert.Show();
+        }
 
-            AlertWindow alert = new AlertWindow(listView.SelectedItem.ToString());
-            alert.Show();
-        }       
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.search();
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CourseProject_WPF_.DataBase
 {
-    class EFTmpAnnouncementRepository
+    class EFTmpAnnouncementRepository : ITmpAnnouncementRepository
     {
         private MarketPlaceEntities context;
 
@@ -13,7 +13,8 @@ namespace CourseProject_WPF_.DataBase
             context = new MarketPlaceEntities();
         }
 
-        public IEnumerable<TmpAnnouncement> getAnnouncements()
+        
+        public IEnumerable<TmpAnnouncement> getAll()
         {
             return context.TmpAnnouncements;
         }
@@ -30,24 +31,24 @@ namespace CourseProject_WPF_.DataBase
         //        return false;
         //}
 
-        public void deleteAnnouncement(TmpAnnouncement tmp)
+        public void delete(TmpAnnouncement tmp)
         {
             context.TmpAnnouncements.Remove(tmp);
             context.SaveChanges();
         }
 
-        public void addAnnouncement(TmpAnnouncement tmpAnnouncement)
+        public void add(TmpAnnouncement tmpAnnouncement)
         {
             context.TmpAnnouncements.Add(tmpAnnouncement);
             context.SaveChanges();
         }
 
-        public TmpAnnouncement getAnnouncementByName(string name)
+        public TmpAnnouncement getByName(string name)
         {
             return context.TmpAnnouncements.FirstOrDefault(x => x.name == name);
         }
 
-        public IEnumerable<TmpAnnouncement> getAnnouncementsBySellerId(int sellerID)
+        public IEnumerable<TmpAnnouncement> getBySellerId(int sellerID)
         {
             return context.TmpAnnouncements.Where(x => x.seller == sellerID).ToList();
         }

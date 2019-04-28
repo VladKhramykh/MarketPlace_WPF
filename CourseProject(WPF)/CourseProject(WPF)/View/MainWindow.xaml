@@ -9,23 +9,17 @@
         x:Name="MainWindowss"
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None" >
     <Grid>        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+        <Grid.ColumnDefinitions>            
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="21*"/>
+            <RowDefinition Height="40"/>            
+            <RowDefinition />            
         </Grid.RowDefinitions>
 
         <Grid  Grid.Row="1">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Purple" Offset="0"/>
-                    <GradientStop Color="#FF210B21" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
+            <Frame x:Name="MainContent" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"/> 
         </Grid>
         
         <Grid x:Name="navigationBar" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="0">
@@ -38,9 +32,7 @@
 
         <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-
                 <ComboBox x:Name="personalAreaComboBox" Width="150" Height="40" FontSize="16" Foreground="White" SelectionChanged="personalAreaComboBox_SelectionChanged"/>
-
                 <Button x:Name="minScreenButton"  Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">
                     <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" HorizontalAlignment="Center"/>
                 </Button>
@@ -51,10 +43,6 @@
                     <materialDesign:PackIcon Kind="Close" Height="25" Width="25" HorizontalAlignment="Center"/>
                 </Button>
             </StackPanel>
-        </Grid>
-
-        <Grid x:Name="GridPage" Grid.Row="1" Grid.Column="1">
-            <Frame x:Name="MainContent" NavigationUIVisibility="Hidden"/> 
         </Grid>
     </Grid>
 </Window>

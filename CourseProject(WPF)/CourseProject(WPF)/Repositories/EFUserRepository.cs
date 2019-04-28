@@ -4,7 +4,7 @@ using CourseProject_WPF_.Model;
 
 namespace CourseProject_WPF_.DataBase
 {
-    class EFUserRepository
+    class EFUserRepository : IUserRepository
     {
         private MarketPlaceEntities context;       
 
@@ -13,29 +13,37 @@ namespace CourseProject_WPF_.DataBase
             context = new MarketPlaceEntities();
         }
 
-        public IEnumerable<User> getUsers()
+        public List<string> getAllNames()
+        {
+            List<string> tmp = new List<string>();
+            foreach (User s in context.Users)
+                tmp.Add(s.mail);
+            return tmp;
+        }
+
+        public IEnumerable<User> getAll()
         {
             return context.Users;
         }
 
-        public void addUser(User user)
+        public void add(User user)
         {
             context.Users.Add(user);
             context.SaveChanges();
         }    
         
-        public void deleteUser(User user)
+        public void delete(User user)
         {
             context.Users.Remove(user);
             context.SaveChanges();
         }
 
-        public User getUserByMail(string mail)
+        public User getByMail(string mail)
         {
             return context.Users.FirstOrDefault(x =>x.mail == mail);
         }
 
-        public void changeUserData(User oldUser, User newUser)
+        public void update(User oldUser, User newUser)
         {
             var tmp = context.Users.FirstOrDefault(x => x.id == oldUser.id);
 

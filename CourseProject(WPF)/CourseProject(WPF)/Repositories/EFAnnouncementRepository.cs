@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.DataBase
 {
-    class EFAnnouncementRepository
+    class EFAnnouncementRepository : IAnnouncementRepository
     {
         private MarketPlaceEntities context;
 
@@ -17,7 +17,7 @@ namespace CourseProject_WPF_.DataBase
             context = new MarketPlaceEntities();
         }
 
-        public IEnumerable<Announcement> getAnnouncements()
+        public IEnumerable<Announcement> getAll()
         {
             return context.Announcements;
         }
@@ -34,26 +34,41 @@ namespace CourseProject_WPF_.DataBase
         //        return false;
         //}
 
-        public void deleteAnnouncement(Announcement tmp)
+        public void delete(Announcement tmp)
         {
             context.Announcements.Remove(tmp);
             context.SaveChanges();
         }       
 
-        public void addAnnouncement(Announcement announcement)
+        public void add(Announcement announcement)
         {
             context.Announcements.Add(announcement);
             context.SaveChanges();
         }
 
-        public Announcement getAnnouncementByName(string name)
+        public Announcement getByName(string name)
         {
             return context.Announcements.FirstOrDefault(x => x.name == name);
         }
         
-        public IEnumerable<Announcement> getAnnouncementsBySellerId(int sellerID)
+        public IEnumerable<Announcement> getBySellerId(int sellerID)
         {
             return context.Announcements.Where(x => x.seller == sellerID).ToList();
         }  
+
+        public IEnumerable<Announcement> getByCategory(string category)
+        {
+            return context.Announcements.Where(x => x.category == category);
+        }
+
+        public List<string> getCategories()
+        {
+            List<string> tmp = new List<string>();
+
+            foreach (Announcement announcement in context.Announcements)
+                tmp.Add(announcement.category);
+
+            return tmp;
+        }
     }
 }

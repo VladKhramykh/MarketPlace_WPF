@@ -37,7 +37,7 @@ namespace CourseProject_WPF_.View
 
         private void fullScreenButton_Click(object sender, RoutedEventArgs e)
         {
-            this.MaxHeight = SystemParameters.WorkArea.Height+10;
+            this.MaxHeight = SystemParameters.WorkArea.Height+20;
 
             if (WindowState == WindowState.Maximized)
                 WindowState = WindowState.Normal;
@@ -59,11 +59,6 @@ namespace CourseProject_WPF_.View
 
         private void personalAreaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainContent.Width = GridPage.Width;
-            MainContent.Height = GridPage.Height;
-            MainContent.MaxWidth = GridPage.MaxWidth;
-            MainContent.MaxHeight = GridPage.MaxHeight;
-
             if (personalAreaComboBox.SelectedIndex == 0)
                 MainContent.Content = new AllAnnouncement();
             if (personalAreaComboBox.SelectedIndex == 1)
