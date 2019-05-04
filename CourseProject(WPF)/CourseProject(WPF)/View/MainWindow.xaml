@@ -8,20 +8,24 @@
         mc:Ignorable="d" 
         x:Name="MainWindowss"
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None" >
-    <Grid>        
-        <Grid.ColumnDefinitions>            
+    <Grid>
+        <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>            
-            <RowDefinition />            
+            <RowDefinition Height="40"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid  Grid.Row="1">
-            <Frame x:Name="MainContent" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"/> 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="839*"/>
+                <ColumnDefinition Width="433*"/>
+            </Grid.ColumnDefinitions>
+            <Frame x:Name="MainContent" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
         </Grid>
-        
+
         <Grid x:Name="navigationBar" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <Button x:Name="backButton"  Width="60" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="backButton_Click" Height="Auto">
@@ -31,6 +35,7 @@
         </Grid>
 
         <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown" Grid.Row="0" Grid.Column="1">
+            <Button x:Name="outButton" Width="100" Content="Выйти" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Height="40" Click="outButton_Click"></Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <ComboBox x:Name="personalAreaComboBox" Width="150" Height="40" FontSize="16" Foreground="White" SelectionChanged="personalAreaComboBox_SelectionChanged"/>
                 <Button x:Name="minScreenButton"  Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minScreenButton_Click" Height="Auto">

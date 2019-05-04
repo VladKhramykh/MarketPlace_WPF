@@ -126,6 +126,8 @@
     <Compile Include="Repositories\IAnnouncementRepository.cs" />
     <Compile Include="Repositories\ITmpAnnouncementRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="ViewModel\AddWindowViewModel.cs" />
+    <Compile Include="ViewModel\AuthWindowViewModel.cs" />
     <Compile Include="ViewModel\CurrentUser.cs" />
     <Compile Include="Repositories\EFAnnouncementRepository.cs" />
     <Compile Include="Repositories\EFTmpAnnouncementRepository.cs" />
@@ -154,8 +156,13 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AnnouncementViewModel.cs" />
+    <Compile Include="ViewModel\AllAnnouncementViewModel.cs" />
+    <Compile Include="ViewModel\EditWindowViewModel.cs" />
+    <Compile Include="ViewModel\MyAnnouncementPageViewModel.cs" />
+    <Compile Include="ViewModel\PersonAreaViewModel.cs" />
+    <Compile Include="ViewModel\RegistrationViewModel.cs" />
     <Compile Include="ViewModel\TmpAnnouncementViewModel.cs" />
+    <Compile Include="ViewModel\AdminPageViewModel.cs" />
     <Compile Include="View\AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
@@ -167,6 +174,9 @@
     </Compile>
     <Compile Include="View\AllAnnouncement.xaml.cs">
       <DependentUpon>AllAnnouncement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWindow.xaml.cs">
+      <DependentUpon>EditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -220,6 +230,10 @@
       <DependentUpon>AuthWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\EditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,30 +1,22 @@
 ﻿using CourseProject_WPF_.Model;
 using CourseProject_WPF_.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
 {
 
     public partial class AuthWindow : Window
     {
-        ViewModel.UserViewModel authWindowViewModel;
+        AuthWindowViewModel authWindowViewModel;
         public AuthWindow()
         {
             InitializeComponent();
-            authWindowViewModel = new ViewModel.UserViewModel();
+            authWindowViewModel = new AuthWindowViewModel();
+            DataContext = authWindowViewModel;
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -44,24 +36,24 @@ namespace CourseProject_WPF_.View
 
         private void authButton_Click(object sender, RoutedEventArgs e)
         {
-            User currentUser = authWindowViewModel.compareDataOfUser(mailTextBox.Text, passwordBox.Password);
+            
+            if (authWindowViewModel.compareDataOfUser(passwordBox.Password))
+                Close();
 
-            if (!String.IsNullOrEmpty(passwordBox.Password) && !String.IsNullOrEmpty(mailTextBox.Text) && currentUser != null)
-            {
-                Hide();
-                CurrentUser.User = currentUser;
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-            }
-            else
-                infoLabel.Content = "Проверьте введённые данные!";
+            //for Design
+            // ...
+
         }
 
         private void regButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Show();            
+            registrationWindow.Show();
+            
+            //for Design
+            //...
+
         }
 
         private void mailTextBox_TextChanged(object sender, TextChangedEventArgs e)

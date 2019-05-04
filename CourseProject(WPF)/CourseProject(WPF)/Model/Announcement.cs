@@ -15,6 +15,14 @@ namespace CourseProject_WPF_.Model
 
         public Announcement() { }
 
+        public Announcement(string name, string category, string about, decimal? cost)
+        {
+            this.name = name ?? throw new ArgumentNullException(nameof(name));
+            this.category = category ?? throw new ArgumentNullException(nameof(category));
+            this.about = about ?? throw new ArgumentNullException(nameof(about));
+            this.cost = cost ?? throw new ArgumentNullException(nameof(cost));
+        }
+
         public Announcement(string name, int? seller, string category, string about, decimal? cost)
         {
             this.name = name ?? throw new ArgumentNullException(nameof(name));

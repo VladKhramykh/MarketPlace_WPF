@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseProject_WPF_.DataBase
+namespace CourseProject_WPF_.Repositories
 {
     public interface IUserRepository
     {
@@ -14,5 +14,6 @@ namespace CourseProject_WPF_.DataBase
         User getByMail(string name);
         void update(User oldUser, User newUser);
         List<string> getAllNames();
+        void changePrivelege(User user, string privelege);
     }
 }

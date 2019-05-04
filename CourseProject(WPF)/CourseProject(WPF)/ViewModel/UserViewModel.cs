@@ -1,15 +1,8 @@
-﻿using CourseProject_WPF_.DataBase;
-using DevExpress.Mvvm;
+﻿using CourseProject_WPF_.Repositories;
 using CourseProject_WPF_.Model;
-using CourseProject_WPF_.View;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -18,10 +11,21 @@ namespace CourseProject_WPF_.ViewModel
 
         EFUserRepository eFUser = new EFUserRepository();        
         EFAnnouncementRepository eFAnnouncement = new EFAnnouncementRepository();
-        EFTmpAnnouncementRepository eFTmpAnnouncement = new EFTmpAnnouncementRepository();
+        EFTmpAnnouncementRepository eFTmpAnnouncement = new EFTmpAnnouncementRepository();        
 
-        public UserViewModel() {}
+        ObservableCollection<User> tmpUser = new ObservableCollection<User>();
         
+        ObservableCollection<User> Users
+        {
+            get { return tmpUser; }
+        }      
+
+        public UserViewModel()
+        {
+            foreach (User user in eFUser.getAll())           
+                tmpUser.Add(user);
+        }
+
         public bool registration(string firstName, string secondName, string mail, string password1, string password2)
         {
             if ((firstName!=null && firstName != String.Empty) && (secondName!=null && secondName!=String.Empty) && (mail!=null && mail!=String.Empty) && (password1!=null && password1!=String.Empty) && (password1 != null && password1 != String.Empty))
@@ -75,7 +79,16 @@ namespace CourseProject_WPF_.ViewModel
 
         public void deleteUser(User user)
         {
-            eFUser.delete(user);
+            if(user != null)
+            {
+                foreach (TmpAnnouncement announcement in eFTmpAnnouncement.getBySellerId(user.id))
+                    eFTmpAnnouncement.delete(announcement);
+                foreach (Announcement announcement in eFAnnouncement.getBySellerId(user.id))
+                    eFAnnouncement.delete(announcement);
+
+                eFUser.delete(user);
+            }
+                        
         }
 
         public void addUser(User user)

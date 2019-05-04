@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock x:Name="alertBlock" Text="{Binding Message}" Background="{x:Null}" Foreground="Purple" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400"/>
+            <TextBlock x:Name="alertBlock" Text="{Binding Message}" TextWrapping="Wrap" Background="{x:Null}" Foreground="Purple" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400"/>
         </Grid>
 
         <Grid Grid.Row="1">

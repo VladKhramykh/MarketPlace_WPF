@@ -11,18 +11,19 @@
       Title="PersonAreaPage">
 
     <Grid>
-        <StackPanel Orientation="Vertical" DataContext="{Binding User}">
+        <StackPanel Orientation="Vertical">
             <Label Width="100" Content="FirstName" />
-            <TextBox x:Name="firstNameTextBox" Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding firstName}"/>
+            <TextBox Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Width="100" Content="SecondName"/>
-            <TextBox x:Name="secondNameTextBox" Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding secondName}"/>
+            <TextBox Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding SecondName,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Width="100" Content="Mail"/>
-            <TextBox x:Name="mailTextBox" Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding mail}"/>
+            <TextBox Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding Mail,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Width="100" Content="TelNumber"/>
-            <TextBox x:Name="telNumberTextBox" Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding telNumber}"/>
+            <TextBox Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding TelNumber,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Width="100" Content="About"/>
-            <TextBox x:Name="aboutTextBox" Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding about}"/>
+            <TextBox Width="300" Margin="0,10,0,10" BorderThickness="2,2,2,2" Text="{Binding About,UpdateSourceTrigger=PropertyChanged}"/>
             <Button x:Name="saveChangesButton" Content="Save Changes" Width="150" Margin="0,30,0,0" Click="saveChangesButton_Click"/>
+            <Button x:Name="deleteUserButton" Content="Удалить себя" Width="150" Margin="0,10,0,0" Click="deleteUserButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

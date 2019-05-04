@@ -1,0 +1,289 @@
+﻿using CourseProject_WPF_.Repositories;
+using CourseProject_WPF_.Model;
+using CourseProject_WPF_.View;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
+
+namespace CourseProject_WPF_.ViewModel
+{
+    public class AllAnnouncementViewModel : INotifyPropertyChanged
+    {
+        EFUserRepository userRepository = new EFUserRepository();
+        EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
+        EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();
+
+        ObservableCollection<Announcement> tmpAnnouncements = new ObservableCollection<Announcement>();
+        List<string> tmpCategories = new List<string>();
+        List<string> tmpSellers = new List<string>();
+        Announcement selectedItem;
+
+        string seller = "";
+        string category = "";
+        string info = "";        
+        string searchText = "";
+        decimal minCost;
+        decimal maxCost;
+        decimal MAX_COST;
+
+        public ObservableCollection<Announcement> Announcements
+        {
+            get { return tmpAnnouncements; }
+            set { tmpAnnouncements = value; }
+        }
+        public string SearchText
+        {
+            get { return searchText; }
+            set
+            {
+                searchText = value;
+                OnPropertyChanged("SearchText");
+            }
+        }
+        public Announcement SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedItem = value;
+                    OnPropertyChanged("SelectedItem");
+                }
+            }
+        }
+
+        public List<string> Categories
+        {
+            get { return tmpCategories; }
+        }
+
+        public List<string> Sellers
+        {
+            get { return tmpSellers; }
+        }
+
+        public string Seller
+        {
+            get { return seller; }
+            set
+            {
+                seller = value;
+                OnPropertyChanged("Seller");
+            }
+        }
+
+        public string Category
+        {
+            get { return category; }
+            set
+            {
+                category = value;
+                OnPropertyChanged("Category");
+            }
+        }
+        public string Info
+        {
+            get { return info; }
+            set
+            {
+                info = $"Найдено {Announcements.Count}";
+                OnPropertyChanged("Info");
+            }
+        }
+        public string MinCost
+        {
+            get { return minCost.ToString(); }
+            set
+            {
+                if (Decimal.TryParse(value.ToString(), out minCost))
+                    minCost = Decimal.Parse(value);
+                else
+                    minCost = 0;
+                OnPropertyChanged("MinCost");                    
+            }
+        }
+        public string MaxCost
+        {
+            get { return maxCost.ToString(); }
+            set
+            {
+                if (Decimal.TryParse(value.ToString(), out maxCost))
+                    maxCost = Decimal.Parse(value);
+                else
+                    maxCost = MAX_COST;
+                OnPropertyChanged("MaxCost");
+            }
+        }
+
+        public AllAnnouncementViewModel()
+        {            
+            var announcements = getAnnouncements().ToList();
+            Announcements.Clear();
+            foreach (Announcement a in announcements)
+                Announcements.Add(a);
+
+            tmpCategories = announcementRepository.getCategories().Distinct().ToList();
+            tmpSellers = userRepository.getAllNames().Distinct().ToList();
+            Info = $"Найдено {Announcements.Count}";
+            MAX_COST = announcementRepository.MaxCost();
+            MaxCost = MAX_COST.ToString();
+
+        }
+
+        public void showInfo()
+        {
+            AlertWindow alertWindow = new AlertWindow(SelectedItem.ToString());
+            alertWindow.Show();
+        }
+
+        public void search()
+        {
+            tmpAnnouncements.Clear();
+            Regex regex = new Regex(@"(\w*)(?i)" + SearchText + @"(\w*)");            
+
+            if (!String.IsNullOrEmpty(Seller) && !String.IsNullOrEmpty(Category))
+            {
+                int id = userRepository.getByMail(Seller).id;
+                IEnumerable<Announcement> tmp = announcementRepository.getByCategory(Category);
+
+                if (id != 0 && tmp.Count() != 0)
+                {
+                    Announcements.Clear();
+
+                    foreach (Announcement announcement in tmp.Where(x => x.seller == id))
+                    {                        
+                        if (regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
+                        {
+                            if (maxCost == 0)
+                            {
+                                if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
+                                    Announcements.Add(announcement);
+                            }
+                            else
+                            {
+                                if (announcement.cost <= maxCost && announcement.cost >= minCost)
+                                    Announcements.Add(announcement);
+                            }
+                        }
+                    }                        
+                }
+                else
+                    Announcements.Clear();
+
+            }
+            else if (!String.IsNullOrEmpty(Seller) && String.IsNullOrEmpty(Category))
+            {
+                int id = userRepository.getByMail(Seller).id;
+
+                if (id != 0)
+                {
+                    Announcements.Clear();
+                    foreach (Announcement announcement in getAnnouncementsBySellerId(id))
+                    {                        
+                        if (regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
+                        {
+                            if (maxCost == 0)
+                            {
+                                if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
+                                    Announcements.Add(announcement);
+                            }
+                            else
+                            {
+                                if (announcement.cost <= maxCost && announcement.cost >= minCost)
+                                    Announcements.Add(announcement);
+                            }
+                        }
+                    }                        
+                }
+                else
+                    Announcements.Clear();
+
+            }
+            else if (String.IsNullOrEmpty(Seller) && !String.IsNullOrEmpty(Category))
+            {
+                IEnumerable<Announcement> tmp = announcementRepository.getByCategory(Category);
+
+                if (tmp.Count() != 0)
+                {
+                    Announcements.Clear();
+                    foreach (Announcement announcement in tmp)
+                    {                        
+                        if (regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
+                        {
+                            if (maxCost == 0)
+                            {
+                                if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
+                                    Announcements.Add(announcement);
+                            }
+                            else
+                            {
+                                if (announcement.cost <= maxCost && announcement.cost >= minCost)
+                                    Announcements.Add(announcement);
+                            }
+                        }
+                            
+                    }                        
+                }
+                else
+                    Announcements.Clear();
+            }
+            else
+            {
+                Announcements.Clear();
+                foreach (Announcement announcement in getAnnouncements())
+                {                       
+                    if(regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
+                    {
+                        if(maxCost == 0)
+                        {
+                            if(announcement.cost <= maxCost && announcement.cost >= MAX_COST)
+                                Announcements.Add(announcement);
+                        }
+                        else
+                        {
+                            if (announcement.cost <= maxCost && announcement.cost >= minCost)
+                                Announcements.Add(announcement);
+                        }  
+                    }                      
+                } 
+            }
+            Info = $"Найдено {Announcements.Count}";
+        }
+
+        public IEnumerable<Announcement> getAnnouncements()
+        {
+            return announcementRepository.getAll();
+        }
+
+        public void deleteAnnouncement(Announcement tmp)
+        {
+            announcementRepository.delete(tmp);
+        }
+
+        public IEnumerable<Announcement> getAnnouncementsBySellerId(int sellerID)
+        {
+            if (sellerID != 0)
+                return announcementRepository.getBySellerId(sellerID);
+            else
+                return null;
+        }
+
+        public void addAnnouncement(Announcement announcement)
+        {
+            announcementRepository.add(announcement);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+    }
+}

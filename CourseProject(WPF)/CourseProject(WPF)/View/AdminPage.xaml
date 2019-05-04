@@ -30,11 +30,11 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <ListBox x:Name="listBox" FontSize="12" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2"/>
+                <ListBox x:Name="listBox" FontSize="12" SelectedItem="{Binding SeletedItem}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2"/>
             </Grid>
                 <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="NOButton" Content="Отклонить" VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Foreground="White" Background="Red" BorderBrush="{x:Null}" BorderThickness="0" Click="NOButton_Click"/>
+                    <Button x:Name="NoButton" Content="Отклонить" VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Foreground="White" Background="Red" BorderBrush="{x:Null}" BorderThickness="0" Click="NoButton_Click"/>
                     <Button x:Name="infoButton" Content="Подробнее"  VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40"/>
                     <Button x:Name="OkButton" Content="Принять" VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Foreground="White" Background="LimeGreen " BorderBrush="{x:Null}" BorderThickness="0" Click="OkButton_Click"/>                    
                 </StackPanel>

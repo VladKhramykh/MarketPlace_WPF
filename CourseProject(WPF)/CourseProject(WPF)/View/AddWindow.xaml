@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddWindow" Width="700" Height="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" BorderThickness="2">
+        Title="AddWindow" Width="700" Height="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" BorderThickness="2" MouseDown="Window_MouseDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -18,24 +18,27 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Background="{x:Null}" BorderThickness="0" Width="40"/>
                 <Button Background="{x:Null}" BorderThickness="0" Width="40"/>
-                <Button x:Name="closeButton" Background="{x:Null}" BorderThickness="0" Width="40" Click="closeButton_Click"/>
+                <Button x:Name="closeButton" Background="{x:Null}" BorderThickness="0" Width="50" Click="closeButton_Click">
+                    <materialDesign:PackIcon Kind="Close" Height="20" Width="20" HorizontalAlignment="Center"/>
+                </Button>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
-            <Label Content="Подача объявления" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="100,40,0,0" Foreground="Gray"></Label>            
+            <Label Content="Подача объявления" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="100,40,0,0" Foreground="Gray"/>
             <StackPanel Orientation="Vertical" Margin="100,80,100,0">
-                <TextBox x:Name="nameTextBox" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,20,0,0" BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" />
-                <ComboBox x:Name="categoryBomxoBox" materialDesign:HintAssist.Hint="Категория"  Margin="0,40,0,0" BorderBrush="Purple" FontSize="18"  BorderThickness="0,0,0,2" />
+                <TextBox Text="{Binding Name}" materialDesign:HintAssist.Hint="Название (от 5 до 50 символов)" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,30,0,0" BorderBrush="Purple" FontSize="16" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" />
+                <ComboBox Text="{Binding Category}" ItemsSource="{Binding Categories,UpdateSourceTrigger=PropertyChanged}" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Категория (выберите из предложенных или напишите свою)"  Margin="0,50,0,0" BorderBrush="Purple" FontSize="16"  BorderThickness="0,0,0,2" />
+                <TextBox Text="{Binding Cost}"  materialDesign:HintAssist.Hint="Цена" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,50,0,0" BorderBrush="Purple" FontSize="16" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2"/>
+                <TextBox Text="{Binding About}" MaxHeight="400" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True"  materialDesign:HintAssist.Hint="Описание (от 5 до 1000 символов)" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,50,0,0" BorderBrush="Purple" FontSize="16" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2"/>                
             </StackPanel>            
         </Grid>
 
         <Grid Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Width="120" Height="40" HorizontalAlignment="Center" Margin="40,0,40,0"/>
-                <Button Width="120" Height="40" HorizontalAlignment="Center" Margin="40,0,40,0"/>
-            </StackPanel>
-            
+                <Button x:Name="clearButton" Width="120" Content="Очистить" Height="40" HorizontalAlignment="Center" Margin="40,0,40,0" Click="clearButton_Click"/>
+                <Button x:Name="addButton" Background="Purple" Content="Добавить" Width="120" Height="40" HorizontalAlignment="Center" Margin="40,0,40,0" Click="addButton_Click"/>
+            </StackPanel>            
         </Grid>
     </Grid>
 </Window>

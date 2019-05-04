@@ -8,22 +8,14 @@ using System.Windows;
 
 namespace CourseProject_WPF_
 {
-    public class CurrentUser
+    public static class CurrentUser
     {
         private static User user;
 
         public static User User
         {
             get { return user; }
-            set
-            {
-                if (value != null)
-                    user = value;
-                else
-                    MessageBox.Show("Ошибка входа!");
-            }
-        }
-
-        
+            set { user = value; }
+        }        
     }
 }

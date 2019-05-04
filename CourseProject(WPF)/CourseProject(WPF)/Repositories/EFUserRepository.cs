@@ -2,7 +2,7 @@
 using System.Linq;
 using CourseProject_WPF_.Model;
 
-namespace CourseProject_WPF_.DataBase
+namespace CourseProject_WPF_.Repositories
 {
     class EFUserRepository : IUserRepository
     {
@@ -53,10 +53,16 @@ namespace CourseProject_WPF_.DataBase
                 tmp.secondName = newUser.secondName;
                 tmp.mail = newUser.mail;
                 tmp.about = newUser.about;
-                tmp.telNumber = newUser.telNumber;
-                context.SaveChanges();
+                tmp.telNumber = newUser.telNumber;                
             }
-            
+            context.SaveChanges();
+
+        }
+
+        public void changePrivelege(User user, string privelege)
+        {
+            context.Users.FirstOrDefault(x => x.id == user.id).privilege = privelege;
+            context.SaveChanges();
         }
     }
 }

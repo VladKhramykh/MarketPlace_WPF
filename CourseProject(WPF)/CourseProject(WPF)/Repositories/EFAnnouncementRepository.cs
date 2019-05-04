@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseProject_WPF_.DataBase
+namespace CourseProject_WPF_.Repositories
 {
     class EFAnnouncementRepository : IAnnouncementRepository
     {
@@ -22,24 +22,11 @@ namespace CourseProject_WPF_.DataBase
             return context.Announcements;
         }
 
-        //public bool deleteAnnouncementsBySeller(User user)
-        //{
-        //    Announcement tmp = context.Announcements.FirstOrDefault(x=>x.seller == user.id);
-        //    if (tmp != null)
-        //    {
-        //        context.Announcements.Remove(tmp);
-        //        return true;
-        //    }                
-        //    else
-        //        return false;
-        //}
-
-        public void delete(Announcement tmp)
+        public void delete(Announcement announcement)
         {
-            context.Announcements.Remove(tmp);
+            context.Announcements.Remove(context.Announcements.FirstOrDefault(x => x.id == announcement.id));
             context.SaveChanges();
-        }       
-
+        } 
         public void add(Announcement announcement)
         {
             context.Announcements.Add(announcement);
@@ -69,6 +56,11 @@ namespace CourseProject_WPF_.DataBase
                 tmp.Add(announcement.category);
 
             return tmp;
+        }
+
+        public decimal MaxCost()
+        {
+            return context.Announcements.Max(x => x.cost).Value;
         }
     }
 }

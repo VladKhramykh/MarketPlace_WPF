@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CourseProject_WPF_.DataBase
+namespace CourseProject_WPF_.Repositories
 {
     class EFTmpAnnouncementRepository : ITmpAnnouncementRepository
     {
@@ -19,21 +19,9 @@ namespace CourseProject_WPF_.DataBase
             return context.TmpAnnouncements;
         }
 
-        //public bool deleteTmpAnnouncementsBySeller(User user)
-        //{
-        //    TmpAnnouncement tmp = context.TmpAnnouncements.FirstOrDefault(x => x.seller == user.id);
-        //    if (tmp != null)
-        //    {
-        //        context.TmpAnnouncements.Remove(tmp);
-        //        return true;
-        //    }
-        //    else
-        //        return false;
-        //}
-
-        public void delete(TmpAnnouncement tmp)
+        public void delete(TmpAnnouncement announcement)
         {
-            context.TmpAnnouncements.Remove(tmp);
+            context.TmpAnnouncements.Remove(context.TmpAnnouncements.FirstOrDefault(x => x.id == announcement.id));
             context.SaveChanges();
         }
 

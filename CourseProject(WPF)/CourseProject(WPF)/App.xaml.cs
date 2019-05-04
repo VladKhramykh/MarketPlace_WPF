@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CourseProject_WPF_.View;
 using System.Windows;
 
 namespace CourseProject_WPF_
@@ -13,9 +8,7 @@ namespace CourseProject_WPF_
     /// </summary>
     public partial class App : Application
     {
-        public static View.AuthWindow authWindow;
-        public static View.MainWindow mainWindow;
-        public static View.RegistrationWindow registrationWindow;       
+        public static AuthWindow authWindow;          
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

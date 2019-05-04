@@ -53,6 +53,7 @@ namespace CourseProject_WPF_.View
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            CurrentUser.User = null;
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
         }       
@@ -67,6 +68,16 @@ namespace CourseProject_WPF_.View
                 MainContent.Content = new MyAnnouncementPage();
             if (personalAreaComboBox.SelectedIndex == 3)
                 MainContent.Content = new AdminPage();
+        }
+
+        private void outButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            CurrentUser.User = null;
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            this.Close();
+            
         }
     }
     

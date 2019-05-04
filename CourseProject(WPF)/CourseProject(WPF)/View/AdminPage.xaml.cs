@@ -1,4 +1,4 @@
-﻿using CourseProject_WPF_.DataBase;
+﻿using CourseProject_WPF_.Repositories;
 using CourseProject_WPF_.Model;
 using CourseProject_WPF_.ViewModel;
 using System;
@@ -24,49 +24,12 @@ namespace CourseProject_WPF_.View
     {
         User User = CurrentUser.User;
 
-        UserViewModel userViewModel = new UserViewModel();
-        TmpAnnouncementViewModel tmpAnnouncementViewModel = new TmpAnnouncementViewModel();
-        AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
-
-        ObservableCollection<TmpAnnouncement> tmpTmpAnnouncements = new ObservableCollection<TmpAnnouncement>();
-        ObservableCollection<Announcement> tmpAnnouncements = new ObservableCollection<Announcement>();
-        ObservableCollection<User> tmpUsers = new ObservableCollection<User>();
-
-        public ObservableCollection<TmpAnnouncement> TmpAnnouncements
-        {
-            get { return tmpTmpAnnouncements; }
-        }
-
-        public ObservableCollection<Announcement> Announcements
-        {
-            get { return tmpAnnouncements; }
-        }
-
-        public ObservableCollection<User> Users
-        {
-            get { return tmpUsers; }
-        }
-
+        AdminPageViewModel adminPageViewModel = new AdminPageViewModel();
+        
         public AdminPage()
         {
             InitializeComponent();
-            DataContext = this;
-
-            var tmpannouncements = tmpAnnouncementViewModel.getAnnouncements();
-            tmpTmpAnnouncements.Clear();
-            foreach (TmpAnnouncement a in tmpannouncements)
-                tmpTmpAnnouncements.Add(a);
-
-            var announcements = userViewModel.getAnnouncements();
-            tmpAnnouncements.Clear();
-            foreach (Announcement a in announcements)
-                tmpAnnouncements.Add(a);
-
-            var users = userViewModel.getUsers();
-            tmpUsers.Clear();
-            foreach (User a in users)
-                tmpUsers.Add(a);
-
+            DataContext = adminPageViewModel;
             radio1.IsChecked = true;
 
         }
@@ -74,69 +37,40 @@ namespace CourseProject_WPF_.View
         
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (listBox.SelectedItem != null && tmpAnnouncementViewModel.transferToAnnouncemet((TmpAnnouncement)listBox.SelectedItem))
-            {
-                Announcements.Add((Announcement)listBox.SelectedItem);
-                TmpAnnouncements.Remove((TmpAnnouncement)listBox.SelectedItem);               
-            }                
-            else
-            {
-                AlertWindow alert = new AlertWindow("Ошибочка :)");
-                alert.Show();
-            }
-            
+            adminPageViewModel.accept(listBox.SelectedItem);            
         }
 
-        private void NOButton_Click(object sender, RoutedEventArgs e)
+        private void NoButton_Click(object sender, RoutedEventArgs e)
         {
-            if (listBox.SelectedItem == null)
-            {
-                AlertWindow alert = new AlertWindow("Ошибочка :)");
-                alert.Show();
-            }                
+            if (listBox.SelectedItem != null)            
+                adminPageViewModel.delete(listBox.SelectedItem);
             else
             {
-                if(listBox.SelectedItem is User)
-                {
-                    userViewModel.deleteUser((User)listBox.SelectedItem);
-                    Users.Remove((User)listBox.SelectedItem);
-                    
-                }
-                else if(listBox.SelectedItem is Announcement)
-                {
-                    Announcements.Remove((Announcement)listBox.SelectedItem);
-                    announcementViewModel.deleteAnnouncement((Announcement)listBox.SelectedItem);
-                    
-                }
-                else if (listBox.SelectedItem is TmpAnnouncement)
-                {
-                    tmpAnnouncementViewModel.deleteAnnouncement((TmpAnnouncement)listBox.SelectedItem);
-                    TmpAnnouncements.Remove((TmpAnnouncement)listBox.SelectedItem);                    
-                }
-                else
-                {
-                    AlertWindow alert = new AlertWindow("Ошибочка :)");
-                    alert.Show();
-                }
+                AlertWindow alert = new AlertWindow("Выберите пользователя :)");
+                alert.Show();
             }
                           
         }      
 
         private void radio1_Checked(object sender, RoutedEventArgs e)
         {
-            listBox.ItemsSource = Users;
-            OkButton.IsEnabled = false;
+            listBox.ItemsSource = adminPageViewModel.Users;
+            NoButton.Content = "Удалить";
+            OkButton.Content = "Сделать админом";
+            OkButton.IsEnabled = true;
         }
 
         private void radio2_Checked(object sender, RoutedEventArgs e)
         {
-            listBox.ItemsSource = Announcements;
+            listBox.ItemsSource = adminPageViewModel.Announcements;
+            OkButton.Content = "Принять";
             OkButton.IsEnabled = false;
         }
 
         private void radio3_Checked(object sender, RoutedEventArgs e)
         {
-            listBox.ItemsSource = TmpAnnouncements;
+            listBox.ItemsSource = adminPageViewModel.TmpAnnouncements;
+            OkButton.Content = "Принять";
             OkButton.IsEnabled = true;
             
         }

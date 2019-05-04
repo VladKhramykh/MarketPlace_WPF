@@ -38,24 +38,24 @@
         </Grid>
 
         <Grid Grid.Row="2">           
-            <TextBox x:Name="firstNameTextBox" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" TextChanged="firstNameTextBox_TextChanged" ></TextBox>
+            <TextBox x:Name="firstNameTextBox" Text="{Binding FirstName}" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" TextChanged="firstNameTextBox_TextChanged" ></TextBox>
         </Grid>
         <Grid Grid.Row="3">
 
-            <TextBox x:Name="secondNameTextBox" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" TextChanged="secondNameTextBox_TextChanged" ></TextBox>
+            <TextBox x:Name="secondNameTextBox" Text="{Binding SecondName}" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" TextChanged="secondNameTextBox_TextChanged" ></TextBox>
         </Grid>
         <Grid Grid.Row="4">
-            <TextBox x:Name="mailTextBox" materialDesign:HintAssist.Hint="Mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" TextChanged="mailTextBox_TextChanged" ></TextBox>
+            <TextBox x:Name="mailTextBox" Text="{Binding Mail}" materialDesign:HintAssist.Hint="Mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" TextChanged="mailTextBox_TextChanged" ></TextBox>
         </Grid>
         <Grid Grid.Row="5">
-            <PasswordBox x:Name="pass1NameTextBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="18" PasswordChanged="pass1NameTextBox_PasswordChanged" ></PasswordBox>
+            <PasswordBox x:Name="pass1NameTextBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" PasswordChanged="pass1NameTextBox_PasswordChanged" ></PasswordBox>
         </Grid>
         <Grid Grid.Row="6">
-            <PasswordBox x:Name="pass2NameTextBox" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2"  BorderBrush="Red" FontSize="18" PasswordChanged="pass2NameTextBox_PasswordChanged" ></PasswordBox>
+            <PasswordBox x:Name="pass2NameTextBox" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2"  BorderBrush="Red" FontSize="16" PasswordChanged="pass2NameTextBox_PasswordChanged" ></PasswordBox>
         </Grid>
         <Grid Grid.Row="7">
-            <Button x:Name="registrationButton" Content="Регистрация" VerticalAlignment="Top" Width="150" Height="50" FontSize="18" Margin="0,25,0,0" Background="Purple" BorderBrush="{x:Null}" Foreground="White" IsEnabled="False" Click="registrationButton_Click" ></Button>
-            <Label x:Name="infoLabel" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,0,25" FontWeight="Bold"></Label>
+            <Button x:Name="registrationButton" Content="Регистрация" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" Margin="0,25,0,0" Background="Purple" BorderBrush="{x:Null}" Foreground="White" IsEnabled="False" Click="registrationButton_Click" ></Button>
+            <Label x:Name="infoLabel" Content="{Binding Info}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,0,22" FontWeight="Bold"></Label>
         </Grid>
     </Grid>
 </Window>

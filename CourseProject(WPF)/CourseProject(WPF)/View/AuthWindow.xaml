@@ -35,23 +35,21 @@
         </Grid>
         
         <Grid Grid.Row="2">
-            <TextBox x:Name="mailTextBox" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="50,10,50,10" BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" TextChanged="mailTextBox_TextChanged"/>
+            <TextBox x:Name="mailTextBox" Text="{Binding Login}" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="50,10,50,10" BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" TextChanged="mailTextBox_TextChanged"/>
         </Grid>
         
-        <Grid Grid.Row="3">
-            <PasswordBox x:Name="passwordBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource  MaterialDesignFloatingHintPasswordBox}" Margin="50,10,50,10"  BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" PasswordChanged="passwordBox_PasswordChanged"/>
+        <Grid Grid.Row="3">            
+            <PasswordBox x:Name="passwordBox"  materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource  MaterialDesignFloatingHintPasswordBox}" Margin="50,10,50,10"  BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" PasswordChanged="passwordBox_PasswordChanged"/>
         </Grid>       
         
         <Grid Grid.Row="4" >
             <Button x:Name="authButton"  Content="Войти" Width="170" Height="40"  HorizontalAlignment="Center" VerticalAlignment="Top"  Background="Purple" Foreground="White" FontSize="18" Margin="0,20,0,0" BorderBrush="{x:Null}" Click="authButton_Click"/>
-            <Button x:Name="regButton"  Style="{DynamicResource RegButton}" Content="Регистрация" Width="140" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="regButton_Click"/>            
+            <Button x:Name="regButton"  Style="{DynamicResource RegButton}" Content="Регистрация" Width="140" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="regButton_Click" Cursor="Hand"/>            
         </Grid>
         
         <Grid Grid.Row="5">
-            <Label x:Name="infoLabel" Foreground="PaleVioletRed" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></Label>
-        </Grid>
-
-        
+            <TextBlock Text="{Binding Info}" Foreground="PaleVioletRed" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="18"/>
+        </Grid>        
     </Grid>
 
 </Window>

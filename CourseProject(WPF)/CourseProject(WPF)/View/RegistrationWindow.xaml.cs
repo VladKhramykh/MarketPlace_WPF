@@ -1,4 +1,4 @@
-﻿using CourseProject_WPF_.DataBase;
+﻿using CourseProject_WPF_.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CourseProject_WPF_.ViewModel;
+using CourseProject_WPF_.Model;
 
 namespace CourseProject_WPF_.View
 {
-    /// <summary>
-    /// Логика взаимодействия для RegistrationWindow.xaml
-    /// </summary>
     public partial class RegistrationWindow : Window
     {
-        ViewModel.UserViewModel authWindowViewModel;
+        
+        RegistrationViewModel registrationViewModel = new RegistrationViewModel();        
+        
         public RegistrationWindow()
         {
-            InitializeComponent();
-            authWindowViewModel = new ViewModel.UserViewModel();            
+            InitializeComponent();           
+            DataContext = registrationViewModel;
         }
 
         private void collapseClose_Click(object sender, RoutedEventArgs e)
@@ -40,22 +40,18 @@ namespace CourseProject_WPF_.View
 
         private void registrationButton_Click(object sender, RoutedEventArgs e)
         {
-            if (authWindowViewModel.registration(firstNameTextBox.Text, secondNameTextBox.Text, mailTextBox.Text, pass1NameTextBox.Password, pass2NameTextBox.Password))
-            {
+            if (registrationViewModel.registration(User.getHash(pass1NameTextBox.Password),User.getHash(pass2NameTextBox.Password)))
                 infoLabel.Foreground = Brushes.LimeGreen;
-                infoLabel.Content = "Регистрация успешно выполнена!";
-            }                
-            else
-            {
+            else           
                 infoLabel.Foreground = Brushes.Red;
-                infoLabel.Content = "Проверьте введённые данные!";
-            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
-            App.authWindow.Show();
+            Close();
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            
         }
 
         private void firstNameTextBox_TextChanged(object sender, TextChangedEventArgs e)

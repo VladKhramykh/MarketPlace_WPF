@@ -1,10 +1,7 @@
-﻿using CourseProject_WPF_.DataBase;
+﻿using CourseProject_WPF_.Repositories;
 using CourseProject_WPF_.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -15,7 +12,19 @@ namespace CourseProject_WPF_.ViewModel
         EFAnnouncementRepository eFAnnouncement = new EFAnnouncementRepository();        
         EFTmpAnnouncementRepository eFTmpAnnouncement = new EFTmpAnnouncementRepository();
 
-        public TmpAnnouncementViewModel() { }
+        ObservableCollection<TmpAnnouncement> tmpAnnouncement = new ObservableCollection<TmpAnnouncement>();
+
+        public ObservableCollection<TmpAnnouncement> Announcements
+        {
+            get { return tmpAnnouncement; }
+            set { tmpAnnouncement = value; }
+        }
+
+        public TmpAnnouncementViewModel()
+        {
+            foreach (TmpAnnouncement announcement in eFTmpAnnouncement.getAll())
+                tmpAnnouncement.Add(announcement);
+        }
 
         public IEnumerable<TmpAnnouncement> getAnnouncements()
         {
