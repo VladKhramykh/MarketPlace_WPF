@@ -20,9 +20,7 @@ namespace CourseProject_WPF_.ViewModel
         string category;
         string about;
         decimal cost;
-        string info;
-
-        object tmp;
+        string info;        
 
         List<string> tmpCategories = new List<string>();
         object item;

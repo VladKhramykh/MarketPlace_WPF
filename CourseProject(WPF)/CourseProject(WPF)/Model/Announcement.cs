@@ -34,7 +34,7 @@ namespace CourseProject_WPF_.Model
 
         public override string ToString()
         {
-            return $"{name}\n{seller}\n{about}\n{cost}\n";
+            return $"{name}\n{seller}\n{cost}\n";
         }
     }
 }

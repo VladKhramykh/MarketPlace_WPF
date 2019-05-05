@@ -56,75 +56,87 @@ namespace CourseProject_WPF_.View
 
         private void firstNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (String.IsNullOrEmpty(firstNameTextBox.Text))
-                firstNameTextBox.BorderBrush = Brushes.Red;
-            else
+            if (!String.IsNullOrEmpty(firstNameTextBox.Text))
                 firstNameTextBox.BorderBrush = Brushes.LimeGreen;
+            else
+                firstNameTextBox.BorderBrush = Brushes.Red;
+
+            compare();
         }
 
         private void secondNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (String.IsNullOrEmpty(secondNameTextBox.Text))
-                secondNameTextBox.BorderBrush = Brushes.Red;
-            else
+            if (!String.IsNullOrEmpty(secondNameTextBox.Text))
                 secondNameTextBox.BorderBrush = Brushes.LimeGreen;
+            else
+                secondNameTextBox.BorderBrush = Brushes.Red;
+            compare();
         }
 
         private void mailTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (String.IsNullOrEmpty(mailTextBox.Text))
-                mailTextBox.BorderBrush = Brushes.Red;
-            else
+            if (!String.IsNullOrEmpty(mailTextBox.Text))
                 mailTextBox.BorderBrush = Brushes.LimeGreen;
+            else
+                mailTextBox.BorderBrush = Brushes.Red;
+            compare();
         }
 
         private void pass1NameTextBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
 
-            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password) &&
-                !String.IsNullOrEmpty(pass1NameTextBox.Password) &&
-                !String.IsNullOrEmpty(firstNameTextBox.Text) &&
-                !String.IsNullOrEmpty(secondNameTextBox.Text) &&
-                !String.IsNullOrEmpty(mailTextBox.Text))
+            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password))
             {
                 pass1NameTextBox.BorderBrush = Brushes.LimeGreen;
-                pass2NameTextBox.BorderBrush = Brushes.LimeGreen;
-                registrationButton.IsEnabled = true;
+                pass2NameTextBox.BorderBrush = Brushes.LimeGreen;                
             }
             else
             {
                 pass1NameTextBox.BorderBrush = Brushes.Red;
-                pass2NameTextBox.BorderBrush = Brushes.Red;
-                registrationButton.IsEnabled = false;
+                pass2NameTextBox.BorderBrush = Brushes.Red;                
             }
+
+            compare();
             
         }
 
         private void pass2NameTextBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
 
-            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password) &&
-                !String.IsNullOrEmpty(pass1NameTextBox.Password) &&
-                !String.IsNullOrEmpty(firstNameTextBox.Text) &&
-                !String.IsNullOrEmpty(secondNameTextBox.Text) &&
-                !String.IsNullOrEmpty(mailTextBox.Text))
+            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password))
             {
                 pass1NameTextBox.BorderBrush = Brushes.LimeGreen;
-                pass2NameTextBox.BorderBrush = Brushes.LimeGreen;
-                registrationButton.IsEnabled = true;
+                pass2NameTextBox.BorderBrush = Brushes.LimeGreen;               
             }
             else
             {
                 pass1NameTextBox.BorderBrush = Brushes.Red;
-                pass2NameTextBox.BorderBrush = Brushes.Red;
-                registrationButton.IsEnabled = false;
+                pass2NameTextBox.BorderBrush = Brushes.Red;                
             }
+
+            compare();
              
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        void compare()
+        {
+            if (pass2NameTextBox.Password.Equals(pass1NameTextBox.Password) &&
+                !String.IsNullOrEmpty(pass1NameTextBox.Password) &&
+                !String.IsNullOrEmpty(firstNameTextBox.Text) &&
+                !String.IsNullOrEmpty(secondNameTextBox.Text) &&
+                !String.IsNullOrEmpty(mailTextBox.Text))
+            {               
+                registrationButton.IsEnabled = true;
+            }
+            else
+            {                
+                registrationButton.IsEnabled = false;
+            }
         }
     }
 }

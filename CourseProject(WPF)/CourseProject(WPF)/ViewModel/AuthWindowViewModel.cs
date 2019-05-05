@@ -61,7 +61,12 @@ namespace CourseProject_WPF_.ViewModel
                         mainWindow.Show();
                         return true;
                     }
-                    return false;
+                    else
+                    {
+                        Info = "Проверьте введённые данные";
+                        return false;
+                    }
+                    
                 }
                 else
                 {

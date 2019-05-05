@@ -118,7 +118,7 @@ namespace CourseProject_WPF_.ViewModel
                 OnPropertyChanged("MaxCost");
             }
         }
-
+        ViewWindow viewWindow;
         public AllAnnouncementViewModel()
         {            
             var announcements = getAnnouncements().ToList();
@@ -132,12 +132,18 @@ namespace CourseProject_WPF_.ViewModel
             MAX_COST = announcementRepository.MaxCost();
             MaxCost = MAX_COST.ToString();
 
+            viewWindow = new ViewWindow(this);
+            viewWindow.Visibility = System.Windows.Visibility.Hidden;
+            
         }
 
+
+        
         public void showInfo()
-        {
-            AlertWindow alertWindow = new AlertWindow(SelectedItem.ToString());
-            alertWindow.Show();
+        {            
+            viewWindow.DataContext = SelectedItem;
+            if(viewWindow.Visibility == System.Windows.Visibility.Hidden)
+                viewWindow.Show();
         }
 
         public void search()
@@ -276,6 +282,19 @@ namespace CourseProject_WPF_.ViewModel
         {
             announcementRepository.add(announcement);
         }
+
+        public void nextItem()
+        {
+            if(Announcements.IndexOf(SelectedItem) < Announcements.Count-1)
+                SelectedItem = Announcements.ElementAt(Announcements.IndexOf(SelectedItem) + 1);
+        }
+
+        public void previousItem()
+        {
+            if (Announcements.IndexOf(SelectedItem) > 0)
+                SelectedItem = Announcements.ElementAt(Announcements.IndexOf(SelectedItem) - 1);
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
