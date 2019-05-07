@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using CourseProject_WPF_.View;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -62,7 +63,7 @@ namespace CourseProject_WPF_.ViewModel
         {
             User tmp = new User(FirstName, SecondName, Mail, TelNumber, About, user.privilege);
             userRepository.update(user, tmp);
-            CurrentUser.User = userRepository.getByMail(Mail);
+            CurrentUser.User = userRepository.getByMail(Mail);            
         }
 
         public void deleteUser()
@@ -72,7 +73,10 @@ namespace CourseProject_WPF_.ViewModel
             foreach (Announcement announcement in announcementRepository.getBySellerId(user.id))
                 announcementRepository.delete(announcement);
 
+            App.mainWindow.Close();
             userRepository.delete(CurrentUser.User);
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
         }
 
 

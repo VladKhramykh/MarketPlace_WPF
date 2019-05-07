@@ -1,14 +1,8 @@
 ﻿using CourseProject_WPF_.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CourseProject_WPF_
 {
-    public static class CurrentUser
+    public class CurrentUser
     {
         private static User user;
 
@@ -16,6 +10,18 @@ namespace CourseProject_WPF_
         {
             get { return user; }
             set { user = value; }
-        }        
+        }
+
+        public static bool isAdmin()
+        {
+            if (User.privilege.Equals("admin"))
+                return true;
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return User.FirstName + " " + User.SecondName;
+        }
     }
 }

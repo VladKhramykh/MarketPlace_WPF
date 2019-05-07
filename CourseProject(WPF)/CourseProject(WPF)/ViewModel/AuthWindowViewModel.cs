@@ -57,8 +57,8 @@ namespace CourseProject_WPF_.ViewModel
                     if (User.getHash(password).Equals(tmp.password))
                     {
                         CurrentUser.User = tmp;                        
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.Show();
+                        App.mainWindow = new MainWindow();
+                        App.mainWindow.Show();
                         return true;
                     }
                     else

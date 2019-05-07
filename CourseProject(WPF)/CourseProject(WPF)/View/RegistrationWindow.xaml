@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="600" Width="350" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="RegistrationWindow" Height="600" Width="350" ResizeMode="NoResize" MouseLeftButtonDown="Grid_MouseDown" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -19,7 +19,7 @@
             <RowDefinition Height="150*"/>            
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="Purple" MouseDown="Grid_MouseDown">
+        <Grid Grid.Row="0" Background="Purple" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="229*"/>

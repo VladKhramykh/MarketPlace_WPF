@@ -5,13 +5,14 @@ using CourseProject_WPF_.ViewModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System;
 
 namespace CourseProject_WPF_.View
 {
     public partial class AllAnnouncement : Page
     {
         User User = CurrentUser.User;
-        AllAnnouncementViewModel viewModel;
+        public AllAnnouncementViewModel viewModel;
 
         public AllAnnouncement()
         {            
@@ -21,12 +22,16 @@ namespace CourseProject_WPF_.View
         }
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            viewModel.showInfo();
+            viewModel.showInfo();           
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.search();
-        }        
+        }
+        
+        
+
+       
     }
 }

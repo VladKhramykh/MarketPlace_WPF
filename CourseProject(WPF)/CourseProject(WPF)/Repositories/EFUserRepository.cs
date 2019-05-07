@@ -34,7 +34,7 @@ namespace CourseProject_WPF_.Repositories
         
         public void delete(User user)
         {
-            context.Users.Remove(user);
+            context.Users.Remove(context.Users.FirstOrDefault(x=>x.id == user.id));
             context.SaveChanges();
         }
 
@@ -49,20 +49,28 @@ namespace CourseProject_WPF_.Repositories
 
             if(tmp!= null)
             {
-                tmp.firstName = newUser.firstName;
-                tmp.secondName = newUser.secondName;
-                tmp.mail = newUser.mail;
-                tmp.about = newUser.about;
-                tmp.telNumber = newUser.telNumber;                
+                tmp.FirstName = newUser.firstName;
+                tmp.SecondName = newUser.secondName;
+                tmp.Mail = newUser.mail;
+                tmp.About = newUser.about;
+                tmp.TelNumber = newUser.telNumber;                
             }
             context.SaveChanges();
 
         }
 
-        public void changePrivelege(User user, string privelege)
+        public bool changePrivelege(User user, string privelege)
         {
-            context.Users.FirstOrDefault(x => x.id == user.id).privilege = privelege;
-            context.SaveChanges();
+            if (context.Users.FirstOrDefault(x => x.id == user.id).privilege.Equals(privelege))
+                return false;
+            else
+            {
+                context.Users.FirstOrDefault(x => x.id == user.id).privilege = privelege;
+                context.SaveChanges();
+                return true;
+            }
+            
+            
         }
     }
 }

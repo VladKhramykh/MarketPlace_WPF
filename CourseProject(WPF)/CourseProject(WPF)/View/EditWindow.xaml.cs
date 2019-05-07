@@ -49,5 +49,10 @@ namespace CourseProject_WPF_.View
         {
             DragMove();
         }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

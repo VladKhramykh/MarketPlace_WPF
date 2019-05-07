@@ -128,9 +128,9 @@ namespace CourseProject_WPF_.Model
 
         public override string ToString()
         {
-            return $"Имя: {firstName}\n" +
-                $"Фамилия: {secondName}\n" +
-                $"mail: {mail}\n";
+            return  $"{firstName} {secondName}\n" +                
+                    $"mail: {mail}\n" +
+                    $"privelege: {privilege}";
         }
         public static string getHash(string password)
         {

@@ -28,6 +28,7 @@ namespace CourseProject_WPF_.ViewModel
         decimal minCost;
         decimal maxCost;
         decimal MAX_COST;
+        string count;
 
         public ObservableCollection<Announcement> Announcements
         {
@@ -48,11 +49,11 @@ namespace CourseProject_WPF_.ViewModel
             get { return selectedItem; }
             set
             {
-                if (value != null)
-                {
-                    selectedItem = value;
-                    OnPropertyChanged("SelectedItem");
-                }
+                selectedItem = value;
+                if (value != null)                
+                    Count = (Announcements.IndexOf(SelectedItem)+1).ToString();
+                                                  
+                OnPropertyChanged("SelectedItem");   
             }
         }
 
@@ -90,7 +91,7 @@ namespace CourseProject_WPF_.ViewModel
             get { return info; }
             set
             {
-                info = $"Найдено {Announcements.Count}";
+                info = $"Найдено {Announcements.Count} объявлений";
                 OnPropertyChanged("Info");
             }
         }
@@ -118,6 +119,16 @@ namespace CourseProject_WPF_.ViewModel
                 OnPropertyChanged("MaxCost");
             }
         }
+
+        public string Count
+        {
+            get { return $"{count} -е  из {Announcements.Count} объявлений"; }
+            set
+            {
+                count = value;
+                OnPropertyChanged("Count");
+            }
+        }
         ViewWindow viewWindow;
         public AllAnnouncementViewModel()
         {            
@@ -142,12 +153,12 @@ namespace CourseProject_WPF_.ViewModel
         public void showInfo()
         {            
             viewWindow.DataContext = SelectedItem;
-            if(viewWindow.Visibility == System.Windows.Visibility.Hidden)
+            if(viewWindow.Visibility == System.Windows.Visibility.Hidden && SelectedItem != null)
                 viewWindow.Show();
         }
 
         public void search()
-        {
+        {            
             tmpAnnouncements.Clear();
             Regex regex = new Regex(@"(\w*)(?i)" + SearchText + @"(\w*)");            
 

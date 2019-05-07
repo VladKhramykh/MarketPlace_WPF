@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>сойкель.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiproSoftware.Docking.Wpf, Version=18.1.675.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL" />
     <Reference Include="ActiproSoftware.Shared.Wpf, Version=18.1.675.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL" />
@@ -161,6 +164,7 @@
     </Compile>
     <Compile Include="ViewModel\AllAnnouncementViewModel.cs" />
     <Compile Include="ViewModel\EditWindowViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MyAnnouncementPageViewModel.cs" />
     <Compile Include="ViewModel\PersonAreaViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
@@ -228,7 +232,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="View\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -308,6 +311,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="сойкель.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

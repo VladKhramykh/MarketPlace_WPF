@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.ComponentModel;
+using CourseProject_WPF_.View;
 
 namespace CourseProject_WPF_.ViewModel
 {
-    public class AdminPageViewModel
+    public class AdminPageViewModel : INotifyPropertyChanged
     {
         EFUserRepository eFUser = new EFUserRepository();
         EFAnnouncementRepository eFAnnouncement = new EFAnnouncementRepository();
@@ -19,6 +21,19 @@ namespace CourseProject_WPF_.ViewModel
         ObservableCollection<User> tmpUsers = new ObservableCollection<User>(); 
         ObservableCollection<Announcement> tmpAnnouncements = new ObservableCollection<Announcement>(); 
         ObservableCollection<TmpAnnouncement> tmpTmpAnnouncements = new ObservableCollection<TmpAnnouncement>();
+
+        object selectedItem;
+
+        public object SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                if (value != null)
+                    selectedItem = value;
+                OnPropertyChanged("SelectedItem");
+            }
+        }
 
         public ObservableCollection<User> Users
         {
@@ -73,12 +88,25 @@ namespace CourseProject_WPF_.ViewModel
             }
         }
 
-        public void accept(object obj)
+        public void accept()
         {
-            if (obj is User)
-                eFUser.changePrivelege((User)obj, "admin");         
-            if (obj is TmpAnnouncement)
-                transferToAnnouncemet((TmpAnnouncement)obj);
+            if (SelectedItem is User)
+            {
+                if (!eFUser.changePrivelege((SelectedItem as User), "admin"))
+                   eFUser.changePrivelege((SelectedItem as User), "user");
+
+                AlertWindow alertWindow = new AlertWindow($"Пользователь {(SelectedItem as User).firstName} {(SelectedItem as User).secondName} теперь {(SelectedItem as User).privilege}");
+                alertWindow.ShowDialog();
+            }                     
+            else if (SelectedItem is TmpAnnouncement)
+                transferToAnnouncemet(SelectedItem as TmpAnnouncement);
+            else
+            {
+                AlertWindow alertWindow = new AlertWindow($"Ошибочка какая-то");
+                alertWindow.ShowDialog();
+            }            
+
+            update();
         }
 
         void deleteUser(User user)
@@ -91,20 +119,28 @@ namespace CourseProject_WPF_.ViewModel
             eFUser.delete(user);
         }
 
-        public void delete(object obj)
+        public void delete()
         {
-            if (obj is User)
-                deleteUser((User)obj);
-                //eFUser.changePrivelege((User)obj, "user");
+            if (SelectedItem is User)
+                deleteUser(SelectedItem as User);                
 
-            if (obj is Announcement)           
-                eFAnnouncement.delete((Announcement)obj);
+            if (SelectedItem is Announcement)           
+                eFAnnouncement.delete(SelectedItem as Announcement);
 
-            if (obj is TmpAnnouncement)           
-                eFTmpAnnouncement.delete((TmpAnnouncement)obj);
+            if (SelectedItem is TmpAnnouncement)           
+                eFTmpAnnouncement.delete(SelectedItem as TmpAnnouncement);
            
             update();
 
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         mc:Ignorable="d"
-        Title="AlertWindow" WindowStyle="None" ResizeMode="NoResize" Width="450" Height="300" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" BorderThickness="2">
+        Title="AlertWindow" WindowStyle="None" ResizeMode="NoResize" Width="400" Height="250" MouseLeftButtonDown="Window_MouseDown" WindowStartupLocation="CenterScreen" BorderThickness="1">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>
@@ -13,11 +13,11 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock x:Name="alertBlock" Text="{Binding Message}" TextWrapping="Wrap" Background="{x:Null}" Foreground="Purple" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400"/>
+            <TextBlock x:Name="alertBlock" Text="{Binding Message}" TextWrapping="Wrap" Background="{x:Null}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF464648" />
         </Grid>
 
         <Grid Grid.Row="1">
-            <Button Width="100" Background="Purple" Foreground="White" Content="Пониу" Click="Button_Click"/>
+            <Button Width="100" Background="#FF464648" Foreground="White" Content="Пониу" Click="Button_Click" BorderBrush="{x:Null}"/>
         </Grid>
     </Grid>
 </Window>

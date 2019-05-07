@@ -3,53 +3,55 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CourseProject_WPF_"
-        
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CourseProject_WPF_.View.AuthWindow"
+        xmlns:local="clr-namespace:CourseProject_WPF_"        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        x:Class="CourseProject_WPF_.View.AuthWindow"
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="MainWindow" Height="600" Width="400" ResizeMode="NoResize" MouseLeftButtonDown="GridBarTitle_MouseDown" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF464648" >
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="130*"/>            
+            <RowDefinition Height="130*"/>
             <RowDefinition Height="70*"/>
             <RowDefinition Height="70*"/>
             <RowDefinition Height="70*"/>
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="GridBarTitle" Background="Purple" MouseDown="GridBarTitle_MouseDown">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="collapseClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="collapseClose_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" />
-                </Button>
-                <Button x:Name="buttonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="buttonClose_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="Close" Height="25" Width="25" />
-                </Button>
-            </StackPanel>
+        <Grid x:Name="GridBarTitle" Background="#FF464648"  >
+            <Button x:Name="buttonClose" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Click="buttonClose_Click" Height="Auto">
+                <materialDesign:PackIcon Kind="Close" Height="25" Width="25" />
+            </Button>
         </Grid>
 
         <Grid Grid.Row="1">
-            
+
         </Grid>
-        
+
         <Grid Grid.Row="2">
-            <TextBox x:Name="mailTextBox" Text="{Binding Login}" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="50,10,50,10" BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" TextChanged="mailTextBox_TextChanged"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="50,10,50,10">
+                <materialDesign:PackIcon Kind="Account" Height="25" Width="25" VerticalAlignment="Center" Margin="0,10,15,0" Foreground="LightGray"/>
+                <TextBox x:Name="mailTextBox" Text="{Binding Login}" materialDesign:HintAssist.Hint="Логин" Width="260" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  BorderBrush="#FF303032" FontSize="18" BorderThickness="0,0,0,2" TextChanged="mailTextBox_TextChanged" Foreground="LightGray" SelectionBrush="#FF959595"/>
+            </StackPanel>
         </Grid>
-        
-        <Grid Grid.Row="3">            
-            <PasswordBox x:Name="passwordBox"  materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource  MaterialDesignFloatingHintPasswordBox}" Margin="50,10,50,10"  BorderBrush="Purple" FontSize="18" SelectionBrush="MediumPurple" BorderThickness="0,0,0,2" PasswordChanged="passwordBox_PasswordChanged"/>
-        </Grid>       
-        
+
+        <Grid Grid.Row="3">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="50,10,50,10">
+                <materialDesign:PackIcon Kind="Key" Height="25" Width="25" VerticalAlignment="Center" Margin="0,10,15,0" Foreground="LightGray"/>
+                <PasswordBox x:Name="passwordBox" Width="260" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource  MaterialDesignFloatingHintPasswordBox}" FontSize="18" SelectionBrush="#FF959595" BorderThickness="0,0,0,2" PasswordChanged="passwordBox_PasswordChanged" Foreground="LightGray" BorderBrush="#FF303032"/>
+            </StackPanel>
+            </Grid>
+
         <Grid Grid.Row="4" >
-            <Button x:Name="authButton"  Content="Войти" Width="170" Height="40"  HorizontalAlignment="Center" VerticalAlignment="Top"  Background="Purple" Foreground="White" FontSize="18" Margin="0,20,0,0" BorderBrush="{x:Null}" Click="authButton_Click"/>
-            <Button x:Name="regButton"  Style="{DynamicResource RegButton}" Content="Регистрация" Width="140" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="regButton_Click" Cursor="Hand"/>            
+            <Button x:Name="authButton"  Content="Войти" Width="170" Height="40"  HorizontalAlignment="Center" VerticalAlignment="Top"  Background="#FF303032" Foreground="LightGray" FontSize="18" Margin="0,20,0,0" BorderBrush="{x:Null}" Click="authButton_Click"/>
+            <Button x:Name="regButton"  Style="{DynamicResource RegButton}" Content="Регистрация" Width="140" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="regButton_Click" Cursor="Hand" Foreground="LightGray"/>
         </Grid>
-        
+
         <Grid Grid.Row="5">
             <TextBlock Text="{Binding Info}" Foreground="PaleVioletRed" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="18"/>
-        </Grid>        
+        </Grid>
     </Grid>
 
 </Window>

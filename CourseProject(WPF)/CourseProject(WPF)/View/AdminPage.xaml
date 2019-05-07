@@ -15,13 +15,13 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="64*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <StackPanel x:Name="radioButtonStackPanel" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <RadioButton x:Name="radio1" Content="Users" Width="100" Height="30" GroupName="View" Padding="2" Checked="radio1_Checked" Template="{DynamicResource ToggleButtonLeft}"/>
-                <RadioButton x:Name="radio2" Content="Anno" Width="100" Height="30"  GroupName="View" Padding="2" Checked="radio2_Checked" Template="{DynamicResource ToggleButtonMid}"/>
-                <RadioButton x:Name="radio3" Content="TmpAnnt" Width="100" Height="30"  GroupName="View" Padding="2" Checked="radio3_Checked" Template="{DynamicResource ToggleButtonRight}"/>
+        <Grid Grid.Row="0" Background="#FFE2E2E2">
+            <TextBlock HorizontalAlignment="Left" FontSize="20" Foreground="Gray" Text="Меню администратора" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="5">
+                <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Users" Checked="radio1_Checked" Cursor="Hand"/>
+                <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Anno" Checked="radio2_Checked" Cursor="Hand"/>
+                <RadioButton x:Name="radio3" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="TmpAnnt" Checked="radio3_Checked" Cursor="Hand"/>
             </StackPanel>
-
         </Grid>
 
         <Grid Grid.Row="1">
@@ -30,12 +30,12 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <ListBox x:Name="listBox" FontSize="12" SelectedItem="{Binding SeletedItem}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2"/>
+                <ListBox x:Name="listBox" FontSize="14" SelectedItem="{Binding SelectedItem}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2"/>
             </Grid>
                 <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="NoButton" Content="Отклонить" VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Foreground="White" Background="Red" BorderBrush="{x:Null}" BorderThickness="0" Click="NoButton_Click"/>
-                    <Button x:Name="infoButton" Content="Подробнее"  VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40"/>
+                    <Button x:Name="infoButton" Content="Подробнее"  VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Click="infoButton_Click"/>
                     <Button x:Name="OkButton" Content="Принять" VerticalAlignment="Center" Margin="0,0,10,0" Width="110" Height="40" Foreground="White" Background="LimeGreen " BorderBrush="{x:Null}" BorderThickness="0" Click="OkButton_Click"/>                    
                 </StackPanel>
             </Grid>

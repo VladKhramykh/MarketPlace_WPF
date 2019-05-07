@@ -5,42 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
-        Title="ViewWindow" Height="1000" Width="700" WindowStyle="None" >
+        mc:Ignorable="d" Height="1000" Width="700" WindowStyle="None" MouseLeftButtonDown="Window_MouseDown" WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
-            <RowDefinition/>            
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="Purple">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Background="{x:Null}" BorderThickness="0" Width="40"/>
-                <Button Background="{x:Null}" BorderThickness="0" Width="40"/>
-                <Button x:Name="closeButton" Background="{x:Null}" BorderThickness="0" Width="50" Click="closeButton_Click">
-                    <materialDesign:PackIcon Kind="Close" Height="20" Width="20" HorizontalAlignment="Center"/>
-                </Button>
-            </StackPanel>
+        <Grid Grid.Row="0" Background="#FF2B3238" >                         
+            <Button x:Name="closeButton" Background="{x:Null}" HorizontalAlignment="Right" BorderThickness="0" Width="50" Click="closeButton_Click">
+                <materialDesign:PackIcon Kind="Close" Height="20" Width="20" HorizontalAlignment="Center"/>
+            </Button>            
         </Grid>
 
         <Grid Grid.Row="1" >
-            <Label Content="Просмотр объявления" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="100,40,0,0" Foreground="Gray"/>
-            <StackPanel Orientation="Vertical" Margin="100,80,100,0">
-                <TextBlock Text="Название" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBlock Text="{Binding name}" Margin="0,30,0,0"  />
-                <TextBlock Text="Категория" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBlock Text="{Binding category}" Margin="0,50,0,0" />
-                <TextBlock Text="Цена" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBlock Text="{Binding cost}" Margin="0,50,0,0"  FontSize="16" />
-                <TextBlock Text="Описание" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBox Text="{Binding about}" IsReadOnly="True" MaxHeight="500" TextWrapping="Wrap" Margin="0,50,0,0" FontSize="16" />
-            </StackPanel>
-            <Button x:Name="previousButton" Height="400" Width="100" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Click="previousButton_Click">
-                <materialDesign:PackIcon Kind="KeyboardArrowLeft" Height="50" Width="50" Foreground="Black"/>
-            </Button>
-            <Button x:Name="nextButton" Height="400" Width="100" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Click="nextButton_Click">
-                <materialDesign:PackIcon Kind="KeyboardArrowRight" Height="50" Width="50" Foreground="Black"/>
-            </Button>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Label Content="Просмотр объявления" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="100,20,0,0" Foreground="Gray"/>
+                <StackPanel x:Name="stackPanel" Orientation="Vertical" Margin="100,80,100,0" >
+                    <TextBlock Text="Название" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
+                    <TextBlock Text="{Binding name}" Margin="20,20,0,10" FontSize="18" />
+                    <TextBlock Text="Категория" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
+                    <TextBlock Text="{Binding category}" Margin="20,20,0,10" FontSize="18"/>
+                    <TextBlock Text="Продавец" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
+                    <TextBlock Text="{Binding seller}" Margin="0,20,0,10" FontSize="18"/>
+                    <TextBlock Text="Цена" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
+                    <TextBlock Text="{Binding cost}" Margin="20,20,0,10"  FontSize="18" />
+                    <TextBlock Text="Описание" Margin="50,0,0,0" FontSize="20" Foreground="Gray"/>
+                    <TextBox Text="{Binding about}" IsReadOnly="True" MaxHeight="450" TextWrapping="Wrap" Margin="20,20,0,0" FontSize="18" />
+                </StackPanel>
+                <Button x:Name="previousButton" Height="400" Width="100" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Click="previousButton_Click" Margin="0,278,0,231">
+                    <materialDesign:PackIcon Kind="KeyboardArrowLeft" Height="50" Width="50" Foreground="Black"/>
+                </Button>
+                <Button x:Name="nextButton" Height="400" Width="100" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Click="nextButton_Click" Margin="0,278,0,231">
+                    <materialDesign:PackIcon Kind="KeyboardArrowRight" Height="50" Width="50" Foreground="Black"/>
+                </Button>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <TextBlock x:Name="counter" FontSize="16" Width="200" Foreground="Gray" Text="{Binding Count}" Margin="50,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+            </Grid>
+            
         </Grid>
     </Grid>
 </Window>

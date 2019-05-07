@@ -14,6 +14,6 @@ namespace CourseProject_WPF_.Repositories
         User getByMail(string name);
         void update(User oldUser, User newUser);
         List<string> getAllNames();
-        void changePrivelege(User user, string privelege);
+        bool changePrivelege(User user, string privelege);
     }
 }

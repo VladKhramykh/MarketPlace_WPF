@@ -27,6 +27,7 @@ namespace CourseProject_WPF_.View
             InitializeComponent();
             mainViewModel = viewModel;
             DataContext = mainViewModel.SelectedItem;
+            counter.DataContext = mainViewModel;            
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
@@ -42,6 +43,11 @@ namespace CourseProject_WPF_.View
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
             mainViewModel.nextItem();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

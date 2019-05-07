@@ -31,49 +31,56 @@ namespace CourseProject_WPF_.View
             InitializeComponent();
             DataContext = adminPageViewModel;
             radio1.IsChecked = true;
-
         }
 
         
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            adminPageViewModel.accept(listBox.SelectedItem);            
+            adminPageViewModel.accept();            
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (listBox.SelectedItem != null)            
-                adminPageViewModel.delete(listBox.SelectedItem);
-            else
-            {
-                AlertWindow alert = new AlertWindow("Выберите пользователя :)");
-                alert.Show();
-            }
-                          
+        {                 
+            adminPageViewModel.delete();
         }      
 
         private void radio1_Checked(object sender, RoutedEventArgs e)
         {
             listBox.ItemsSource = adminPageViewModel.Users;
+
+
             NoButton.Content = "Удалить";
-            OkButton.Content = "Сделать админом";
+            OkButton.Content = "Изменить привелегии";
+            infoButton.Visibility = Visibility.Visible;
             OkButton.IsEnabled = true;
         }
 
         private void radio2_Checked(object sender, RoutedEventArgs e)
         {
             listBox.ItemsSource = adminPageViewModel.Announcements;
+
+
             OkButton.Content = "Принять";
+            NoButton.Content = "Удалить";
+            infoButton.Visibility = Visibility.Hidden;
             OkButton.IsEnabled = false;
         }
 
         private void radio3_Checked(object sender, RoutedEventArgs e)
         {
             listBox.ItemsSource = adminPageViewModel.TmpAnnouncements;
+
+
             OkButton.Content = "Принять";
+            NoButton.Content = "Отклонить";
+            infoButton.Visibility = Visibility.Visible;
             OkButton.IsEnabled = true;
             
         }
 
+        private void infoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
