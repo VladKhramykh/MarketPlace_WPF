@@ -11,12 +11,6 @@ namespace CourseProject_WPF_.ViewModel
         object content;
         string userName;
         string firstSymbols;
-        
-        public User user
-        {
-            get { return CurrentUser.User; }
-            set { user = value; }
-        }
 
         public int SelectedIndex
         {
@@ -43,7 +37,7 @@ namespace CourseProject_WPF_.ViewModel
             get { return userName; }
             set
             {
-                userName = CurrentUser.User.firstName + " " + CurrentUser.User.secondName;
+                userName = value;
                 OnPropertyChanged("UserName");
             }
         }
@@ -102,7 +96,7 @@ namespace CourseProject_WPF_.ViewModel
         public void update()
         {
             FirstSymbols = CurrentUser.User.firstName.Substring(0, 1) + CurrentUser.User.secondName.Substring(0, 1);
-            UserName = CurrentUser.User.firstName + " " + CurrentUser.User.secondName;
+            UserName = CurrentUser.User.ToString();  
         }
 
         public void outFromMain()

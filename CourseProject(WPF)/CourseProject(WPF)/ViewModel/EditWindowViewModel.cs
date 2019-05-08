@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace CourseProject_WPF_.ViewModel
 {
-    public class EditWindowViewModel : INotifyPropertyChanged
+    public class EditWindowViewModel : DependencyObject, INotifyPropertyChanged
     {
         EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
         EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();
@@ -79,6 +79,7 @@ namespace CourseProject_WPF_.ViewModel
 
             }
         }
+
         public string Cost
         {
             get { return cost.ToString(); }
@@ -91,6 +92,7 @@ namespace CourseProject_WPF_.ViewModel
                 OnPropertyChanged("Cost");
             }
         }
+
         public string Info
         {
             get { return info; }
@@ -113,8 +115,7 @@ namespace CourseProject_WPF_.ViewModel
                 Name = (Item as Announcement).name;
                 Cost = (Item as Announcement).cost.ToString();
                 About = (Item as Announcement).about;
-                Category = (Item as Announcement).category;
-                MessageBox.Show((Item as Announcement).about);
+                Category = (Item as Announcement).category;                
             }
             else if (Item is TmpAnnouncement)
             {
@@ -136,6 +137,24 @@ namespace CourseProject_WPF_.ViewModel
         public EditWindowViewModel()
         {
             tmpCategories = announcementRepository.getCategories().Distinct().ToList();
+        }
+
+        private static object CorrectValue(DependencyObject dependencyObject, object value)
+        {
+            decimal currentValue = Decimal.Parse(value.ToString());
+
+            if (currentValue > 100000)
+                return 100000;
+            else
+                return currentValue;
+        }
+
+        public static bool ValidateValue(object value)
+        {
+            decimal currentValue = Decimal.Parse(value.ToString());
+            if (currentValue >= 0)
+                return true;
+            return false;
         }
 
         public bool addAnnouncement()

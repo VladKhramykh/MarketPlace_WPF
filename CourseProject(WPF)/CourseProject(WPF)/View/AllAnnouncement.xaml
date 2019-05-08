@@ -20,6 +20,7 @@
         <Border BorderBrush="LightGray" BorderThickness="0,0,2,0">
             <Grid Grid.Column="0" Background="White">
                 <StackPanel Orientation="Vertical">
+                    <TextBlock Height="50" Margin="20,40,0,-10" Text="Поиск по критериям" FontSize="20"/>
                     <TextBox Text="{Binding SearchText}" materialDesign:HintAssist.Hint="Search" Margin="20,30,20,20" FontSize="16" Height="40" SelectionBrush="#FF787878" Foreground="#FF292929" BorderBrush="#89DCD8D8" />
                     <ComboBox ItemsSource="{Binding Categories}" Text="{Binding Category}" materialDesign:HintAssist.Hint="Category" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
                     <ComboBox ItemsSource="{Binding Sellers}" Text="{Binding Seller}" materialDesign:HintAssist.Hint="Seller" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
@@ -40,7 +41,7 @@
                     <DataTemplate>
                         <DockPanel Margin="0,5,0,5">
                             <TextBlock x:Name="text" Text="{Binding}"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0" >
                                 <TextBlock Margin="0,0,0,50" Text="{Binding cost}" FontSize="16" HorizontalAlignment="Right"/>
                                 <TextBlock Text="blr" Margin="10,0,0,0" FontSize="16" HorizontalAlignment="Right" />
                             </StackPanel>

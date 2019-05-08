@@ -27,7 +27,8 @@ namespace CourseProject_WPF_.View
             InitializeComponent();
             mainViewModel = viewModel;
             DataContext = mainViewModel.SelectedItem;
-            counter.DataContext = mainViewModel;            
+            counter.DataContext = mainViewModel;
+            Seller.DataContext = mainViewModel;
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)

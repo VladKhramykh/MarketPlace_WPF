@@ -43,6 +43,11 @@ namespace CourseProject_WPF_.Repositories
             return context.Users.FirstOrDefault(x =>x.mail == mail);
         }
 
+        public User getById(int? id)
+        {
+            return context.Users.FirstOrDefault(x => x.id == id);
+        }
+
         public void update(User oldUser, User newUser)
         {
             var tmp = context.Users.FirstOrDefault(x => x.id == oldUser.id);

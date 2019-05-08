@@ -15,8 +15,6 @@ namespace CourseProject_WPF_.View
         {
             InitializeComponent();
             DataContext = mainWindowViewModel;
-
-            //chip.DataContext = CurrentUser.User;
         }
 
         void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -31,7 +29,7 @@ namespace CourseProject_WPF_.View
 
         void fullScreenButton_Click(object sender, RoutedEventArgs e)
         {
-            this.MaxHeight = SystemParameters.WorkArea.Height+15;
+            this.MaxHeight = SystemParameters.WorkArea.Height+10;
 
             if (WindowState == WindowState.Maximized)
                 WindowState = WindowState.Normal;
@@ -58,7 +56,12 @@ namespace CourseProject_WPF_.View
         private void MoveCursorMenu(int index)
         {
             TransitionSlider.OnApplyTemplate();
-            GridCursor.Margin = new Thickness(0, 40 + (80 * index), 0, 0);
+            GridCursor.Margin = new Thickness(0, 40 + (85 * index), 0, 0);
+        }
+
+        private void chip_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindowViewModel.SelectedIndex = 2;
         }
     }
     

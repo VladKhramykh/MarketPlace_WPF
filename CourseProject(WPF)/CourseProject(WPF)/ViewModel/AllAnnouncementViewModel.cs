@@ -29,6 +29,7 @@ namespace CourseProject_WPF_.ViewModel
         decimal maxCost;
         decimal MAX_COST;
         string count;
+        string sellerInfo;
 
         public ObservableCollection<Announcement> Announcements
         {
@@ -129,6 +130,17 @@ namespace CourseProject_WPF_.ViewModel
                 OnPropertyChanged("Count");
             }
         }
+
+        public string SellerInfo
+        {
+            get { return sellerInfo; }
+            set
+            {
+                sellerInfo = value;
+                OnPropertyChanged("SellerInfo");
+            }
+        }
+
         ViewWindow viewWindow;
         public AllAnnouncementViewModel()
         {            
@@ -147,11 +159,10 @@ namespace CourseProject_WPF_.ViewModel
             viewWindow.Visibility = System.Windows.Visibility.Hidden;
             
         }
-
-
         
         public void showInfo()
-        {            
+        {
+            SellerInfo = userRepository.getById(SelectedItem.seller).Info();
             viewWindow.DataContext = SelectedItem;
             if(viewWindow.Visibility == System.Windows.Visibility.Hidden && SelectedItem != null)
                 viewWindow.Show();

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="EditWindow" Height="900" Width="700" WindowStyle="None" BorderThickness="2" MouseLeftButtonDown="Window_MouseDown">
+        Title="EditWindow" Height="1000" Width="700" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -16,7 +16,7 @@
 
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="closeButton" Background="{x:Null}" BorderThickness="0" Width="50" Click="closeButton_Click">
+                <Button x:Name="closeButton" Height="35" Style="{DynamicResource CloseButtonStyle}" Click="closeButton_Click">
                     <materialDesign:PackIcon Kind="Close" Height="20" Width="20" Foreground="#FF464648" HorizontalAlignment="Center"/>
                 </Button>
             </StackPanel>
@@ -24,7 +24,7 @@
 
         <Grid Grid.Row="1">
             <StackPanel>
-                <TextBlock Text="Редактирование объявления" FontSize="24" Foreground="Gray" Margin="50,50,0,0"/>
+                <TextBlock Text="Редактирование объявления" FontSize="24" Foreground="Gray" Margin="50,30,0,0"/>
                 <TextBox Text="{Binding Name}"
                         Width="500" 
                          FontSize="16"
@@ -58,7 +58,7 @@
                          Width="500"
                          FontSize="16"
                          Margin="30"
-                         MaxHeight="350" 
+                         MaxHeight="400" 
                          TextWrapping="Wrap" 
                          AcceptsReturn="True" 
                          AcceptsTab="True" 
@@ -71,7 +71,7 @@
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Border CornerRadius="20" Width="120" Height="40" Background="#FF464648" Margin="0,0,30,0" BorderThickness="1">
+                <Border CornerRadius="25" Width="150" Height="50" Background="#FF464648" Margin="0,0,40,0" BorderThickness="1">
                     <Button x:Name="returnButton" Click="returnButton_Click" Background="{x:Null}" BorderBrush="{x:Null}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Отмена" FontSize="14" Margin="-10,0,5,0" VerticalAlignment="Center"/>
@@ -79,7 +79,7 @@
                         </StackPanel>
                     </Button>
                 </Border>
-                <Border CornerRadius="20" Width="120" Height="40" Background="#FF464648" BorderThickness="1">
+                <Border CornerRadius="25" Width="150" Height="50" Background="#FF464648" Margin="40,0,0,0" BorderThickness="1">
                     <Button x:Name="acceptButton" Click="acceptButton_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Принять" FontSize="14" VerticalAlignment="Center"/>

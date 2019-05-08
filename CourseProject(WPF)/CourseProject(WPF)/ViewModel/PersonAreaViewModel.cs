@@ -63,8 +63,9 @@ namespace CourseProject_WPF_.ViewModel
         {
             User tmp = new User(FirstName, SecondName, Mail, TelNumber, About, user.privilege);
             userRepository.update(user, tmp);
-            CurrentUser.User = userRepository.getByMail(Mail);            
+            CurrentUser.User = userRepository.getByMail(Mail);
         }
+            
 
         public void deleteUser()
         {

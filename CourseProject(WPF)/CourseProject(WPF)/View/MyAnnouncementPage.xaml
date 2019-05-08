@@ -7,44 +7,50 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MyAnnouncementPage">    
+      Title="MyAnnouncementPage">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FFE2E2E2">
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFE2E2E2" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <TextBlock HorizontalAlignment="Left" FontSize="20" Foreground="Gray" Text="Мои объявления" VerticalAlignment="Center" Margin="20,0,0,0"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
                 <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" GroupName="Radio" Margin="4" Content="Actual" Checked="radio1_Checked" Cursor="Hand"/>
-                <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" GroupName="Radio" Margin="4" Content="Tmp" Checked="radio2_Checked" Cursor="Hand"/>                
-            </StackPanel>  
-            <Button x:Name="addButton" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF464648"  HorizontalAlignment="Right" Click="addButton_Click" VerticalAlignment="Top" Margin="0,10,20,0"  >
-                <materialDesign:PackIcon Kind="Add" Height="25" Width="25" />
+                <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" GroupName="Radio" Margin="4" Content="Tmp" Checked="radio2_Checked" Cursor="Hand"/>
+            </StackPanel>
+            <Button HorizontalAlignment="Right" Click="addButton_Click" Margin="0,0,20,0" Style="{DynamicResource NavigationButtonStyle}">
+                <materialDesign:PackIcon Kind="Add" Height="30" Width="30" HorizontalAlignment="Center"/>
             </Button>
-            <Button x:Name="updateButton" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF464648"  HorizontalAlignment="Right" Click="updateButton_Click" VerticalAlignment="Center" Margin="0,9,100,9">
+            <Button HorizontalAlignment="Right" Click="updateButton_Click" Margin="0,0,100,0" Style="{DynamicResource NavigationButtonStyle}">
                 <materialDesign:PackIcon Kind="Update" Height="25" Width="25" HorizontalAlignment="Center" />
             </Button>
         </Grid>
 
 
         <Grid Grid.Row="1">
-                      
+
             <DataGrid x:Name="listView" HeadersVisibility="None" FontSize="16" IsReadOnly="True" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding}" Width="*" />                    
+                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding}" Width="*" />
                     <DataGridTemplateColumn >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Click="infoButton_Click" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+                                    <Button Click="infoButton_Click" HorizontalAlignment="Right" Margin="5">
                                         <materialDesign:PackIcon Kind="Information" Height="25" Width="25"/>
                                     </Button>
-                                    <Button Click="editButton_Click" HorizontalAlignment="Right">
+                                    <Button Click="editButton_Click" HorizontalAlignment="Right"  Margin="5">
                                         <materialDesign:PackIcon Kind="Edit" Height="25" Width="25"/>
                                     </Button>
-                                    <Button Click="deleteButton_Click" HorizontalAlignment="Right">
+                                    <Button Click="deleteButton_Click" HorizontalAlignment="Right"  Margin="5">
                                         <materialDesign:PackIcon Kind="Delete" Height="25" Width="25"/>
                                     </Button>
                                 </StackPanel>
@@ -53,9 +59,9 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            
+
         </Grid>
-        
+
 
 
 
@@ -82,6 +88,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
         -->
-        
+
     </Grid>
 </Page>
