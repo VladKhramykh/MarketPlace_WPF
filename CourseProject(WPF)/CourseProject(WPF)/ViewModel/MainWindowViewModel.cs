@@ -53,10 +53,11 @@ namespace CourseProject_WPF_.ViewModel
         }
 
         public MainWindowViewModel()
-        {
+        {            
             Content = new AllAnnouncement(); 
             UserName = CurrentUser.User.firstName + " " + CurrentUser.User.secondName;
             FirstSymbols = CurrentUser.User.firstName.Substring(0, 1) + CurrentUser.User.secondName.Substring(0, 1);
+            SelectedIndex = 0;
         }
 
         public void setPage(int index)

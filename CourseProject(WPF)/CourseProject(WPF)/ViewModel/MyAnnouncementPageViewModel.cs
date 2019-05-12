@@ -2,15 +2,13 @@
 using CourseProject_WPF_.Repositories;
 using CourseProject_WPF_.View;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.ViewModel
 {
-    public class MyAnnouncementPageViewModel
+    public class MyAnnouncementPageViewModel : INotifyPropertyChanged
     {
         EFUserRepository userRepository = new EFUserRepository();
         EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
@@ -20,6 +18,9 @@ namespace CourseProject_WPF_.ViewModel
         ObservableCollection<TmpAnnouncement> tmpTmpAnnouncements = new ObservableCollection<TmpAnnouncement>();
         object selectedItem;
 
+        int countActual;
+        int countTmp;
+
         public ObservableCollection<Announcement> Announcements
         {
             get { return tmpAnnouncements; }
@@ -27,6 +28,26 @@ namespace CourseProject_WPF_.ViewModel
         public ObservableCollection<TmpAnnouncement> TmpAnnouncements
         {
             get { return tmpTmpAnnouncements; }
+        }
+
+        public string CountActual
+        {
+            get { return $" Актуальные ( {countActual} )"; }
+            set
+            {
+                countActual = Int32.Parse(value);
+                OnPropertyChanged("CountActual");
+            }
+        }
+
+        public string CountTmp
+        {
+            get { return $"На проверке ( {countTmp} )"; }
+            set
+            {
+                countTmp = Int32.Parse(value);
+                OnPropertyChanged("CountTmp");
+            }
         }
 
         public object SelectedItem
@@ -52,6 +73,9 @@ namespace CourseProject_WPF_.ViewModel
                 tmpAnnouncements.Add(announcement);
             foreach (TmpAnnouncement announcement in tmpAnnouncementRepository.getBySellerId(CurrentUser.User.id))
                 tmpTmpAnnouncements.Add(announcement);
+
+            CountActual = announcementRepository.getBySellerId(CurrentUser.User.id).Count().ToString();
+            CountTmp = tmpAnnouncementRepository.getAll().Count().ToString();
         }
 
         public void deleteAnnouncement()
@@ -81,6 +105,14 @@ namespace CourseProject_WPF_.ViewModel
             EditWindow editWindow = new EditWindow(SelectedItem);
             editWindow.ShowDialog();
             update();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

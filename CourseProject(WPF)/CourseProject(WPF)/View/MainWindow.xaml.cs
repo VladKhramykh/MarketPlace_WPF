@@ -63,6 +63,8 @@ namespace CourseProject_WPF_.View
         {
             mainWindowViewModel.SelectedIndex = 2;
         }
+
+        
     }
     
 }

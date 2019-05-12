@@ -14,15 +14,16 @@ namespace CourseProject_WPF_.ViewModel
 {
     public class AdminPageViewModel : INotifyPropertyChanged
     {
-        EFUserRepository eFUser = new EFUserRepository();
-        EFAnnouncementRepository eFAnnouncement = new EFAnnouncementRepository();
-        EFTmpAnnouncementRepository eFTmpAnnouncement = new EFTmpAnnouncementRepository();
+        EFUserRepository userRepository = new EFUserRepository();
+        EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
+        EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();
 
         ObservableCollection<User> tmpUsers = new ObservableCollection<User>(); 
         ObservableCollection<Announcement> tmpAnnouncements = new ObservableCollection<Announcement>(); 
         ObservableCollection<TmpAnnouncement> tmpTmpAnnouncements = new ObservableCollection<TmpAnnouncement>();
 
         object selectedItem;
+        string message;
 
         public object SelectedItem
         {
@@ -32,6 +33,16 @@ namespace CourseProject_WPF_.ViewModel
                 if (value != null)
                     selectedItem = value;
                 OnPropertyChanged("SelectedItem");
+            }
+        }
+
+        public string Message
+        {
+            get { return message; }
+            set
+            {
+                message = value;
+                OnPropertyChanged("Message");
             }
         }
 
@@ -59,15 +70,15 @@ namespace CourseProject_WPF_.ViewModel
             tmpAnnouncements.Clear();
             tmpTmpAnnouncements.Clear();
 
-            foreach (User user in eFUser.getAll())
+            foreach (User user in userRepository.getAll())
             {
                 if(user.id != CurrentUser.User.id)
                     tmpUsers.Add(user);
             }
                 
-            foreach (Announcement announcement in eFAnnouncement.getAll())
+            foreach (Announcement announcement in announcementRepository.getAll())
                 tmpAnnouncements.Add(announcement);
-            foreach (TmpAnnouncement announcement in eFTmpAnnouncement.getAll())
+            foreach (TmpAnnouncement announcement in tmpAnnouncementRepository.getAll())
                 tmpTmpAnnouncements.Add(announcement);
         }
 
@@ -81,8 +92,8 @@ namespace CourseProject_WPF_.ViewModel
                 announcement.category = tmp.category;
                 announcement.about = tmp.about;
                 announcement.cost = tmp.cost;
-                eFAnnouncement.add(announcement);
-                eFTmpAnnouncement.delete(tmp);
+                announcementRepository.add(announcement);
+                tmpAnnouncementRepository.delete(tmp);
 
                 update();
             }
@@ -92,8 +103,8 @@ namespace CourseProject_WPF_.ViewModel
         {
             if (SelectedItem is User)
             {
-                if (!eFUser.changePrivelege((SelectedItem as User), "admin"))
-                   eFUser.changePrivelege((SelectedItem as User), "user");
+                if (!userRepository.changePrivelege((SelectedItem as User), "admin"))
+                   userRepository.changePrivelege((SelectedItem as User), "user");
 
                 AlertWindow alertWindow = new AlertWindow($"Пользователь {(SelectedItem as User).firstName} {(SelectedItem as User).secondName} теперь {(SelectedItem as User).privilege}");
                 alertWindow.ShowDialog();
@@ -102,7 +113,7 @@ namespace CourseProject_WPF_.ViewModel
                 transferToAnnouncemet(SelectedItem as TmpAnnouncement);
             else
             {
-                AlertWindow alertWindow = new AlertWindow($"Ошибочка какая-то");
+                AlertWindow alertWindow = new AlertWindow($"Выбери объект, дЭбил!");
                 alertWindow.ShowDialog();
             }            
 
@@ -111,24 +122,50 @@ namespace CourseProject_WPF_.ViewModel
 
         void deleteUser(User user)
         {
-            foreach (TmpAnnouncement announcement in eFTmpAnnouncement.getBySellerId(user.id))
-                eFTmpAnnouncement.delete(announcement);
-            foreach (Announcement announcement in eFAnnouncement.getBySellerId(user.id))
-                eFAnnouncement.delete(announcement);
+            foreach (TmpAnnouncement announcement in tmpAnnouncementRepository.getBySellerId(user.id))
+                tmpAnnouncementRepository.delete(announcement);
+            foreach (Announcement announcement in announcementRepository.getBySellerId(user.id))
+                announcementRepository.delete(announcement);
 
-            eFUser.delete(user);
+            userRepository.delete(user);
         }
 
         public void delete()
         {
             if (SelectedItem is User)
-                deleteUser(SelectedItem as User);                
+            {
+                DialogWindow dialogWindow = new DialogWindow();
+                dialogWindow.DataContext = this;
+                Message = $"Уверены, что хотите удалить пользователя {(SelectedItem as User).firstName} {(SelectedItem as User).secondName}?";
+                dialogWindow.ShowDialog();
+                if (dialogWindow.DialogResult == true)
+                    deleteUser(SelectedItem as User);
+            }
 
-            if (SelectedItem is Announcement)           
-                eFAnnouncement.delete(SelectedItem as Announcement);
+            else if (SelectedItem is Announcement)
+            {
+                DialogWindow dialogWindow = new DialogWindow();
+                dialogWindow.DataContext = this;
+                Message = $"Уверены, что хотите удалить объявление \"{(SelectedItem as Announcement).Name}\" ?";
+                dialogWindow.ShowDialog();
+                if (dialogWindow.DialogResult == true)
+                    announcementRepository.delete(SelectedItem as Announcement);
+            }
 
-            if (SelectedItem is TmpAnnouncement)           
-                eFTmpAnnouncement.delete(SelectedItem as TmpAnnouncement);
+            else if (SelectedItem is TmpAnnouncement)
+            {
+                DialogWindow dialogWindow = new DialogWindow();
+                dialogWindow.DataContext = this;
+                Message = $"Уверены, что хотите удалить объявление \"{(SelectedItem as TmpAnnouncement).Name}\" ?";
+                dialogWindow.ShowDialog();
+                if (dialogWindow.DialogResult == true)
+                    tmpAnnouncementRepository.delete(SelectedItem as TmpAnnouncement);
+            }
+            else
+            {
+                AlertWindow alertWindow = new AlertWindow($"Выбери объект, дЭбил!");
+                alertWindow.ShowDialog();
+            }
            
             update();
 

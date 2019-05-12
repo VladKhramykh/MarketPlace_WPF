@@ -23,6 +23,8 @@ namespace CourseProject_WPF_.ViewModel
         string telNumber;
         string about;
 
+        string message;
+
         public PersonAreaViewModel()
         {
             firstName = user.firstName;
@@ -35,28 +37,63 @@ namespace CourseProject_WPF_.ViewModel
         public string FirstName
         {
             get { return firstName; }
-            set { firstName = value; }
+            set
+            {
+                if(!String.IsNullOrEmpty(value))
+                    firstName = value;
+                OnPropertyChanged("FirstName");
+            }
         }
         public string SecondName
         {
             get { return secondName; }
-            set { secondName = value; }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                    secondName = value;
+                OnPropertyChanged("SecondName");
+            }
         }
 
         public string Mail
         {
             get { return mail; }
-            set { mail = value; }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                    mail = value;
+                OnPropertyChanged("Main");
+            }
         }
         public string TelNumber
         {
             get { return telNumber; }
-            set { telNumber = value; }
+            set
+            {
+                //if (!String.IsNullOrEmpty(value))
+                    telNumber = value;
+                OnPropertyChanged("TelNumber");
+            }
         }
         public string About
         {
             get { return about; }
-            set { about = value; }
+            set
+            {
+                //if (!String.IsNullOrEmpty(value))
+                    about = value;
+                OnPropertyChanged("About");
+            }
+        }
+
+        public string Message
+        {
+            get { return message; }
+            set
+            {
+                message = value;
+                OnPropertyChanged("Message");
+            }
         }
 
         public void changeDataOfUser()
@@ -64,20 +101,32 @@ namespace CourseProject_WPF_.ViewModel
             User tmp = new User(FirstName, SecondName, Mail, TelNumber, About, user.privilege);
             userRepository.update(user, tmp);
             CurrentUser.User = userRepository.getByMail(Mail);
+
+            AlertWindow alertWindow = new AlertWindow($"Изменения сохранены\nДля входа используйте новый Mail - {Mail}");
+            alertWindow.ShowDialog();
         }
             
 
         public void deleteUser()
         {
-            foreach (TmpAnnouncement announcement in tmpAnnouncementRepository.getBySellerId(user.id))
-                tmpAnnouncementRepository.delete(announcement);
-            foreach (Announcement announcement in announcementRepository.getBySellerId(user.id))
-                announcementRepository.delete(announcement);
+            DialogWindow dialogWindow = new DialogWindow();
+            dialogWindow.DataContext = this;
+            Message = $"Уверены, что хотите удалить пользователя {CurrentUser.User.FirstName} {CurrentUser.User.FirstName}?";
+            dialogWindow.ShowDialog();
+            if (dialogWindow.DialogResult == true)
+            {
+                foreach (TmpAnnouncement announcement in tmpAnnouncementRepository.getBySellerId(user.id))
+                    tmpAnnouncementRepository.delete(announcement);
+                foreach (Announcement announcement in announcementRepository.getBySellerId(user.id))
+                    announcementRepository.delete(announcement);
 
-            App.mainWindow.Close();
-            userRepository.delete(CurrentUser.User);
-            AuthWindow authWindow = new AuthWindow();
-            authWindow.Show();
+                App.mainWindow.Close();
+                userRepository.delete(CurrentUser.User);
+                AuthWindow authWindow = new AuthWindow();
+                authWindow.Show();
+            }
+                
+            
         }
 
 

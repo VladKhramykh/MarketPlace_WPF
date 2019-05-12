@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace CourseProject_WPF_.ViewModel
 {
-    public class EditWindowViewModel : DependencyObject, INotifyPropertyChanged
+    public class EditWindowViewModel : INotifyPropertyChanged
     {
         EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
         EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();
@@ -20,7 +20,13 @@ namespace CourseProject_WPF_.ViewModel
         string category;
         string about;
         decimal cost;
-        string info;        
+        string info;
+
+        string statusName;
+        string statusCategory;
+        string statusCost;
+        string statusAbout;
+
 
         List<string> tmpCategories = new List<string>();
         object item;
@@ -53,10 +59,15 @@ namespace CourseProject_WPF_.ViewModel
             get { return name; }
             set
             {
-                if (value.Length >= 0 && value.Length < 50)
-                    name = value;
-                OnPropertyChanged("Name");
+                if (value.Length >= 5 && value.Length < 50)
+                {
+                    name = value;                    
+                        statusName = "";
+                }
+                else
+                    statusName = "Название слишком коротокое";
 
+                OnPropertyChanged("Name");
             }
         }
         public string Category
@@ -64,7 +75,13 @@ namespace CourseProject_WPF_.ViewModel
             get { return category; }
             set
             {
-                category = value;
+                if (!String.IsNullOrEmpty(value))
+                {
+                    category = value;                   
+                        statusCategory = "";
+                }
+                else
+                    statusCategory = "Првоерьте категорию";
                 OnPropertyChanged("Category");
             }
         }
@@ -73,8 +90,14 @@ namespace CourseProject_WPF_.ViewModel
             get { return about; }
             set
             {
-                if (value.Length >= 0 && value.Length < 1000)
-                    about = value;
+                if (value.Length >= 10 && value.Length < 1000)
+                {
+                    about = value;                    
+                        statusAbout = "";
+                }
+                else
+                    statusAbout = "Описание слишком короткое";
+
                 OnPropertyChanged("About");
 
             }
@@ -85,11 +108,22 @@ namespace CourseProject_WPF_.ViewModel
             get { return cost.ToString(); }
             set
             {
-                if (Decimal.TryParse(value.ToString(), out cost))
-                    cost = Decimal.Parse(value);
+                if (Decimal.TryParse(value.ToString(), out cost) && Decimal.Parse(value) >= 0)
+                {
+                    if (Decimal.Parse(value) > Decimal.MaxValue)
+                        cost = Decimal.MaxValue;
+                    else
+                        cost = Decimal.Parse(value);
+
+                    statusCost = "";
+                }
                 else
+                {
+                    statusCost = "Некорректно задана цена)";
                     cost = 0;
+                }
                 OnPropertyChanged("Cost");
+
             }
         }
 
@@ -126,40 +160,47 @@ namespace CourseProject_WPF_.ViewModel
             }
             else
             {
-                Name = "default";
+                Name = "Error";
                 Cost = "0";
-                About = "default";
-                Category = "default";
+                About = "Error";
+                Category = "Error";
             }
 
         }
 
+        bool IsCorrected()
+        {
+            if (!String.IsNullOrEmpty(statusName))
+            {
+                Info = statusName;
+                return false;
+            }                
+            else if (!String.IsNullOrEmpty(statusCost))
+            {
+                Info = statusCost;
+                return false;
+            }
+            else if (!String.IsNullOrEmpty(statusCategory))
+            {
+                Info = statusCategory;
+                return false;
+            }
+            else if (!String.IsNullOrEmpty(statusAbout))
+            {
+                Info = statusAbout;
+                return false;
+            }
+            else
+                return true;
+        }
         public EditWindowViewModel()
         {
             tmpCategories = announcementRepository.getCategories().Distinct().ToList();
         }
 
-        private static object CorrectValue(DependencyObject dependencyObject, object value)
-        {
-            decimal currentValue = Decimal.Parse(value.ToString());
-
-            if (currentValue > 100000)
-                return 100000;
-            else
-                return currentValue;
-        }
-
-        public static bool ValidateValue(object value)
-        {
-            decimal currentValue = Decimal.Parse(value.ToString());
-            if (currentValue >= 0)
-                return true;
-            return false;
-        }
-
         public bool addAnnouncement()
         {
-            if (Name != null && About != null && Name.Length >= 5 && About.Length >= 10 && !String.IsNullOrEmpty(Category))
+            if (IsCorrected())
             {
                 if (Item is TmpAnnouncement)
                 {
@@ -189,10 +230,8 @@ namespace CourseProject_WPF_.ViewModel
                     
             }
             else
-            {
-                Info = "Ошибочка";                
                 return false;
-            }   
+              
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

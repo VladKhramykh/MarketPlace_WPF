@@ -27,7 +27,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <materialDesign:PackIcon Kind="Person" Height="270" Width="270" HorizontalAlignment="Center" Margin="0,50,430,0" BorderBrush="Gray" BorderThickness="1"/>
+            <materialDesign:PackIcon Kind="Person" Height="270" Width="270" HorizontalAlignment="Center" Margin="0,50,430,0" BorderBrush="Gray" BorderThickness="1" Foreground="#FF464648"/>
             <StackPanel Orientation="Vertical" Grid.RowSpan="2">
                 <Label Width="100" Content="Имя" Margin="0,30,0,0" />
                 <TextBox Width="300" Margin="200,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding FirstName}"/>

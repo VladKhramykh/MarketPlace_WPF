@@ -23,8 +23,8 @@
             </Grid.Background>
             <TextBlock HorizontalAlignment="Left" FontSize="20" Foreground="Gray" Text="Мои объявления" VerticalAlignment="Center" Margin="20,0,0,0"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" GroupName="Radio" Margin="4" Content="Actual" Checked="radio1_Checked" Cursor="Hand"/>
-                <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" GroupName="Radio" Margin="4" Content="Tmp" Checked="radio2_Checked" Cursor="Hand"/>
+                <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" GroupName="Radio" Margin="4" Content="{Binding CountActual}" Checked="radio1_Checked" Cursor="Hand"/>
+                <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" GroupName="Radio" Margin="4" Content="{Binding CountTmp}" Checked="radio2_Checked" Cursor="Hand"/>
             </StackPanel>
             <Button HorizontalAlignment="Right" Click="addButton_Click" Margin="0,0,20,0" Style="{DynamicResource NavigationButtonStyle}">
                 <materialDesign:PackIcon Kind="Add" Height="30" Width="30" HorizontalAlignment="Center"/>
@@ -39,7 +39,7 @@
 
             <DataGrid x:Name="listView" HeadersVisibility="None" FontSize="16" IsReadOnly="True" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding}" Width="*" />
+                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding Info}" Width="*"/>
                     <DataGridTemplateColumn >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

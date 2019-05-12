@@ -42,7 +42,12 @@ namespace CourseProject_WPF_.View
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {                 
             adminPageViewModel.delete();
-        }      
+        }
+
+        private void infoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void radio1_Checked(object sender, RoutedEventArgs e)
         {
@@ -50,7 +55,7 @@ namespace CourseProject_WPF_.View
 
 
             NoButton.Content = "Удалить";
-            OkButton.Content = "Изменить привелегии";
+            OkButton.Content = "Изменить\nпривелегии";
             infoButton.Visibility = Visibility.Visible;
             OkButton.IsEnabled = true;
         }
@@ -58,7 +63,6 @@ namespace CourseProject_WPF_.View
         private void radio2_Checked(object sender, RoutedEventArgs e)
         {
             listBox.ItemsSource = adminPageViewModel.Announcements;
-
 
             OkButton.Content = "Принять";
             NoButton.Content = "Удалить";
@@ -76,11 +80,6 @@ namespace CourseProject_WPF_.View
             infoButton.Visibility = Visibility.Visible;
             OkButton.IsEnabled = true;
             
-        }
-
-        private void infoButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
     }
 }

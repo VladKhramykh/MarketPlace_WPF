@@ -36,16 +36,20 @@
         
         
         <Grid Grid.Column="1">
-            <ListBox FontSize="16" Margin="0,70,0,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" SelectedItem="{Binding SelectedItem}" SelectionChanged="listView_SelectionChanged" Cursor="Hand" BorderBrush="#FF464648" BorderThickness="0,0,0,1">
-                <ListBox.ItemTemplate>
+            <ListBox FontSize="16" Margin="0,70,0,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" SelectedItem="{Binding SelectedItem}" SelectionChanged="listView_SelectionChanged" Cursor="Hand">
+                <ListBox.ItemTemplate>                    
                     <DataTemplate>
                         <DockPanel Margin="0,5,0,5">
-                            <TextBlock x:Name="text" Text="{Binding}"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0" >
-                                <TextBlock Margin="0,0,0,50" Text="{Binding cost}" FontSize="16" HorizontalAlignment="Right"/>
-                                <TextBlock Text="blr" Margin="10,0,0,0" FontSize="16" HorizontalAlignment="Right" />
-                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="SemiBold" Margin="5"/>
+                                <TextBlock Text="{Binding Category}" FontSize="15" Foreground="DarkGray" Margin="5"/>
+                            </StackPanel>                            
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" >
+                                <TextBlock Margin="0,0,0,50" Text="{Binding cost}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" />
+                                <TextBlock Text="руб." Margin="10,0,0,0" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"  />
+                            </StackPanel>                           
                         </DockPanel>
+                        
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

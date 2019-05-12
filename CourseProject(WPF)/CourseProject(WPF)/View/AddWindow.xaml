@@ -4,19 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddWindow" Width="700" Height="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" BorderThickness="2" MouseLeftButtonDown="Window_MouseDown" >
+        Title="AddWindow" Height="1000" Width="700" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseDown" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">               
-                <Button x:Name="closeButton" Background="{x:Null}" BorderThickness="0" Width="50" Click="closeButton_Click">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="closeButton" Height="35" Style="{DynamicResource CloseButtonStyle}" Click="closeButton_Click">
                     <materialDesign:PackIcon Kind="Close" Height="20" Width="20" Foreground="#FF464648" HorizontalAlignment="Center"/>
                 </Button>
             </StackPanel>
@@ -33,14 +33,15 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Border CornerRadius="20" Width="120" Height="40" Background="#FF464648" Margin="0,0,30,0" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Border CornerRadius="25" Width="150" Height="50" Background="#FF464648" Margin="0,0,40,0" BorderThickness="1">
                     <Button x:Name="clearButton" Content="Очистить" HorizontalAlignment="Center"  Click="clearButton_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFE4E4E4" />
                 </Border>
-                <Border CornerRadius="20" Width="120" Height="40" Background="#FF464648" BorderThickness="1">
-                    <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Center" Click="addButton_Click" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFE4E4E4"/>            
+                <Border x:Name="addButton" CornerRadius="25" Width="150" Height="50" Margin="40,0,0,0" Background="#FF464648" BorderThickness="1">
+                    <Button  Content="Добавить" HorizontalAlignment="Center" Click="addButton_Click" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFE4E4E4"/>
                 </Border>
-                </StackPanel>            
+            </StackPanel>
+            <TextBlock Text="{Binding Info}" HorizontalAlignment="Center" FontSize="16" Foreground="DarkRed" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
         </Grid>
     </Grid>
 </Window>

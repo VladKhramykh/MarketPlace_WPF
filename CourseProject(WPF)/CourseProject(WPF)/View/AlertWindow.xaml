@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
+       
+    
         mc:Ignorable="d"
         Title="AlertWindow" WindowStyle="None" ResizeMode="NoResize" Width="400" Height="250" MouseLeftButtonDown="Window_MouseDown" WindowStartupLocation="CenterScreen" BorderThickness="1">
-    
+ 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>

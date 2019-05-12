@@ -132,11 +132,14 @@ namespace CourseProject_WPF_.Model
                     $"mail: {mail}\n" +
                     $"privelege: {privilege}";
         }
-        public string Info()
+        public string Info
         {
-            return $"{firstName} {secondName}\n" +
-                    $"mail: {mail}\n" +
-                    $"Телефон: {telNumber}";
+            get
+            {
+                return  $"{firstName} {secondName}\n" +
+                        $"mail: {mail}\n" +
+                        $"Телефон: {telNumber}";
+            }
         }
         public static string getHash(string password)
         {

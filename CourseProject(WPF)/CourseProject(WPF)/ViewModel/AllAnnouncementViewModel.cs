@@ -162,7 +162,7 @@ namespace CourseProject_WPF_.ViewModel
         
         public void showInfo()
         {
-            SellerInfo = userRepository.getById(SelectedItem.seller).Info();
+            SellerInfo = userRepository.getById(SelectedItem.seller).Info;
             viewWindow.DataContext = SelectedItem;
             if(viewWindow.Visibility == System.Windows.Visibility.Hidden && SelectedItem != null)
                 viewWindow.Show();

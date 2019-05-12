@@ -27,25 +27,18 @@ namespace CourseProject_WPF_.View
             if (addWindowViewModel.addAnnouncement())
             {
                 addButton.Background = Brushes.LimeGreen;
-                addButton.Content = "Добавлено!";
                 Close();
                 AlertWindow alertWindow = new AlertWindow("Ваше объявление отправлено на проверку.\nВ скором времени оно будет проверено и выставлено в актуальные объявления");
                 alertWindow.ShowDialog();
             }
-            else
-            {
-                addButton.Background = Brushes.PaleVioletRed;
-                addButton.Content = "Ошибка!";
-            }
-                
-
+            else           
+                addButton.Background = Brushes.PaleVioletRed;  
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
             addWindowViewModel.clear();
-            addButton.Background = Brushes.Purple;
-            addButton.Content = "Добавить";
+            addButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF464648"));
         }
 
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

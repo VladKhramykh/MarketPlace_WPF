@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="600" Width="350" ResizeMode="NoResize" MouseLeftButtonDown="Grid_MouseDown" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="RegistrationWindow" Height="600" Width="400" ResizeMode="NoResize" MouseLeftButtonDown="Grid_MouseDown" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF464648">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -19,43 +19,42 @@
             <RowDefinition Height="150*"/>            
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="Purple" >
+        <Grid Grid.Row="0"  >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="229*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Grid.Column="0" Style="{StaticResource  MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="backButton_Click">               
-                <materialDesign:PackIcon Kind="KeyboardReturn" Height="25" Width="25" />
+            <Button Grid.Column="0" Style="{DynamicResource NavigationButtonStyle}" Click="backButton_Click">
+                <materialDesign:PackIcon  Kind="KeyboardReturn"  Height="25" Width="25" />
             </Button>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Width="100">
-                <Button x:Name="collapseClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="collapseClose_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="CollapseAll" Height="25" Width="25" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" >
+                <Button Style="{DynamicResource NavigationButtonStyle}" Click="collapseClose_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize" HorizontalAlignment="Center" Height="25" Width="25" />
                 </Button>
-                <Button x:Name="buttonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="buttonClose_Click" Height="Auto">
-                    <materialDesign:PackIcon Kind="Close" Height="25" Width="25" />
+                <Button Style="{DynamicResource CloseButtonStyle}" Click="buttonClose_Click" >
+                    <materialDesign:PackIcon Kind="Close" HorizontalAlignment="Center" Height="25" Width="25" />
                 </Button>
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="2">           
-            <TextBox x:Name="firstNameTextBox" Text="{Binding FirstName}" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" TextChanged="firstNameTextBox_TextChanged" ></TextBox>
+        <Grid Grid.Row="2">
+            <TextBox x:Name="firstNameTextBox" Text="{Binding FirstName}" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" TextChanged="firstNameTextBox_TextChanged" />
         </Grid>
         <Grid Grid.Row="3">
-
-            <TextBox x:Name="secondNameTextBox" Text="{Binding SecondName}" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" TextChanged="secondNameTextBox_TextChanged" ></TextBox>
+            <TextBox x:Name="secondNameTextBox" Text="{Binding SecondName}" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300"  BorderBrush="Red"  TextChanged="secondNameTextBox_TextChanged" />
         </Grid>
         <Grid Grid.Row="4">
-            <TextBox x:Name="mailTextBox" Text="{Binding Mail}" materialDesign:HintAssist.Hint="Mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" TextChanged="mailTextBox_TextChanged" ></TextBox>
+            <TextBox x:Name="mailTextBox" Text="{Binding Mail}" materialDesign:HintAssist.Hint="Mail" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" TextChanged="mailTextBox_TextChanged" />
         </Grid>
         <Grid Grid.Row="5">
-            <PasswordBox x:Name="pass1NameTextBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2" BorderBrush="Red" FontSize="16" PasswordChanged="pass1NameTextBox_PasswordChanged" ></PasswordBox>
+            <PasswordBox x:Name="pass1NameTextBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource PasswordBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" PasswordChanged="pass1NameTextBox_PasswordChanged" />
         </Grid>
         <Grid Grid.Row="6">
-            <PasswordBox x:Name="pass2NameTextBox" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Bottom" Width="270" HorizontalAlignment="Left" Margin="40,0,0,0" BorderThickness="0,0,0,2"  BorderBrush="Red" FontSize="16" PasswordChanged="pass2NameTextBox_PasswordChanged" ></PasswordBox>
+            <PasswordBox x:Name="pass2NameTextBox" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource PasswordBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" PasswordChanged="pass2NameTextBox_PasswordChanged" />
         </Grid>
         <Grid Grid.Row="7">
-            <Button x:Name="registrationButton" Content="Регистрация" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" Margin="0,25,0,0" Background="Purple" BorderBrush="{x:Null}" Foreground="White" IsEnabled="False" Click="registrationButton_Click" ></Button>
-            <Label x:Name="infoLabel" Content="{Binding Info}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,0,22" FontWeight="Bold"></Label>
+            <Button x:Name="registrationButton" Content="Регистрация" VerticalAlignment="Top"  Style="{DynamicResource AuthButtonStyle}" Margin="0,25,0,0"  IsEnabled="False" Click="registrationButton_Click" />
+            <Label x:Name="infoLabel" Content="{Binding Info}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,0,22" FontWeight="DemiBold"/>
         </Grid>
     </Grid>
 </Window>
