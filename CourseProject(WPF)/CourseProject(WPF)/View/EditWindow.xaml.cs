@@ -27,7 +27,8 @@ namespace CourseProject_WPF_.View
         {
             InitializeComponent();
             editWindowViewModel.Item = Item;
-            DataContext = editWindowViewModel;            
+            DataContext = editWindowViewModel;
+            Title = "Редактирование";
         }
 
         void acceptButton_Click(object sender, RoutedEventArgs e)

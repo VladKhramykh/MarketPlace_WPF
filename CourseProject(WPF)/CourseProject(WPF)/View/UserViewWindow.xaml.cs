@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_WPF_.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +12,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using CourseProject_WPF_.ViewModel;
 
 namespace CourseProject_WPF_.View
 {
     /// <summary>
-    /// Логика взаимодействия для QuickViewWindow.xaml
+    /// Логика взаимодействия для UserViewWindow.xaml
     /// </summary>
-    public partial class QuickViewWindow : Window
+    public partial class UserViewWindow : Window
     {
-        QuickWindowViewModel quickWindowViewModel;
-
-        public QuickViewWindow(object item)
+        UserViewWindowViewModel userViewWindowViewModel;
+        public UserViewWindow(object item)
         {
             InitializeComponent();
-            quickWindowViewModel = new QuickWindowViewModel(item);
-            DataContext = quickWindowViewModel;
+            userViewWindowViewModel = new UserViewWindowViewModel(item);
+            DataContext = userViewWindowViewModel;
         }
-
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -37,7 +35,7 @@ namespace CourseProject_WPF_.View
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            
+
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

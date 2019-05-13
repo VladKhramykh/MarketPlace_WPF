@@ -21,6 +21,7 @@ namespace CourseProject_WPF_.ViewModel
         ObservableCollection<User> tmpUsers = new ObservableCollection<User>(); 
         ObservableCollection<Announcement> tmpAnnouncements = new ObservableCollection<Announcement>(); 
         ObservableCollection<TmpAnnouncement> tmpTmpAnnouncements = new ObservableCollection<TmpAnnouncement>();
+        ObservableCollection<object> tmp = new ObservableCollection<object>();
 
         object selectedItem;
         string message;
@@ -48,15 +49,27 @@ namespace CourseProject_WPF_.ViewModel
 
         public ObservableCollection<User> Users
         {
-            get { return tmpUsers; }
+            get
+            {
+                selectedItem = null;
+                return tmpUsers;
+            }
         }
         public ObservableCollection<Announcement> Announcements
         {
-            get { return tmpAnnouncements; }
+            get
+            {
+                selectedItem = null;
+                return tmpAnnouncements;
+            }
         }
         public ObservableCollection<TmpAnnouncement> TmpAnnouncements
         {
-            get { return tmpTmpAnnouncements; }
+            get
+            {
+                selectedItem = null;
+                return tmpTmpAnnouncements;
+            }
         }
 
         public AdminPageViewModel()
@@ -171,6 +184,24 @@ namespace CourseProject_WPF_.ViewModel
 
         }
 
+        public void showInfo()
+        {
+            if(SelectedItem != null)
+            {
+                if(SelectedItem is User)
+                {
+                    UserViewWindow userViewWindow = new UserViewWindow(SelectedItem);                    
+                    userViewWindow.ShowDialog();
+                }
+                else
+                {
+                    QuickViewWindow quickViewWindow = new QuickViewWindow(SelectedItem);
+                    quickViewWindow.ShowDialog();
+                }
+                
+            }
+            
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

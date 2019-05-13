@@ -22,7 +22,7 @@ namespace CourseProject_WPF_.View
         }
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            viewModel.showInfo();           
+            viewModel.showInfo();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)

@@ -26,6 +26,7 @@ namespace CourseProject_WPF_.View
         {
             InitializeComponent();           
             DataContext = registrationViewModel;
+            Title = "Регистрация";
         }
 
         private void collapseClose_Click(object sender, RoutedEventArgs e)

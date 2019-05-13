@@ -1,20 +1,20 @@
-﻿<Window x:Class="CourseProject_WPF_.View.QuickViewWindow"
+﻿<Window x:Class="CourseProject_WPF_.View.UserViewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="800" Width="600" WindowStyle="None" ResizeMode="NoResize" BorderThickness="0.5" WindowStartupLocation="CenterOwner" >
+        Title="{Binding Title}" Height="800" Width="600" WindowStyle="None" ResizeMode="NoResize" BorderThickness="0.5" WindowStartupLocation="CenterOwner" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="479*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" MouseLeftButtonDown="Window_MouseLeftButtonDown">
-            <Label Content="{Binding Title}" FontSize="18" HorizontalAlignment="Left" Margin="10,5,0,0" Width="450"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">                
+        <Grid Grid.Row="0">
+            <Label Content="{Binding Title}" FontSize="18" HorizontalAlignment="Left" Margin="10,5,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{DynamicResource NavigationButtonStyle}" HorizontalAlignment="Right" Click="MinimizeButton_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize" Height="25" Width="25" HorizontalAlignment="Center"/>
                 </Button>
@@ -25,7 +25,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical" Margin="50,20,50,30">
-                <Label Content="Наименование(ФИО)" FontSize="18" Foreground="Gray" FontWeight="DemiBold" Margin="20,0,0,0"/>
+                <Label Content="Название (ФИО)" FontSize="18" Foreground="Gray" FontWeight="DemiBold" Margin="20,0,0,0"/>
                 <TextBlock FontSize="16" Text="{Binding Name}" TextWrapping="Wrap"  Height="100" Background="WhiteSmoke" Padding="15"/>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
@@ -33,13 +33,13 @@
                         <TextBlock FontSize="16" Text="{Binding Cost}" Width="200" Padding="15" Background="WhiteSmoke"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
-                        <Label Content="Контактная информация" Margin="20,10,0,0" Width="350" HorizontalAlignment="Left" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
-                        <TextBlock FontSize="16" Text="{Binding ContactInfo}" Width="270" Padding="15" HorizontalAlignment="Left" Height="150" TextWrapping="Wrap"  Background="WhiteSmoke"/>                        
-                    </StackPanel>                    
+                        <Label Content="Контактная информация" Margin="20,10,0,0" Width="250" HorizontalAlignment="Left" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
+                        <TextBlock FontSize="16" Text="{Binding ContactInfo}" Width="270" Padding="15" HorizontalAlignment="Left" Height="150" TextWrapping="Wrap"  Background="WhiteSmoke"/>
+                    </StackPanel>
                 </StackPanel>
                 <Label Content="Описание" Margin="20,10,0,0" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
                 <TextBox FontSize="16" Text="{Binding About}" TextWrapping="Wrap" Padding="10" IsReadOnly="True" MaxHeight="300" BorderThickness="0" Background="WhiteSmoke"/>
             </StackPanel>
-            </Grid>
+        </Grid>
     </Grid>
 </Window>

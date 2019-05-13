@@ -14,6 +14,9 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Button Style="{DynamicResource NavigationButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,20,0,0" Click="AttachedButton_Click">
+                <materialDesign:PackIcon Kind="AttachFile" Height="25" Width="25" HorizontalAlignment="Center"/>
+            </Button>
             <Label Content="Просмотр объявления" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Height="45" Margin="100,20,0,0" Foreground="Gray"/>
             <StackPanel x:Name="stackPanel" Orientation="Vertical" Margin="100,90,100,0" >
                 <TextBlock Text="Название"  Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
@@ -22,8 +25,8 @@
                 <TextBox Text="{Binding Category}" IsReadOnly="True" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1"/>
                 <TextBlock Text="Продавец" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
                 <TextBox x:Name="Seller" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding SellerInfo}" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1"/>
-                <TextBlock Text="Цена" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBox Text="{Binding Cost}" IsReadOnly="True" Margin="20,20,0,10"  FontSize="18" BorderThickness="0,0,0,1"/>
+                <TextBlock Text="Цена" Margin="320,0,0,0" FontSize="20" Foreground="Gray"/>
+                <TextBox Text="{Binding Cost}" IsReadOnly="True" Margin="300,20,0,10"  FontSize="18" BorderThickness="0,0,0,1"/>
                 <TextBlock Text="Описание" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
                 <TextBox Text="{Binding About}" IsReadOnly="True" MaxHeight="400" TextWrapping="Wrap" Margin="20,20,0,0" FontSize="18" BorderThickness="0,0,0,1"/>
             </StackPanel>

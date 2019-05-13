@@ -48,10 +48,5 @@ namespace CourseProject_WPF_.View
         {
             listView.ItemsSource = myAnnouncementPageViewModel.TmpAnnouncements;
         }
-
-        //private void radio1_Checked(object sender, RoutedEventArgs e) { listView.ItemsSource = myAnnouncementPageViewModel.Announcements; }
-        //private void radio2_Checked(object sender, RoutedEventArgs e) { listView.ItemsSource = myAnnouncementPageViewModel.TmpAnnouncements; }
-
-
     }
 }

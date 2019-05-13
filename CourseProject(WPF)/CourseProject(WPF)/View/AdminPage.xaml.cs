@@ -46,13 +46,13 @@ namespace CourseProject_WPF_.View
 
         private void infoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            adminPageViewModel.showInfo();
         }
 
         private void radio1_Checked(object sender, RoutedEventArgs e)
         {
             listBox.ItemsSource = adminPageViewModel.Users;
-
+            
 
             NoButton.Content = "Удалить";
             OkButton.Content = "Изменить\nпривелегии";
@@ -62,7 +62,7 @@ namespace CourseProject_WPF_.View
 
         private void radio2_Checked(object sender, RoutedEventArgs e)
         {
-            listBox.ItemsSource = adminPageViewModel.Announcements;
+            listBox.ItemsSource = adminPageViewModel.Announcements;            
 
             OkButton.Content = "Принять";
             NoButton.Content = "Удалить";
@@ -72,8 +72,7 @@ namespace CourseProject_WPF_.View
 
         private void radio3_Checked(object sender, RoutedEventArgs e)
         {
-            listBox.ItemsSource = adminPageViewModel.TmpAnnouncements;
-
+            listBox.ItemsSource = adminPageViewModel.TmpAnnouncements;            
 
             OkButton.Content = "Принять";
             NoButton.Content = "Отклонить";

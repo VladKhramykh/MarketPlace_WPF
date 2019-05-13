@@ -17,6 +17,7 @@ namespace CourseProject_WPF_.View
             InitializeComponent();
             authWindowViewModel = new AuthWindowViewModel();
             DataContext = authWindowViewModel;
+            Title = "Авторизация";
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)

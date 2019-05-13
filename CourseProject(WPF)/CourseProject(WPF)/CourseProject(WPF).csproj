@@ -168,9 +168,11 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MyAnnouncementPageViewModel.cs" />
     <Compile Include="ViewModel\PersonAreaViewModel.cs" />
+    <Compile Include="ViewModel\QuickWindowViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
     <Compile Include="ViewModel\TmpAnnouncementViewModel.cs" />
     <Compile Include="ViewModel\AdminPageViewModel.cs" />
+    <Compile Include="ViewModel\UserViewWindowViewModel.cs" />
     <Compile Include="View\AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
@@ -203,6 +205,9 @@
     </Compile>
     <Compile Include="View\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserViewWindow.xaml.cs">
+      <DependentUpon>UserViewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewWindow.xaml.cs">
       <DependentUpon>ViewWindow.xaml</DependentUpon>
@@ -268,6 +273,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

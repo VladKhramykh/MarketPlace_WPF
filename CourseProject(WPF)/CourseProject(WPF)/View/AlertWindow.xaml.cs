@@ -29,6 +29,7 @@ namespace CourseProject_WPF_.View
         public AlertWindow()
         {
             InitializeComponent();
+            Title = "Сообщение";
         }
         public AlertWindow(string message)
         {

@@ -8,6 +8,7 @@ namespace CourseProject_WPF_.View
         public DialogWindow()
         {
             InitializeComponent();
+            Title = "Dialog";
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

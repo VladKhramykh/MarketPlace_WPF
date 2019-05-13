@@ -15,6 +15,7 @@ namespace CourseProject_WPF_.View
         {
             InitializeComponent();
             DataContext = addWindowViewModel;
+            Title = "Добавление объявления";
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)

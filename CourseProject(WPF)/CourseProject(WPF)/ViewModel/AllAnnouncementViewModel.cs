@@ -101,8 +101,8 @@ namespace CourseProject_WPF_.ViewModel
             get { return minCost.ToString(); }
             set
             {
-                if (Decimal.TryParse(value.ToString(), out minCost))
-                    minCost = Decimal.Parse(value);
+                if (Decimal.TryParse(value.ToString(), out minCost) && Decimal.Parse(value) >= 0)              
+                    minCost = Decimal.Parse(value);                                
                 else
                     minCost = 0;
                 OnPropertyChanged("MinCost");                    
@@ -113,7 +113,7 @@ namespace CourseProject_WPF_.ViewModel
             get { return maxCost.ToString(); }
             set
             {
-                if (Decimal.TryParse(value.ToString(), out maxCost))
+                if (Decimal.TryParse(value.ToString(), out maxCost) && Decimal.Parse(value) >=0)
                     maxCost = Decimal.Parse(value);
                 else
                     maxCost = MAX_COST;
@@ -160,6 +160,12 @@ namespace CourseProject_WPF_.ViewModel
             
         }
         
+        public void attachedAnnouncement()
+        {
+            QuickViewWindow quickViewWindow = new QuickViewWindow(SelectedItem);
+            quickViewWindow.Show();
+        }
+
         public void showInfo()
         {
             SellerInfo = userRepository.getById(SelectedItem.seller).Info;
@@ -175,7 +181,7 @@ namespace CourseProject_WPF_.ViewModel
 
             if (!String.IsNullOrEmpty(Seller) && !String.IsNullOrEmpty(Category))
             {
-                int id = userRepository.getByMail(Seller).id;
+                int id = userRepository.getByName(Seller).id;
                 IEnumerable<Announcement> tmp = announcementRepository.getByCategory(Category);
 
                 if (id != 0 && tmp.Count() != 0)
@@ -205,7 +211,7 @@ namespace CourseProject_WPF_.ViewModel
             }
             else if (!String.IsNullOrEmpty(Seller) && String.IsNullOrEmpty(Category))
             {
-                int id = userRepository.getByMail(Seller).id;
+                int id = userRepository.getByName(Seller).id;
 
                 if (id != 0)
                 {

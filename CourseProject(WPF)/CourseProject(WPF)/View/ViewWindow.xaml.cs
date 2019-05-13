@@ -29,6 +29,7 @@ namespace CourseProject_WPF_.View
             DataContext = mainViewModel.SelectedItem;
             counter.DataContext = mainViewModel;
             Seller.DataContext = mainViewModel;
+            Title = "Окно просмотра";
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +45,11 @@ namespace CourseProject_WPF_.View
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
             mainViewModel.nextItem();
+        }       
+
+        private void AttachedButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainViewModel.attachedAnnouncement();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

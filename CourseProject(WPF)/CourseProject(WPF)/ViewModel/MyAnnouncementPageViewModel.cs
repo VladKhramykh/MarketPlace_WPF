@@ -96,8 +96,12 @@ namespace CourseProject_WPF_.ViewModel
 
         public void showInfo()
         {
-            AlertWindow alertWindow = new AlertWindow(SelectedItem.ToString());
-            alertWindow.Show();
+            if(SelectedItem != null)
+            {
+                QuickViewWindow quickViewWindow = new QuickViewWindow(SelectedItem);
+                quickViewWindow.ShowDialog();
+            }
+            
         }
 
         public void editAnnouncement()

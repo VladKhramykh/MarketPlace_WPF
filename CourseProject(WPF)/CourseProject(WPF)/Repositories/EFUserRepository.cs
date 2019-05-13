@@ -17,7 +17,7 @@ namespace CourseProject_WPF_.Repositories
         {
             List<string> tmp = new List<string>();
             foreach (User s in context.Users)
-                tmp.Add(s.mail);
+                tmp.Add(s.getName());
             return tmp;
         }
 
@@ -41,6 +41,11 @@ namespace CourseProject_WPF_.Repositories
         public User getByMail(string mail)
         {
             return context.Users.FirstOrDefault(x =>x.mail == mail);
+        }
+        
+        public User getByName(string name)
+        {
+            return context.Users.FirstOrDefault(x => (x.firstName + " " + x.secondName) == name);
         }
 
         public User getById(int? id)

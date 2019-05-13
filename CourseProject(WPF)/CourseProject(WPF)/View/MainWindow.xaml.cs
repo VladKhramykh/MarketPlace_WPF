@@ -15,6 +15,7 @@ namespace CourseProject_WPF_.View
         {
             InitializeComponent();
             DataContext = mainWindowViewModel;
+            Title = "Главное окно";
         }
 
         void buttonClose_Click(object sender, RoutedEventArgs e)

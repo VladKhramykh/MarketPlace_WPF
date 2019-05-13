@@ -62,7 +62,7 @@ namespace CourseProject_WPF_.Model
 
         public string SecondName
         {
-            get { return firstName; }
+            get { return secondName; }
             set
             {
                 secondName = value;
@@ -116,22 +116,25 @@ namespace CourseProject_WPF_.Model
                 privilege = value;
                 OnPropertyChanged("Privilege");
             }
-        }
+        }   
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged(string propertyName)
+        public string Name
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            get { return $"{firstName} {secondName}"; }
         }
-
+        
         public override string ToString()
         {
-            return  $"{firstName} {secondName}\n" +                
+            return  $"{firstName} {secondName}\n" + 
                     $"mail: {mail}\n" +
-                    $"privelege: {privilege}";
+                    $"privelege: {privilege}\n";
         }
+
+        public string getName()
+        {
+            return $"{firstName} {secondName}";            
+        }
+
         public string Info
         {
             get
@@ -141,6 +144,7 @@ namespace CourseProject_WPF_.Model
                         $"Телефон: {telNumber}";
             }
         }
+
         public static string getHash(string password)
         {
             if (String.IsNullOrEmpty(password))
@@ -154,5 +158,14 @@ namespace CourseProject_WPF_.Model
                 return Convert.ToBase64String(hash);
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }
