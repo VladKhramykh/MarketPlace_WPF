@@ -6,11 +6,11 @@ namespace CourseProject_WPF_.Repositories
 {
     class EFTmpAnnouncementRepository : ITmpAnnouncementRepository
     {
-        private MarketPlaceEntities context;
+        private NewMarketPlaceEntities1 context;
 
         public EFTmpAnnouncementRepository()
         {
-            context = new MarketPlaceEntities();
+            context = new NewMarketPlaceEntities1();
         }
 
         

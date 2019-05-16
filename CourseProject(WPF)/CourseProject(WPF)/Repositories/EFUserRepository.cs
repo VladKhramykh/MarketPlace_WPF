@@ -6,11 +6,11 @@ namespace CourseProject_WPF_.Repositories
 {
     class EFUserRepository : IUserRepository
     {
-        private MarketPlaceEntities context;       
+        private NewMarketPlaceEntities1 context;       
 
         public EFUserRepository()
         {
-            context = new MarketPlaceEntities();
+            context = new NewMarketPlaceEntities1();
         }
 
         public List<string> getAllNames()

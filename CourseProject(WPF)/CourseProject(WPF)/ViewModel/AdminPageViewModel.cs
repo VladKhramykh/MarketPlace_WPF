@@ -103,6 +103,7 @@ namespace CourseProject_WPF_.ViewModel
                 announcement.name = tmp.name;
                 announcement.seller = tmp.seller;
                 announcement.category = tmp.category;
+                announcement.idRegion = tmp.idRegion;
                 announcement.about = tmp.about;
                 announcement.cost = tmp.cost;
                 announcementRepository.add(announcement);

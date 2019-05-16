@@ -24,6 +24,7 @@
                     <TextBox Text="{Binding SearchText}" materialDesign:HintAssist.Hint="Search" Margin="20,30,20,20" FontSize="16" Height="40" SelectionBrush="#FF787878" Foreground="#FF292929" BorderBrush="#89DCD8D8" />
                     <ComboBox ItemsSource="{Binding Categories}" Text="{Binding Category}" materialDesign:HintAssist.Hint="Category" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
                     <ComboBox ItemsSource="{Binding Sellers}" Text="{Binding Seller}" materialDesign:HintAssist.Hint="Seller" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
+                    <ComboBox ItemsSource="{Binding Regions}" Text="{Binding Region}" materialDesign:HintAssist.Hint="Region" IsEditable="False" SelectedIndex="{Binding SelectedIndex}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
                     <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
                         <Label Content="Цена" Margin="20,20,20,0" FontSize="16" Foreground="#FF292929"/>
                         <TextBox Text="{Binding MinCost}" Width="85" Margin="10,0,0,0" materialDesign:HintAssist.Hint="Min" CaretBrush="#FF104774" Foreground="#FF292929" BorderBrush="#89DCD8D8" SelectionBrush="#FF787878" />

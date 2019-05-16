@@ -10,11 +10,13 @@ namespace CourseProject_WPF_.ViewModel
     {
 
         EFUserRepository userRepository = new EFUserRepository();
+        EFRegionRepository regionRepository = new EFRegionRepository();
 
         object item;
         string info;
         string name;
         string contactInfo;
+        string region;
         string title;
         string about;
         decimal cost;
@@ -46,6 +48,16 @@ namespace CourseProject_WPF_.ViewModel
             {
                 name = value;
                 OnPropertyChanged("Name");
+            }
+        }
+
+        public string Region
+        {
+            get { return region; }
+            set
+            {
+                region = value;
+                OnPropertyChanged("Region");
             }
         }
 
@@ -93,7 +105,8 @@ namespace CourseProject_WPF_.ViewModel
             {
                 Info = (Item as Announcement).Info;
                 Title = $"Информация о объявлении {(Item as Announcement).Name}";
-                Name = $"{(Item as Announcement).Name}";
+                Name = (Item as Announcement).Name;
+                Region = regionRepository.getRegion((Item as Announcement).idRegion.Value);
                 ContactInfo =   $"Mail: {userRepository.getById((Item as Announcement).seller).Mail}\n" +
                                 $"Телефон: {userRepository.getById((Item as Announcement).seller).TelNumber}\n";
                 About = $"{(Item as Announcement).About}\n";
@@ -104,7 +117,8 @@ namespace CourseProject_WPF_.ViewModel
             {
                 Info = (Item as TmpAnnouncement).Info;
                 Title = $"Информация о объявлении {(Item as TmpAnnouncement).Name}";
-                Name = $"{(Item as TmpAnnouncement).Name}";
+                Name = (Item as TmpAnnouncement).Name;
+                Region = regionRepository.getRegion((Item as TmpAnnouncement).idRegion.Value);
                 ContactInfo =   $"Mail: {userRepository.getById((Item as TmpAnnouncement).seller).Mail}\n" +
                                 $"Телефон: {userRepository.getById((Item as TmpAnnouncement).seller).TelNumber}\n";
                 About = $"{(Item as TmpAnnouncement).About}\n";

@@ -29,8 +29,13 @@
                 <TextBlock FontSize="16" Text="{Binding Name}" TextWrapping="Wrap"  Height="100" Background="WhiteSmoke" Padding="15"/>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
-                        <Label Content="Цена" Margin="20,10,0,0" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
-                        <TextBlock FontSize="16" Text="{Binding Cost}" Width="200" Padding="15" Background="WhiteSmoke"/>
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Цена" Margin="20,10,0,0" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
+                            <TextBlock FontSize="16" Text="{Binding Cost}" Width="200" Padding="15" Background="WhiteSmoke"/>
+                            <Label Content="Регион" Margin="20,10,0,0" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
+                            <TextBlock FontSize="16" Text="{Binding Region}" Width="200" Padding="15" Background="WhiteSmoke"/>
+                        </StackPanel>
+                        
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <Label Content="Контактная информация" Margin="20,10,0,0" Width="350" HorizontalAlignment="Left" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e04a1d3344664cb28b45bec09ba8ea40" Name="Diagram1">
+        <EntityTypeShape EntityType="NewMarketPlaceModel.Announcement" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMarketPlaceModel.Region" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMarketPlaceModel.TmpAnnouncement" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMarketPlaceModel.User" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="NewMarketPlaceModel.FK__Announcem__idReg__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="NewMarketPlaceModel.FK__Announcem__selle__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="NewMarketPlaceModel.FK__TmpAnnoun__idReg__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="NewMarketPlaceModel.FK__TmpAnnoun__selle__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

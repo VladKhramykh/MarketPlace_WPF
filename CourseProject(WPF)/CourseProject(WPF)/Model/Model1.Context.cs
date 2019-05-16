@@ -13,10 +13,10 @@ namespace CourseProject_WPF_.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MarketPlaceEntities : DbContext
+    public partial class NewMarketPlaceEntities1 : DbContext
     {
-        public MarketPlaceEntities()
-            : base("name=MarketPlaceEntities")
+        public NewMarketPlaceEntities1()
+            : base("name=NewMarketPlaceEntities1")
         {
         }
     
@@ -26,6 +26,7 @@ namespace CourseProject_WPF_.Model
         }
     
         public virtual DbSet<Announcement> Announcements { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<TmpAnnouncement> TmpAnnouncements { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

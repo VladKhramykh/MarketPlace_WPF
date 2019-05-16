@@ -11,10 +11,12 @@ namespace CourseProject_WPF_.ViewModel
     {
         EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();
         EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
+        EFRegionRepository regionRepository = new EFRegionRepository();
 
         string name;
         string category;
         string about;
+        string region;
         decimal cost;
         string info;
 
@@ -24,6 +26,7 @@ namespace CourseProject_WPF_.ViewModel
         string statusAbout = "Не заполнено описание";
 
         List<string> tmpCategories = new List<string>();
+        List<string> tmpRegions = new List<string>();
 
         public string Name
         {
@@ -73,7 +76,11 @@ namespace CourseProject_WPF_.ViewModel
 
             }
         }
-
+        public string Region
+        {
+            get { return region; }
+            set { region = value; }
+        }
         public string Cost
         {
             get { return cost.ToString(); }
@@ -111,11 +118,16 @@ namespace CourseProject_WPF_.ViewModel
         public List<string> Categories
         {
             get { return tmpCategories; }
-        }        
+        }   
+        public List<string> Regions
+        {
+            get { return tmpRegions; }
+        }
 
         public AddWindowViewModel()
         {
             tmpCategories = announcementRepository.getCategories().Distinct().ToList();
+            tmpRegions = regionRepository.getRegions(); 
         }
 
         bool IsCorrected()
@@ -148,7 +160,7 @@ namespace CourseProject_WPF_.ViewModel
         {
             if(IsCorrected())
             {
-                tmpAnnouncementRepository.add(new TmpAnnouncement(Name, CurrentUser.User.id, Category, About, cost));
+                tmpAnnouncementRepository.add(new TmpAnnouncement(Name, CurrentUser.User.id, Regions.IndexOf(Region),Category, About, cost));
                 return true;
             }
             return false;                

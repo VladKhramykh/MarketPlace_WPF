@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище MarketPlaceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище NewMarketPlaceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Announcements">
           <Key>
             <PropertyRef Name="id" />
@@ -12,9 +12,17 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="seller" Type="int" />
+          <Property Name="idRegion" Type="int" />
           <Property Name="category" Type="nvarchar" MaxLength="50" />
           <Property Name="about" Type="nvarchar" MaxLength="1000" />
           <Property Name="cost" Type="money" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="region" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TmpAnnouncements">
           <Key>
@@ -23,6 +31,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="seller" Type="int" />
+          <Property Name="idRegion" Type="int" />
           <Property Name="category" Type="nvarchar" MaxLength="50" />
           <Property Name="about" Type="nvarchar" MaxLength="1000" />
           <Property Name="cost" Type="money" />
@@ -38,9 +47,22 @@
           <Property Name="password" Type="nvarchar" MaxLength="100" />
           <Property Name="telNumber" Type="varchar" MaxLength="20" />
           <Property Name="about" Type="nvarchar" MaxLength="1000" />
+          <Property Name="image" Type="varbinary(max)" />
           <Property Name="privilege" Type="nvarchar" MaxLength="5" />
         </EntityType>
-        <Association Name="FK__ActualPro__selle__5FB337D6">
+        <Association Name="FK__Announcem__idReg__46E78A0C">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+          <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Announcements">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Announcem__selle__45F365D3">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
           <ReferentialConstraint>
@@ -52,7 +74,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TmpProduc__selle__628FA481">
+        <Association Name="FK__TmpAnnoun__idReg__4316F928">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+          <End Role="TmpAnnouncements" Type="Self.TmpAnnouncements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TmpAnnouncements">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TmpAnnoun__selle__4222D4EF">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="TmpAnnouncements" Type="Self.TmpAnnouncements" Multiplicity="*" />
           <ReferentialConstraint>
@@ -64,15 +98,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище MarketPlaceModelContainer">
+        <EntityContainer Name="Хранилище NewMarketPlaceModelContainer">
           <EntitySet Name="Announcements" EntityType="Self.Announcements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TmpAnnouncements" EntityType="Self.TmpAnnouncements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ActualPro__selle__5FB337D6" Association="Self.FK__ActualPro__selle__5FB337D6">
+          <AssociationSet Name="FK__Announcem__idReg__46E78A0C" Association="Self.FK__Announcem__idReg__46E78A0C">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Announcements" EntitySet="Announcements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Announcem__selle__45F365D3" Association="Self.FK__Announcem__selle__45F365D3">
             <End Role="Users" EntitySet="Users" />
             <End Role="Announcements" EntitySet="Announcements" />
           </AssociationSet>
-          <AssociationSet Name="FK__TmpProduc__selle__628FA481" Association="Self.FK__TmpProduc__selle__628FA481">
+          <AssociationSet Name="FK__TmpAnnoun__idReg__4316F928" Association="Self.FK__TmpAnnoun__idReg__4316F928">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TmpAnnoun__selle__4222D4EF" Association="Self.FK__TmpAnnoun__selle__4222D4EF">
             <End Role="Users" EntitySet="Users" />
             <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
           </AssociationSet>
@@ -81,7 +124,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MarketPlaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="NewMarketPlaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Announcement">
           <Key>
             <PropertyRef Name="id" />
@@ -89,10 +132,21 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="seller" Type="Int32" />
+          <Property Name="idRegion" Type="Int32" />
           <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="User" Relationship="Self.FK__ActualPro__selle__5FB337D6" FromRole="Announcements" ToRole="Users" />
+          <NavigationProperty Name="Region" Relationship="Self.FK__Announcem__idReg__46E78A0C" FromRole="Announcements" ToRole="Regions" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Announcem__selle__45F365D3" FromRole="Announcements" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="region1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Announcements" Relationship="Self.FK__Announcem__idReg__46E78A0C" FromRole="Regions" ToRole="Announcements" />
+          <NavigationProperty Name="TmpAnnouncements" Relationship="Self.FK__TmpAnnoun__idReg__4316F928" FromRole="Regions" ToRole="TmpAnnouncements" />
         </EntityType>
         <EntityType Name="TmpAnnouncement">
           <Key>
@@ -101,10 +155,12 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="seller" Type="Int32" />
+          <Property Name="idRegion" Type="Int32" />
           <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="User" Relationship="Self.FK__TmpProduc__selle__628FA481" FromRole="TmpAnnouncements" ToRole="Users" />
+          <NavigationProperty Name="Region" Relationship="Self.FK__TmpAnnoun__idReg__4316F928" FromRole="TmpAnnouncements" ToRole="Regions" />
+          <NavigationProperty Name="User" Relationship="Self.FK__TmpAnnoun__selle__4222D4EF" FromRole="TmpAnnouncements" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -117,11 +173,24 @@
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="telNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="privilege" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Announcements" Relationship="Self.FK__ActualPro__selle__5FB337D6" FromRole="Users" ToRole="Announcements" />
-          <NavigationProperty Name="TmpAnnouncements" Relationship="Self.FK__TmpProduc__selle__628FA481" FromRole="Users" ToRole="TmpAnnouncements" />
+          <NavigationProperty Name="Announcements" Relationship="Self.FK__Announcem__selle__45F365D3" FromRole="Users" ToRole="Announcements" />
+          <NavigationProperty Name="TmpAnnouncements" Relationship="Self.FK__TmpAnnoun__selle__4222D4EF" FromRole="Users" ToRole="TmpAnnouncements" />
         </EntityType>
-        <Association Name="FK__ActualPro__selle__5FB337D6">
+        <Association Name="FK__Announcem__idReg__46E78A0C">
+          <End Role="Regions" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Announcements" Type="Self.Announcement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Announcements">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Announcem__selle__45F365D3">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
           <End Role="Announcements" Type="Self.Announcement" Multiplicity="*" />
           <ReferentialConstraint>
@@ -133,7 +202,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TmpProduc__selle__628FA481">
+        <Association Name="FK__TmpAnnoun__idReg__4316F928">
+          <End Role="Regions" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="TmpAnnouncements" Type="Self.TmpAnnouncement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TmpAnnouncements">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TmpAnnoun__selle__4222D4EF">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
           <End Role="TmpAnnouncements" Type="Self.TmpAnnouncement" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,15 +226,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MarketPlaceEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="NewMarketPlaceEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Announcements" EntityType="Self.Announcement" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
           <EntitySet Name="TmpAnnouncements" EntityType="Self.TmpAnnouncement" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__ActualPro__selle__5FB337D6" Association="Self.FK__ActualPro__selle__5FB337D6">
+          <AssociationSet Name="FK__Announcem__idReg__46E78A0C" Association="Self.FK__Announcem__idReg__46E78A0C">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Announcements" EntitySet="Announcements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Announcem__selle__45F365D3" Association="Self.FK__Announcem__selle__45F365D3">
             <End Role="Users" EntitySet="Users" />
             <End Role="Announcements" EntitySet="Announcements" />
           </AssociationSet>
-          <AssociationSet Name="FK__TmpProduc__selle__628FA481" Association="Self.FK__TmpProduc__selle__628FA481">
+          <AssociationSet Name="FK__TmpAnnoun__idReg__4316F928" Association="Self.FK__TmpAnnoun__idReg__4316F928">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TmpAnnoun__selle__4222D4EF" Association="Self.FK__TmpAnnoun__selle__4222D4EF">
             <End Role="Users" EntitySet="Users" />
             <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
           </AssociationSet>
@@ -163,25 +253,35 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище MarketPlaceModelContainer" CdmEntityContainer="MarketPlaceEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище NewMarketPlaceModelContainer" CdmEntityContainer="NewMarketPlaceEntities1">
           <EntitySetMapping Name="Announcements">
-            <EntityTypeMapping TypeName="MarketPlaceModel.Announcement">
+            <EntityTypeMapping TypeName="NewMarketPlaceModel.Announcement">
               <MappingFragment StoreEntitySet="Announcements">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="about" ColumnName="about" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="NewMarketPlaceModel.Region">
+              <MappingFragment StoreEntitySet="Regions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="region1" ColumnName="region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TmpAnnouncements">
-            <EntityTypeMapping TypeName="MarketPlaceModel.TmpAnnouncement">
+            <EntityTypeMapping TypeName="NewMarketPlaceModel.TmpAnnouncement">
               <MappingFragment StoreEntitySet="TmpAnnouncements">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="about" ColumnName="about" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
@@ -189,7 +289,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MarketPlaceModel.User">
+            <EntityTypeMapping TypeName="NewMarketPlaceModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
@@ -198,6 +298,7 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="telNumber" ColumnName="telNumber" />
                 <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="privilege" ColumnName="privilege" />
               </MappingFragment>
             </EntityTypeMapping>

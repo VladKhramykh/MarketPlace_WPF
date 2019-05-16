@@ -75,7 +75,7 @@ namespace CourseProject_WPF_.ViewModel
                 tmpTmpAnnouncements.Add(announcement);
 
             CountActual = announcementRepository.getBySellerId(CurrentUser.User.id).Count().ToString();
-            CountTmp = tmpAnnouncementRepository.getAll().Count().ToString();
+            CountTmp = tmpAnnouncementRepository.getBySellerId(CurrentUser.User.id).Count().ToString();
         }
 
         public void deleteAnnouncement()

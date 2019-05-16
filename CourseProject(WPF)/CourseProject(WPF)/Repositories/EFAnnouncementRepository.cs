@@ -10,11 +10,11 @@ namespace CourseProject_WPF_.Repositories
 {
     class EFAnnouncementRepository : IAnnouncementRepository
     {
-        private MarketPlaceEntities context;
+        private NewMarketPlaceEntities1 context;
 
         public EFAnnouncementRepository()
         {
-            context = new MarketPlaceEntities();
+            context = new NewMarketPlaceEntities1();
         }
 
         public IEnumerable<Announcement> getAll()
@@ -47,7 +47,10 @@ namespace CourseProject_WPF_.Repositories
         {
             return context.Announcements.Where(x => x.category == category);
         }
-
+        public IEnumerable<Announcement> getByRegionId(int id)
+        {
+            return context.Announcements.Where(x => x.idRegion == id);
+        }
         public List<string> getCategories()
         {
             List<string> tmp = new List<string>();
@@ -60,7 +63,7 @@ namespace CourseProject_WPF_.Repositories
 
         public decimal MaxCost()
         {
-            return context.Announcements.Max(x => x.cost).Value;
+            return context.Announcements.Count() > 0 ? context.Announcements.Max(x => x.cost).Value : 0;
         }
     }
 }

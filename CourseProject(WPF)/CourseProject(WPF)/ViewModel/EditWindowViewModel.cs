@@ -15,20 +15,26 @@ namespace CourseProject_WPF_.ViewModel
     {
         EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
         EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();
+        EFRegionRepository regionRepository = new EFRegionRepository();
 
         string name;
         string category;
+        string region;
         string about;
         decimal cost;
         string info;
+       
 
         string statusName;
+        string statusRegion;
         string statusCategory;
         string statusCost;
         string statusAbout;
 
 
         List<string> tmpCategories = new List<string>();
+        List<string> tmpRegions = new List<string>();
+        
         object item;
 
         public object Item
@@ -84,6 +90,11 @@ namespace CourseProject_WPF_.ViewModel
                     statusCategory = "Првоерьте категорию";
                 OnPropertyChanged("Category");
             }
+        }
+        public string Region
+        {
+            get { return region; }
+            set { region = value; }
         }
         public string About
         {
@@ -141,6 +152,10 @@ namespace CourseProject_WPF_.ViewModel
         {
             get { return tmpCategories; }
         }
+        public List<string> Regions
+        {
+            get { return tmpRegions; }
+        }
 
         void update()
         {
@@ -149,7 +164,9 @@ namespace CourseProject_WPF_.ViewModel
                 Name = (Item as Announcement).name;
                 Cost = (Item as Announcement).cost.ToString();
                 About = (Item as Announcement).about;
-                Category = (Item as Announcement).category;                
+                Category = (Item as Announcement).category;
+                Region = regionRepository.getRegion((Item as Announcement).idRegion.Value);
+                
             }
             else if (Item is TmpAnnouncement)
             {
@@ -157,6 +174,7 @@ namespace CourseProject_WPF_.ViewModel
                 Cost = (Item as TmpAnnouncement).cost.ToString();
                 About = (Item as TmpAnnouncement).about;
                 Category = (Item as TmpAnnouncement).category;
+                Region = regionRepository.getRegion((Item as TmpAnnouncement).idRegion.Value);
             }
             else
             {
@@ -196,6 +214,7 @@ namespace CourseProject_WPF_.ViewModel
         public EditWindowViewModel()
         {
             tmpCategories = announcementRepository.getCategories().Distinct().ToList();
+            tmpRegions = regionRepository.getRegions();
         }
 
         public bool addAnnouncement()
@@ -204,7 +223,7 @@ namespace CourseProject_WPF_.ViewModel
             {
                 if (Item is TmpAnnouncement)
                 {
-                    TmpAnnouncement tmp = new TmpAnnouncement(Name, CurrentUser.User.id, Category, About, cost);
+                    TmpAnnouncement tmp = new TmpAnnouncement(Name, CurrentUser.User.id, Regions.IndexOf(Region), Category, About, cost);
                     tmpAnnouncementRepository.add(tmp);
                     
                     tmpAnnouncementRepository.delete(Item as TmpAnnouncement);
@@ -214,7 +233,7 @@ namespace CourseProject_WPF_.ViewModel
                 }
                 else if (Item is Announcement)
                 {
-                    TmpAnnouncement tmp = new TmpAnnouncement(Name, CurrentUser.User.id, Category, About, cost);
+                    TmpAnnouncement tmp = new TmpAnnouncement(Name, CurrentUser.User.id, Regions.IndexOf(Region), Category, About, cost);
                     tmpAnnouncementRepository.add(tmp);
                     
                     announcementRepository.delete(Item as Announcement);

@@ -29,6 +29,7 @@ namespace CourseProject_WPF_.View
             DataContext = mainViewModel.SelectedItem;
             counter.DataContext = mainViewModel;
             Seller.DataContext = mainViewModel;
+            Region.DataContext = mainViewModel;
             Title = "Окно просмотра";
         }
 

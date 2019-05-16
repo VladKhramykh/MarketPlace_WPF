@@ -25,8 +25,16 @@
                 <TextBox Text="{Binding Category}" IsReadOnly="True" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1"/>
                 <TextBlock Text="Продавец" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
                 <TextBox x:Name="Seller" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding SellerInfo}" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1"/>
-                <TextBlock Text="Цена" Margin="320,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBox Text="{Binding Cost}" IsReadOnly="True" Margin="300,20,0,10"  FontSize="18" BorderThickness="0,0,0,1"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Vertical" Margin="0,0,30,0" Width="200">
+                        <TextBlock Text="Цена" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
+                        <TextBox Text="{Binding Cost}" IsReadOnly="True" Margin="20,20,0,10"  FontSize="18" BorderThickness="0,0,0,1"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="250">
+                        <TextBlock Text="Регион" FontSize="20" Foreground="Gray"/>
+                        <TextBox x:Name="Region" Text="{Binding RegionInfo}" IsReadOnly="True" Margin="0,20,0,10"  FontSize="18" BorderThickness="0,0,0,1"/>
+                    </StackPanel>
+                </StackPanel>
                 <TextBlock Text="Описание" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
                 <TextBox Text="{Binding About}" IsReadOnly="True" MaxHeight="400" TextWrapping="Wrap" Margin="20,20,0,0" FontSize="18" BorderThickness="0,0,0,1"/>
             </StackPanel>

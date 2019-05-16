@@ -15,10 +15,13 @@ namespace CourseProject_WPF_.ViewModel
         EFUserRepository userRepository = new EFUserRepository();
         EFAnnouncementRepository announcementRepository = new EFAnnouncementRepository();
         EFTmpAnnouncementRepository tmpAnnouncementRepository = new EFTmpAnnouncementRepository();
+        EFRegionRepository regionRepository = new EFRegionRepository();
 
         ObservableCollection<Announcement> tmpAnnouncements = new ObservableCollection<Announcement>();
         List<string> tmpCategories = new List<string>();
         List<string> tmpSellers = new List<string>();
+        List<string> tmpRegions = new List<string>();
+        
         Announcement selectedItem;
 
         string seller = "";
@@ -30,6 +33,9 @@ namespace CourseProject_WPF_.ViewModel
         decimal MAX_COST;
         string count;
         string sellerInfo;
+        string regionInfo;
+        string region;
+        int selectedIndex;
 
         public ObservableCollection<Announcement> Announcements
         {
@@ -58,6 +64,17 @@ namespace CourseProject_WPF_.ViewModel
             }
         }
 
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                if (value >= 0)
+                    selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
+        }
+
         public List<string> Categories
         {
             get { return tmpCategories; }
@@ -66,6 +83,11 @@ namespace CourseProject_WPF_.ViewModel
         public List<string> Sellers
         {
             get { return tmpSellers; }
+        }
+
+        public List<string> Regions
+        {
+            get { return tmpRegions; }
         }
 
         public string Seller
@@ -85,6 +107,15 @@ namespace CourseProject_WPF_.ViewModel
             {
                 category = value;
                 OnPropertyChanged("Category");
+            }
+        }
+        public string Region
+        {
+            get { return region; }
+            set
+            {
+                region = value;
+                OnPropertyChanged("Region");
             }
         }
         public string Info
@@ -140,6 +171,15 @@ namespace CourseProject_WPF_.ViewModel
                 OnPropertyChanged("SellerInfo");
             }
         }
+        public string RegionInfo
+        {
+            get { return regionInfo; }
+            set
+            {
+                regionInfo = value;
+                OnPropertyChanged("RegionInfo");
+            }
+        }
 
         ViewWindow viewWindow;
         public AllAnnouncementViewModel()
@@ -151,6 +191,8 @@ namespace CourseProject_WPF_.ViewModel
 
             tmpCategories = announcementRepository.getCategories().Distinct().ToList();
             tmpSellers = userRepository.getAllNames().Distinct().ToList();
+            tmpRegions = regionRepository.getRegions();
+            SelectedIndex = 0;
             Info = $"Найдено {Announcements.Count}";
             MAX_COST = announcementRepository.MaxCost();
             MaxCost = MAX_COST.ToString();
@@ -168,123 +210,103 @@ namespace CourseProject_WPF_.ViewModel
 
         public void showInfo()
         {
-            SellerInfo = userRepository.getById(SelectedItem.seller).Info;
-            viewWindow.DataContext = SelectedItem;
-            if(viewWindow.Visibility == System.Windows.Visibility.Hidden && SelectedItem != null)
-                viewWindow.Show();
+            if (SelectedItem != null)
+            {
+                SellerInfo = userRepository.getById(SelectedItem.seller).Info;
+                RegionInfo = regionRepository.getRegion(SelectedItem.idRegion.Value);
+                viewWindow.DataContext = SelectedItem;
+                if (viewWindow.Visibility == System.Windows.Visibility.Hidden && SelectedItem != null)
+                    viewWindow.Show();
+            }
+            
         }
 
         public void search()
-        {            
-            tmpAnnouncements.Clear();
-            Regex regex = new Regex(@"(\w*)(?i)" + SearchText + @"(\w*)");            
+        {
+            selectedItem = null;
+            Announcements.Clear();
+            Regex regex = new Regex(@"(\w*)(?i)" + SearchText + @"(\w*)");
+            int regionId = SelectedIndex;
+            HashSet<Announcement> tmp1 = new HashSet<Announcement>();
+            HashSet<Announcement> tmp2 = new HashSet<Announcement>();
 
-            if (!String.IsNullOrEmpty(Seller) && !String.IsNullOrEmpty(Category))
+            if (SelectedIndex != 0)
             {
-                int id = userRepository.getByName(Seller).id;
-                IEnumerable<Announcement> tmp = announcementRepository.getByCategory(Category);
-
-                if (id != 0 && tmp.Count() != 0)
-                {
-                    Announcements.Clear();
-
-                    foreach (Announcement announcement in tmp.Where(x => x.seller == id))
-                    {                        
-                        if (regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
-                        {
-                            if (maxCost == 0)
-                            {
-                                if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
-                                    Announcements.Add(announcement);
-                            }
-                            else
-                            {
-                                if (announcement.cost <= maxCost && announcement.cost >= minCost)
-                                    Announcements.Add(announcement);
-                            }
-                        }
-                    }                        
-                }
-                else
-                    Announcements.Clear();
-
-            }
-            else if (!String.IsNullOrEmpty(Seller) && String.IsNullOrEmpty(Category))
-            {
-                int id = userRepository.getByName(Seller).id;
-
-                if (id != 0)
-                {
-                    Announcements.Clear();
-                    foreach (Announcement announcement in getAnnouncementsBySellerId(id))
-                    {                        
-                        if (regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
-                        {
-                            if (maxCost == 0)
-                            {
-                                if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
-                                    Announcements.Add(announcement);
-                            }
-                            else
-                            {
-                                if (announcement.cost <= maxCost && announcement.cost >= minCost)
-                                    Announcements.Add(announcement);
-                            }
-                        }
-                    }                        
-                }
-                else
-                    Announcements.Clear();
-
-            }
-            else if (String.IsNullOrEmpty(Seller) && !String.IsNullOrEmpty(Category))
-            {
-                IEnumerable<Announcement> tmp = announcementRepository.getByCategory(Category);
-
-                if (tmp.Count() != 0)
-                {
-                    Announcements.Clear();
-                    foreach (Announcement announcement in tmp)
-                    {                        
-                        if (regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
-                        {
-                            if (maxCost == 0)
-                            {
-                                if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
-                                    Announcements.Add(announcement);
-                            }
-                            else
-                            {
-                                if (announcement.cost <= maxCost && announcement.cost >= minCost)
-                                    Announcements.Add(announcement);
-                            }
-                        }
-                            
-                    }                        
-                }
-                else
-                    Announcements.Clear();
+                foreach (Announcement announcement in announcementRepository.getByRegionId(SelectedIndex))
+                    tmp1.Add(announcement);
             }
             else
             {
-                Announcements.Clear();
-                foreach (Announcement announcement in getAnnouncements())
-                {                       
-                    if(regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
+                foreach (Announcement announcement in announcementRepository.getAll())
+                    tmp1.Add(announcement);
+            }
+            if (!String.IsNullOrEmpty(Category))
+            {
+                foreach (Announcement announcement in tmp1.Where(x=> x.category.Equals(Category)))
+                    tmp2.Add(announcement);
+                tmp1.Clear();
+            }
+            else
+            {
+                foreach (Announcement announcement in tmp1)
+                    tmp2.Add(announcement);
+                tmp1.Clear();
+            }
+            if (!String.IsNullOrEmpty(Seller))
+            {
+                int id = userRepository.getByName(Seller).id;
+                foreach (Announcement announcement in tmp2.Where(x=>x.seller == id))
+                    tmp1.Add(announcement);
+                tmp2.Clear();
+            }
+            else
+            {
+                foreach (Announcement announcement in tmp2)
+                    tmp1.Add(announcement);
+                tmp2.Clear();
+            }
+            if (!String.IsNullOrEmpty(SearchText))
+            {
+                foreach (Announcement announcement in tmp1)
+                {
+                    if (regex.IsMatch(announcement.about) || regex.IsMatch(announcement.name))
                     {
-                        if(maxCost == 0)
+                        if (maxCost == 0)
                         {
-                            if(announcement.cost <= maxCost && announcement.cost >= MAX_COST)
-                                Announcements.Add(announcement);
+                            if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
+                                tmp2.Add(announcement);
                         }
                         else
                         {
                             if (announcement.cost <= maxCost && announcement.cost >= minCost)
-                                Announcements.Add(announcement);
-                        }  
-                    }                      
-                } 
+                                tmp2.Add(announcement);
+                        }
+                    }                   
+                }
             }
+            else
+            {
+                foreach (Announcement announcement in tmp1)
+                {
+                    if (maxCost == 0)
+                    {
+                        if (announcement.cost <= maxCost && announcement.cost >= MAX_COST)
+                            tmp2.Add(announcement);
+                    }
+                    else
+                    {
+                        if (announcement.cost <= maxCost && announcement.cost >= minCost)
+                            tmp2.Add(announcement);
+                    }
+                }
+            }
+
+            foreach (Announcement announcement in tmp2)
+                Announcements.Add(announcement);
+
+            tmp1.Clear();
+            tmp2.Clear();
+
             Info = $"Найдено {Announcements.Count}";
         }
 

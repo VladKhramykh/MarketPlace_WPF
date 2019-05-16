@@ -44,7 +44,19 @@
                           BorderBrush="#FF464648"
                           BorderThickness="0,0,0,2"/>
 
-                <TextBox Text="{Binding Cost}" 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ComboBox Text="{Binding Region}"
+                        ItemsSource="{Binding Regions}" 
+                         Width="250" 
+                         IsEditable="False"
+                         SelectedIndex="0"
+                         FontSize="16"
+                         HorizontalAlignment="Right"
+                         Margin="100,30,100,30" 
+                         materialDesign:HintAssist.Hint="Регион"                         
+                         BorderBrush="#FF464648" 
+                         BorderThickness="0,0,0,2"/>
+                    <TextBox Text="{Binding Cost}" 
                          Width="150" 
                          FontSize="16"
                          HorizontalAlignment="Right"
@@ -53,6 +65,8 @@
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          BorderBrush="#FF464648" 
                          BorderThickness="0,0,0,2"/>
+                </StackPanel>
+                
 
                 <TextBox Text="{Binding About}"
                          Width="500"
