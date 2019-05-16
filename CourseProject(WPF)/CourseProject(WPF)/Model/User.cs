@@ -40,6 +40,16 @@ namespace CourseProject_WPF_.Model
 
         }
 
+        public User(string firstName, string secondName, string mail, string telNumber, string about)
+        {
+            FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+            SecondName = secondName ?? throw new ArgumentNullException(nameof(secondName));
+            Mail = mail ?? throw new ArgumentNullException(nameof(mail));
+            TelNumber = telNumber ?? throw new ArgumentNullException(nameof(telNumber));
+            About = about ?? throw new ArgumentNullException(nameof(about));
+            Privilege = "user";
+        }
+
         public User(string firstName, string secondName, string mail, string telNumber, string about, string privilege)
         {
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
@@ -47,8 +57,9 @@ namespace CourseProject_WPF_.Model
             Mail = mail ?? throw new ArgumentNullException(nameof(mail));
             TelNumber = telNumber ?? throw new ArgumentNullException(nameof(telNumber));
             About = about ?? throw new ArgumentNullException(nameof(about));
-            Privilege = privilege ?? throw new ArgumentNullException(nameof(privilege));
+            Privilege = privilege  ?? throw new ArgumentNullException(nameof(privilege));
         }
+
 
         public string FirstName
         {

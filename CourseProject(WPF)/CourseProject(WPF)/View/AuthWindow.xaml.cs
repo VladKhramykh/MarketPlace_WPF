@@ -72,5 +72,16 @@ namespace CourseProject_WPF_.View
             else
                 passwordBox.BorderBrush= Brushes.LimeGreen;           
         }
+
+        private void VkButton_Click(object sender, RoutedEventArgs e)
+        {
+            authWindowViewModel.VkLogin();
+        }
+
+        private void instagramButton_Click(object sender, RoutedEventArgs e)
+        {
+            authWindowViewModel.InstaLogin();
+        }
+       
     }
 }

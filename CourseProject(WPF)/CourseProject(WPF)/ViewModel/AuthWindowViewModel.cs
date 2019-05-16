@@ -2,10 +2,6 @@
 using CourseProject_WPF_.Model;
 using CourseProject_WPF_.View;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 
 namespace CourseProject_WPF_.ViewModel
@@ -50,7 +46,7 @@ namespace CourseProject_WPF_.ViewModel
         public bool compareDataOfUser(string password)
         {           
             if (!String.IsNullOrEmpty(Login) && !String.IsNullOrEmpty(password))
-            {
+            { 
                 User tmp = eFUserRepository.getByMail(Login);
                 if (tmp != null)
                 {
@@ -79,6 +75,19 @@ namespace CourseProject_WPF_.ViewModel
                 Info = "Не всё ввели";
                 return false;
             }        
+        }
+
+        public void VkLogin()
+        {
+            VKLoginWindow vKLogin = new VKLoginWindow();
+            vKLogin.ShowDialog();
+            
+        }
+
+        public void InstaLogin()
+        {
+            InstagramWindow instagramWindow = new InstagramWindow();
+            instagramWindow.ShowDialog();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
