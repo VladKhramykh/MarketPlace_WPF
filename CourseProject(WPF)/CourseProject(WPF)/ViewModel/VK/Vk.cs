@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using VkNet;
 using VkNet.Enums.Filters;
 using VkNet.Model;
@@ -35,9 +36,18 @@ namespace CourseProject_WPF_
 
         public User getUser()
         {
-            var p = vkApi.Users.Get(new long[] { vkApi.UserId.Value }, ProfileFields.Contacts | ProfileFields.Country | ProfileFields.City | ProfileFields.About).FirstOrDefault();   
+            var p = vkApi.Users.Get(new long[] { vkApi.UserId.Value }, ProfileFields.Contacts | ProfileFields.Country | ProfileFields.City | ProfileFields.About | ProfileFields.Photo200Orig).FirstOrDefault();   
             
             return p;
-        }        
+        }
+
+        public BitmapImage getImage()
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = getUser().Photo200Orig;
+            bitmapImage.EndInit();
+            return bitmapImage;
+        }
     }
 }

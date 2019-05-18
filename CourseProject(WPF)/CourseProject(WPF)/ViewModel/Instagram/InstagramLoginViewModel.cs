@@ -56,8 +56,8 @@ namespace CourseProject_WPF_.ViewModel.Instagram
                     {              
                         userRepository.update(userRepository.getByMail(user.mail),user);
                         CurrentUser.User = userRepository.getByMail(user.mail);
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.Show();
+                        App.mainWindow = new MainWindow();
+                        App.mainWindow.Show();
                     }
                     else
                     {
@@ -70,7 +70,7 @@ namespace CourseProject_WPF_.ViewModel.Instagram
                 }
                 else
                     throw new Exception();
-                
+
             }
             catch (Exception)
             {

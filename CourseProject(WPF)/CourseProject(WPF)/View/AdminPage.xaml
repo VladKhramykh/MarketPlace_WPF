@@ -23,10 +23,10 @@
                 </LinearGradientBrush>
             </Grid.Background>
             <TextBlock HorizontalAlignment="Left" FontSize="20" Foreground="Gray" Text="Меню администратора" VerticalAlignment="Center" Margin="20,0,0,0"/>
-            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="70,5,5,5">
-                <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Users" Checked="radio1_Checked" Cursor="Hand"/>
-                <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Anno" Checked="radio2_Checked" Cursor="Hand"/>
-                <RadioButton x:Name="radio3" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="TmpAnnt" Checked="radio3_Checked" Cursor="Hand"/>
+            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="150,5,5,5">
+                <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Пользователи" Checked="radio1_Checked" Cursor="Hand"/>
+                <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Актуальные" Checked="radio2_Checked" Cursor="Hand"/>
+                <RadioButton x:Name="radio3" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Не акутальные" Checked="radio3_Checked" Cursor="Hand"/>
             </StackPanel>
         </Grid>
 

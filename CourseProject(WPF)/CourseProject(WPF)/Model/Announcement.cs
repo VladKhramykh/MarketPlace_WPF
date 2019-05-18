@@ -9,10 +9,14 @@
 
 namespace CourseProject_WPF_.Model
 {
+    using CourseProject_WPF_.Repositories;
     using System;
     using System.Collections.Generic;
-    
-    public partial class Announcement
+    using System.ComponentModel;
+    using System.IO;
+    using System.Windows.Media.Imaging;
+
+    public partial class Announcement : INotifyPropertyChanged
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -25,7 +29,9 @@ namespace CourseProject_WPF_.Model
         public virtual Region Region { get; set; }
         public virtual User User { get; set; }
 
-        public Announcement() { }
+        BitmapImage bitmap = new BitmapImage();
+
+        public Announcement() {  }
 
         public Announcement(string name, string category, string about, decimal? cost)
         {
@@ -77,6 +83,16 @@ namespace CourseProject_WPF_.Model
             }
         }
 
+        public BitmapImage BitmapImage
+        {
+            get { return bitmap; }
+            set
+            {
+                bitmap = value;
+                OnPropertyChanged("BitmapImage");
+            }
+        }
+
         public override string ToString()
         {
             return $"Название {Name}\nКатегория -  {Category}\nЦена - {Cost}\n";
@@ -85,6 +101,14 @@ namespace CourseProject_WPF_.Model
         public string Info
         {
             get { return $"Название - {Name}\nКатегория -  {Category}\nЦена - {Cost}\n"; }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

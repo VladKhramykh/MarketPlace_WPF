@@ -41,16 +41,22 @@
                 <ListBox.ItemTemplate>                    
                     <DataTemplate>
                         <DockPanel Margin="0,5,0,5">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="SemiBold" Margin="5"/>
-                                <TextBlock Text="{Binding Category}" FontSize="15" Foreground="DarkGray" Margin="5"/>
-                            </StackPanel>                            
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding BitmapImage}" Width="80" Height="80" Stretch="UniformToFill" Margin="20,10,20,10">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
+                                    </Image.Clip>
+                                </Image>
+                                <StackPanel Orientation="Vertical" Margin="20,10,0,10">
+                                    <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="SemiBold" Margin="5"/>
+                                    <TextBlock Text="{Binding Category}" FontSize="15" Foreground="DarkGray" Margin="5"/>
+                                </StackPanel>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" >
                                 <TextBlock Margin="0,0,0,50" Text="{Binding cost}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" />
                                 <TextBlock Text="руб." Margin="10,0,0,0" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"  />
                             </StackPanel>                           
-                        </DockPanel>
-                        
+                        </DockPanel>                        
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

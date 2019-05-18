@@ -23,8 +23,8 @@
                 <TextBox x:Name="login" Text="{Binding Login}" Width="300" Height="40" VerticalContentAlignment="Center" Margin="0,50,0,0" materialDesign:HintAssist.Hint="Телефон или email" FontSize="14" BorderThickness="1" BorderBrush="#FFD3D9DE"/>
                 <PasswordBox x:Name="password" Width="300" Height="40" VerticalContentAlignment="Center" Margin="0,20,0,0" materialDesign:HintAssist.Hint="Пароль" FontSize="14" BorderThickness="1" BorderBrush="#FFD3D9DE"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Background="#FF4A76A8" Width="120" Height="35" Content="Отмена" HorizontalAlignment="Right" Margin="0,20,30,0" Click="ButtonClose_Click"/>
-                    <Button Background="#FF4A76A8" Width="120" Height="35" Content="Войти" HorizontalAlignment="Right" Margin="30,20,0,0" Click="Button_Click"/>
+                    <Button Background="#FF4A76A8" Width="120" Height="35" Content="Отмена" HorizontalAlignment="Right" Margin="0,20,30,0" Click="closeButton_Click"/>
+                    <Button Background="#FF4A76A8" Width="120" Height="35" Content="Войти" HorizontalAlignment="Right" Margin="30,20,0,0" Click="authButton_Click"/>
                 </StackPanel>
 
             </StackPanel>

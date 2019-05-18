@@ -3,11 +3,14 @@ using System.ComponentModel;
 using CourseProject_WPF_.Model;
 using CourseProject_WPF_.View;
 using CourseProject_WPF_.Repositories;
+using System.Net;
+using System.Windows;
 
 namespace CourseProject_WPF_.ViewModel
 {
     public class VkLoginViewModel : INotifyPropertyChanged
     {
+        
         EFUserRepository userRepository = new EFUserRepository();
 
         string login;                
@@ -38,12 +41,16 @@ namespace CourseProject_WPF_.ViewModel
             try
             {
                 Vk vk = new Vk(Login, password);
-                VkNet.Model.User user = vk.getUser();                
+                VkNet.Model.User user = vk.getUser();
+
+                
 
                 string firstName = "";
                 string lastName = "";
                 string telNumber = "";
                 string about = "";
+                byte[] image;
+                string i="";
 
                 if (userRepository.getByMail(Login) != null)
                 {
@@ -51,12 +58,24 @@ namespace CourseProject_WPF_.ViewModel
                     lastName = user.LastName;
                     telNumber = user.MobilePhone; ;
                     about = $"Страна: {user.Country.Title}\n" + $"Город: {user.City.Title}";
+
+                    using (WebClient client = new WebClient())
+                    {
+                        client.DownloadFile(new Uri(user.Photo200Orig.AbsoluteUri), User.filename);
+                    }
+                    using (System.IO.FileStream fs = new System.IO.FileStream(User.filename, System.IO.FileMode.OpenOrCreate))
+                    {
+                        image = new byte[fs.Length];
+                        fs.Read(image, 0, image.Length);
+                    }
                     CurrentUser.User = userRepository.getByMail(Login);
-                    User tmp = new User(firstName, lastName, Login, telNumber, about, CurrentUser.User.Privilege);
+                    User tmp = new User(firstName, lastName, Login, telNumber, telNumber, about, image, CurrentUser.User.Privilege);
                     userRepository.update(CurrentUser.User, tmp);
-                    CurrentUser.User = userRepository.getByMail(Login);
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
+
+                    App.authWindow.Close();
+                    App.mainWindow = new MainWindow();
+                    App.mainWindow.Show();
+                    image = null;
                     return true;
                 }
                 else
@@ -65,14 +84,27 @@ namespace CourseProject_WPF_.ViewModel
                     lastName = user.LastName;
                     telNumber = "";                    
                     about = $"Страна: {user.Country.Title}\n"+ $"Город: {user.City.Title}";
-                    userRepository.add(new Model.User(firstName, lastName, Login, telNumber, about));
+                    using (WebClient client = new WebClient())
+                    {
+                        client.DownloadFile(new Uri(user.Photo200Orig.AbsoluteUri), User.filename);
+                    }
+                    using (System.IO.FileStream fs = new System.IO.FileStream(User.filename, System.IO.FileMode.Open))
+                    {
+                        image = new byte[fs.Length];
+                        fs.Read(image, 0, image.Length);
+                    }
+
+                    userRepository.add(new Model.User(firstName, lastName, Login, telNumber,about,image));
                     CurrentUser.User = userRepository.getByMail(Login);
+
                     App.authWindow.Close();
                     App.mainWindow = new MainWindow();
                     App.mainWindow.Show();
+                    image = null;
                     return true;
                     
                 }
+
             }
             catch (VkNet.Exception.VkApiException)
             {

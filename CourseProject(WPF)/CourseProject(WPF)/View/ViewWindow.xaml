@@ -18,13 +18,24 @@
                 <materialDesign:PackIcon Kind="AttachFile" Height="25" Width="25" HorizontalAlignment="Center"/>
             </Button>
             <Label Content="Просмотр объявления" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Height="45" Margin="100,20,0,0" Foreground="Gray"/>
-            <StackPanel x:Name="stackPanel" Orientation="Vertical" Margin="100,90,100,0" >
-                <TextBlock Text="Название"  Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBox Text="{Binding Name}" IsReadOnly="True" TextWrapping="Wrap" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1" />
+            <StackPanel x:Name="stackPanel" Orientation="Vertical" Margin="100,90,100,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Название"  Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
+                    <TextBox Text="{Binding Name}" IsReadOnly="True" TextWrapping="Wrap" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1" />
+                </StackPanel>
                 <TextBlock Text="Категория" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBox Text="{Binding Category}" IsReadOnly="True" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1"/>
-                <TextBlock Text="Продавец" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
-                <TextBox x:Name="Seller" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding SellerInfo}" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1"/>
+                <TextBox Text="{Binding Category}" IsReadOnly="True" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1" />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Image Source="{Binding BitmapImage}" Width="80" Height="80" Stretch="UniformToFill" Margin="20,10,20,10">
+                        <Image.Clip>
+                            <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
+                        </Image.Clip>
+                    </Image>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <TextBlock Text="Продавец" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
+                        <TextBox x:Name="Seller" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding SellerInfo}" Margin="20,20,0,10" FontSize="18" BorderThickness="0,0,0,1"/>
+                    </StackPanel>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <StackPanel Orientation="Vertical" Margin="0,0,30,0" Width="200">
                         <TextBlock Text="Цена" Margin="20,0,0,0" FontSize="20" Foreground="Gray"/>
@@ -49,8 +60,6 @@
         <Grid Grid.Row="1">
             <TextBlock x:Name="counter" FontSize="16" Width="200" Foreground="Gray" Text="{Binding Count}" Margin="50,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" />
             <Button Style="{DynamicResource AuthButtonStyle}" Content="Закрыть" HorizontalAlignment="Right" Margin="0,0,50,0" Click="closeButton_Click"/>
-
-
         </Grid>
     </Grid>
 </Window>

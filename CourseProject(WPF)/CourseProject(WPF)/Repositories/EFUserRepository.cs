@@ -48,7 +48,7 @@ namespace CourseProject_WPF_.Repositories
             return context.Users.FirstOrDefault(x => (x.firstName + " " + x.secondName) == name);
         }
 
-        public User getById(int? id)
+        public  User getById(int? id)
         {
             return context.Users.FirstOrDefault(x => x.id == id);
         }
@@ -63,6 +63,7 @@ namespace CourseProject_WPF_.Repositories
                 tmp.SecondName = newUser.secondName;
                 tmp.Mail = newUser.mail;
                 tmp.About = newUser.about;
+                tmp.image = newUser.image;
                 tmp.TelNumber = newUser.telNumber;                
             }
             context.SaveChanges();

@@ -6,6 +6,8 @@ using InstagramApiSharp.API.Builder;
 using InstagramApiSharp.Classes;
 using InstagramApiSharp.Classes.Models;
 using InstagramApiSharp.Logger;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -21,9 +23,6 @@ namespace CourseProject_WPF_.ViewModel.Instagram
 
         User tmp;
 
-
-
-
         public InstaLogin(string username, string password)
         {
             this.username = username;
@@ -35,7 +34,7 @@ namespace CourseProject_WPF_.ViewModel.Instagram
         {
             user = new UserSessionData();
             user.UserName = username;
-            user.Password = password;            
+            user.Password = password;
         }
 
         async Task Login()
@@ -50,14 +49,31 @@ namespace CourseProject_WPF_.ViewModel.Instagram
             {
                 IResult<InstaCurrentUser> result = await api.GetCurrentUserAsync();
 
+
                 var names = result.Value.FullName.Split(' ');
                 string firstname = names[0];
                 string secondName = secondName = names[1];
                 string mail = result.Value.Email;
                 string telNumber = result.Value.PhoneNumber;
+
+                //string about = (result.Value.HdProfilePicture.Uri);
+
+                //byte[] image = new byte[result.Value.HdProfilePicture.ImageBytes.Length];
+                //image = result.Value.HdProfilePicture.ImageBytes;
+                byte[] image;
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(new Uri(result.Value.HdProfilePicture.Uri), User.filename);                    
+                }
+                using (System.IO.FileStream fs = new System.IO.FileStream(User.filename, System.IO.FileMode.OpenOrCreate))
+                {
+                    image = new byte[fs.Length];
+                    fs.Read(image, 0, image.Length);
+                }
+
                 string about = result.Value.FullName + "\n" + result.Value.Gender + "\n" + result.Value.UserName + "\n" + result.Value.CountryCode;
-                tmp = new User(firstname, secondName, mail, telNumber, about);
-            }        
+                tmp = new User(firstname, secondName, mail, telNumber, about, image);
+            }
         }
 
         public async Task<User> Get()
@@ -69,5 +85,8 @@ namespace CourseProject_WPF_.ViewModel.Instagram
         {
             return tmp;
         }
-    }
+    }        
 }
+
+    
+

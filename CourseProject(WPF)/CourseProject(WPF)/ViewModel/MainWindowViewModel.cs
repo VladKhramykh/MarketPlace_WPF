@@ -1,6 +1,7 @@
 ﻿using CourseProject_WPF_.Model;
 using CourseProject_WPF_.View;
 using System.ComponentModel;
+using System.IO;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -102,9 +103,9 @@ namespace CourseProject_WPF_.ViewModel
 
         public void outFromMain()
         {
-            CurrentUser.User = null;
-            AuthWindow authWindow = new AuthWindow();
-            authWindow.Show();
+            CurrentUser.User = null;            
+            App.authWindow = new AuthWindow();
+            App.authWindow.Show();
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

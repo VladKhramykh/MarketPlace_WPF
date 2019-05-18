@@ -7,6 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using CourseProject_WPF_.View;
+using System.Windows.Media.Imaging;
+using System.IO;
+using System.Drawing;
+using System.Windows;
+using System.Windows.Media;
+using Microsoft.Win32;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -23,7 +29,31 @@ namespace CourseProject_WPF_.ViewModel
         string telNumber;
         string about;
 
+        BitmapImage bitmap = new BitmapImage();
+        string bitmapImage = "";
         string message;
+
+        Image i;
+        public Image Image
+        {
+            get { return i; }
+            set
+            {
+                i = value;
+                OnPropertyChanged("Image");
+            }
+        }
+
+        public BitmapImage BitmapImage
+        {
+            get { return bitmap; }
+            set
+            {
+                bitmap = value;
+                OnPropertyChanged("BitmapImage");
+            }
+        }
+        
 
         public PersonAreaViewModel()
         {
@@ -32,6 +62,8 @@ namespace CourseProject_WPF_.ViewModel
             mail = user.mail;
             telNumber = user.telNumber;
             about = user.about;
+            //LoadPhoto();
+            BitmapImage = LoadPhoto(user.id);
         }
 
         public string FirstName
@@ -85,6 +117,15 @@ namespace CourseProject_WPF_.ViewModel
                 OnPropertyChanged("About");
             }
         }
+        public string BitImage
+        {
+            get { return bitmapImage; }
+            set
+            {
+                bitmapImage = value;
+                OnPropertyChanged("BitImage");
+            }
+        }
 
         public string Message
         {
@@ -96,9 +137,64 @@ namespace CourseProject_WPF_.ViewModel
             }
         }
 
+        public BitmapImage LoadPhoto(int seller)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+
+            if (userRepository.getById(seller).image != null)
+            {
+                using (var ms = new MemoryStream(userRepository.getById(seller).image))
+                {
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.StreamSource = ms;
+                    bitmapImage.EndInit();
+                }
+            }
+            return bitmapImage;
+        }
+
+        //public void LoadPhoto()
+        //{
+        //    if(user.image != null)
+        //    {
+        //        using (var ms = new MemoryStream(user.image))
+        //        {
+        //            BitmapImage.BeginInit();
+        //            BitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        //            BitmapImage.StreamSource = ms;
+        //            BitmapImage.EndInit();
+        //        }
+        //    }           
+        //    OnPropertyChanged("BitmapImage");
+        //}
+
+        public void LoadImageFromFS()
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "JPG (*.jpg)|*.jpg|bmp (*.bmp)|*.bmp|Png (*.png)|*.png";
+            if (open.ShowDialog() == true)
+            {
+                string fileName = open.FileName;
+                if (File.Exists(fileName))
+                {
+                    using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+                    {
+                        byte[] image = new byte[fs.Length];
+                        fs.Read(image, 0, image.Length);
+                        userRepository.update(user, new User(CurrentUser.User.FirstName, CurrentUser.User.SecondName, CurrentUser.User.Mail, CurrentUser.User.TelNumber, CurrentUser.User.About, image));
+                        BitmapImage = LoadPhoto(user.id);
+                    }
+                }
+            }
+            else
+                return;
+            
+        }
+
         public void changeDataOfUser()
         {
-            User tmp = new User(FirstName, SecondName, Mail, TelNumber, About, user.privilege);
+            User tmp = new User(FirstName, SecondName, Mail, TelNumber, About,CurrentUser.User.image, user.privilege);
             userRepository.update(user, tmp);
             CurrentUser.User = userRepository.getByMail(Mail);
 
@@ -122,13 +218,10 @@ namespace CourseProject_WPF_.ViewModel
 
                 App.mainWindow.Close();
                 userRepository.delete(CurrentUser.User);
-                AuthWindow authWindow = new AuthWindow();
-                authWindow.Show();
-            }
-                
-            
+                App.authWindow = new AuthWindow();
+                App.authWindow.Show();
+            }            
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 

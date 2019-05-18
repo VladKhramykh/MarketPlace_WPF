@@ -3,12 +3,17 @@ namespace CourseProject_WPF_.Model
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.IO;
     using System.Security.Cryptography;
     using System.Text;
+    using System.Windows.Media.Imaging;
 
     public partial class User : INotifyPropertyChanged
     {
-        
+
+        public static readonly string filename = @"G:\УЧЁБА\Курсач ООП\CourseProject(WPF)\currentUserImage.png";
+        public static readonly string nophoto = @"G:\УЧЁБА\Курсач ООП\CourseProject(WPF)\nophoto.png";
+
         public User()
         {
             this.Announcements = new HashSet<Announcement>();
@@ -28,6 +33,19 @@ namespace CourseProject_WPF_.Model
         
         public virtual ICollection<Announcement> Announcements { get; set; }        
         public virtual ICollection<TmpAnnouncement> TmpAnnouncements { get; set; }
+
+
+        BitmapImage bitmap;
+        public BitmapImage BitmapImage
+        {
+            get { return bitmap; }
+            set
+            {
+                bitmap = value;
+                OnPropertyChanged("BitmapImage");
+            }
+        }
+
 
         public string FirstName
         {
@@ -78,7 +96,6 @@ namespace CourseProject_WPF_.Model
             TelNumber = "";
             About = "";
             Privilege = "user";
-
         }
 
         public User(string firstName, string secondName, string mail, string telNumber, string about)
@@ -91,6 +108,11 @@ namespace CourseProject_WPF_.Model
             Privilege = "user";
         }
 
+        public User(string firstName, string secondName, string mail, string telNumber, string about, byte[] image) : this(firstName, secondName, mail, telNumber, about)
+        {
+            this.image = image;
+        }
+
         public User(string firstName, string secondName, string mail, string telNumber, string about, string privilege)
         {
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
@@ -100,6 +122,18 @@ namespace CourseProject_WPF_.Model
             About = about ?? throw new ArgumentNullException(nameof(about));
             Privilege = privilege ?? throw new ArgumentNullException(nameof(privilege));
         }
+
+        public User(string firstName, string secondName, string mail, string telNumber, string about, byte[] image, string privilege) : this(firstName, secondName, mail, telNumber, about, image)
+        {
+            this.privilege = privilege;
+        }
+
+        public User(string firstName, string secondName, string mail, string password, string telNumber, string about, byte[] image, string privilege) : this(firstName, secondName, mail, password, telNumber, about)
+        {
+            this.image = image;
+            this.privilege = privilege;
+        }
+
         public string Name
         {
             get { return $"{firstName} {secondName}"; }
@@ -139,6 +173,21 @@ namespace CourseProject_WPF_.Model
                 var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
                 return Convert.ToBase64String(hash);
             }
+        }
+
+        public void LoadPhoto()
+        {
+            if (image != null)
+            {
+                using (var ms = new MemoryStream(image))
+                {
+                    BitmapImage.BeginInit();
+                    BitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    BitmapImage.StreamSource = ms;
+                    BitmapImage.EndInit();
+                }
+            }
+            OnPropertyChanged("BitmapImage");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

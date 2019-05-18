@@ -3,9 +3,11 @@ using CourseProject_WPF_.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -66,22 +68,49 @@ namespace CourseProject_WPF_.ViewModel
             }
         }
 
+        BitmapImage bitmap = new BitmapImage();
+        public BitmapImage BitmapImage
+        {
+            get { return bitmap; }
+            set
+            {
+                bitmap = value;
+                OnPropertyChanged("BitmapImage");
+            }
+        }
+
         public UserViewWindowViewModel(object item)
         {
             Item = item;
             if (Item is User)
             {
-                Title = $"Информация о пользователе {(Item as User).FirstName} {(Item as User).FirstName}";
-                Name = $"{(Item as User).FirstName} {(Item as User).FirstName}";
+                Title = $"Информация о пользователе {(Item as User).FirstName} {(Item as User).SecondName}";
+                Name = $"{(Item as User).FirstName} {(Item as User).SecondName}";
                 ContactInfo = $"Mail: {(Item as User).Mail}\nТелефон: {(Item as User).TelNumber}\n";
                 About = $"{(Item as User).About}\n";
-
+                BitmapImage = LoadPhoto();
             }            
             else
             {
                 AlertWindow alertWindow = new AlertWindow("Ошибка типа данных!");
                 alertWindow.ShowDialog();
             }
+        }
+
+        public BitmapImage LoadPhoto()
+        {
+            BitmapImage tmp = new BitmapImage();
+            if ((Item as User).image != null)
+            {
+                using (var ms = new MemoryStream((Item as User).image))
+                {
+                    tmp.BeginInit();
+                    tmp.CacheOption = BitmapCacheOption.OnLoad;
+                    tmp.StreamSource = ms;
+                    tmp.EndInit();
+                }
+            }
+            return tmp;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

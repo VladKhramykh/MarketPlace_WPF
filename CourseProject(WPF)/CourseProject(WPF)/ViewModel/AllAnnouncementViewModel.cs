@@ -7,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -187,7 +189,11 @@ namespace CourseProject_WPF_.ViewModel
             var announcements = getAnnouncements().ToList();
             Announcements.Clear();
             foreach (Announcement a in announcements)
+            {
+                a.BitmapImage = LoadPhoto(a.seller.Value);
                 Announcements.Add(a);
+            }
+                
 
             tmpCategories = announcementRepository.getCategories().Distinct().ToList();
             tmpSellers = userRepository.getAllNames().Distinct().ToList();
@@ -201,7 +207,24 @@ namespace CourseProject_WPF_.ViewModel
             viewWindow.Visibility = System.Windows.Visibility.Hidden;
             
         }
-        
+
+        public BitmapImage LoadPhoto(int seller)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            
+            if (userRepository.getById(seller).image != null)
+            {
+                using (var ms = new MemoryStream(userRepository.getById(seller).image))
+                {
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.StreamSource = ms;
+                    bitmapImage.EndInit();
+                }
+            }
+            return bitmapImage;
+        }
+
         public void attachedAnnouncement()
         {
             QuickViewWindow quickViewWindow = new QuickViewWindow(SelectedItem);
@@ -344,6 +367,8 @@ namespace CourseProject_WPF_.ViewModel
             if (Announcements.IndexOf(SelectedItem) > 0)
                 SelectedItem = Announcements.ElementAt(Announcements.IndexOf(SelectedItem) - 1);
         }
+
+        
 
 
         public event PropertyChangedEventHandler PropertyChanged;

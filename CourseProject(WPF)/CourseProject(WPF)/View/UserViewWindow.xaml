@@ -29,12 +29,15 @@
                 <TextBlock FontSize="16" Text="{Binding Name}" TextWrapping="Wrap"  Height="100" Background="WhiteSmoke" Padding="15"/>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
-                        <Label Content="Цена" Margin="20,10,0,0" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
-                        <TextBlock FontSize="16" Text="{Binding Cost}" Width="200" Padding="15" Background="WhiteSmoke"/>
+                        <Image Source="{Binding BitmapImage}" Width="180" Height="180" Stretch="UniformToFill" Margin="0,10,0,10">
+                            <Image.Clip>
+                                <EllipseGeometry Center="90,90" RadiusX="90" RadiusY="90"/>
+                            </Image.Clip>
+                        </Image>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <Label Content="Контактная информация" Margin="20,10,0,0" Width="250" HorizontalAlignment="Left" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
-                        <TextBlock FontSize="16" Text="{Binding ContactInfo}" Width="270" Padding="15" HorizontalAlignment="Left" Height="150" TextWrapping="Wrap"  Background="WhiteSmoke"/>
+                        <TextBlock FontSize="16" Text="{Binding ContactInfo}" Width="300" Padding="15" HorizontalAlignment="Left" Height="150" TextWrapping="Wrap"  Background="WhiteSmoke"/>
                     </StackPanel>
                 </StackPanel>
                 <Label Content="Описание" Margin="20,10,0,0" FontSize="18" Foreground="Gray" FontWeight="DemiBold"/>
