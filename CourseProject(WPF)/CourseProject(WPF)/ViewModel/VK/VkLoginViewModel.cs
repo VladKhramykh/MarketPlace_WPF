@@ -15,6 +15,7 @@ namespace CourseProject_WPF_.ViewModel
 
         string login;                
         string status;
+        string code;
 
         public string Login
         {
@@ -23,6 +24,15 @@ namespace CourseProject_WPF_.ViewModel
             {
                 login = value;
                 OnPropertyChanged("Login");
+            }
+        }
+        public string Code
+        {
+            get { return code; }
+            set
+            {
+                code = value;
+                OnPropertyChanged("Code");
             }
         }
 
@@ -40,7 +50,8 @@ namespace CourseProject_WPF_.ViewModel
         {
             try
             {
-                Vk vk = new Vk(Login, password);
+                Status = "Подождите нексолько секунд";
+                Vk vk = new Vk(Login, password, Code);
                 VkNet.Model.User user = vk.getUser();
 
                 
@@ -105,6 +116,10 @@ namespace CourseProject_WPF_.ViewModel
                     
                 }
 
+            }
+            catch (VkNet.Exception.UserAuthorizationFailException)
+            {
+                Status = "Введите код подверждения и повторите вход";
             }
             catch (VkNet.Exception.VkApiException)
             {

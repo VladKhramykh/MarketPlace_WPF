@@ -30,8 +30,8 @@ namespace CourseProject_WPF_.Model
         public byte[] image { get; set; }
         public string privilege { get; set; }
 
-        
-        public virtual ICollection<Announcement> Announcements { get; set; }        
+
+        public virtual ICollection<Announcement> Announcements { get; set; }
         public virtual ICollection<TmpAnnouncement> TmpAnnouncements { get; set; }
 
 
@@ -86,7 +86,7 @@ namespace CourseProject_WPF_.Model
             get { return privilege; }
             set { privilege = value; }
         }
-       
+
         public User(string firstName, string secondName, string mail, string password)
         {
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));

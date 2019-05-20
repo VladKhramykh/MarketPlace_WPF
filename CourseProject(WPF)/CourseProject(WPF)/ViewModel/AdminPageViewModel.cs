@@ -117,17 +117,30 @@ namespace CourseProject_WPF_.ViewModel
         {
             if (SelectedItem is User)
             {
-                if (!userRepository.changePrivelege((SelectedItem as User), "admin"))
-                   userRepository.changePrivelege((SelectedItem as User), "user");
+                if (CurrentUser.isAdmin())
+                {
+                    if ((SelectedItem as User).privilege.Equals("admin"))
+                       userRepository.changePrivelege((SelectedItem as User), "user");
+                    else if ((SelectedItem as User).privilege.Equals("user"))
+                        userRepository.changePrivelege((SelectedItem as User), "moderator");
+                    else if ((SelectedItem as User).privilege.Equals("moderator"))
+                        userRepository.changePrivelege((SelectedItem as User), "admin");
 
-                AlertWindow alertWindow = new AlertWindow($"Пользователь {(SelectedItem as User).firstName} {(SelectedItem as User).secondName} теперь {(SelectedItem as User).privilege}");
-                alertWindow.ShowDialog();
+                    AlertWindow alertWindow = new AlertWindow($"Пользователь {(SelectedItem as User).firstName} {(SelectedItem as User).secondName} теперь {(SelectedItem as User).privilege}");
+                    alertWindow.ShowDialog();
+                }
+                else
+                {
+                    AlertWindow alertWindow = new AlertWindow("У вас недостаточно прав для совершения данного действия");
+                    alertWindow.ShowDialog();
+                }
+                
             }                     
             else if (SelectedItem is TmpAnnouncement)
                 transferToAnnouncemet(SelectedItem as TmpAnnouncement);
             else
             {
-                AlertWindow alertWindow = new AlertWindow($"Выбери объект, дЭбил!");
+                AlertWindow alertWindow = new AlertWindow($"Выберите объект");
                 alertWindow.ShowDialog();
             }            
 
@@ -148,12 +161,21 @@ namespace CourseProject_WPF_.ViewModel
         {
             if (SelectedItem is User)
             {
-                DialogWindow dialogWindow = new DialogWindow();
-                dialogWindow.DataContext = this;
-                Message = $"Уверены, что хотите удалить пользователя {(SelectedItem as User).firstName} {(SelectedItem as User).secondName}?";
-                dialogWindow.ShowDialog();
-                if (dialogWindow.DialogResult == true)
-                    deleteUser(SelectedItem as User);
+                if (CurrentUser.isAdmin())
+                {
+                    DialogWindow dialogWindow = new DialogWindow();
+                    dialogWindow.DataContext = this;
+                    Message = $"Уверены, что хотите удалить пользователя {(SelectedItem as User).firstName} {(SelectedItem as User).secondName}?";
+                    dialogWindow.ShowDialog();
+                    if (dialogWindow.DialogResult == true)
+                        deleteUser(SelectedItem as User);
+                }
+                else
+                {
+                    AlertWindow alertWindow = new AlertWindow("У вас недостаточно прав для совершения данного действия");
+                    alertWindow.ShowDialog();
+                }
+                
             }
 
             else if (SelectedItem is Announcement)
@@ -177,7 +199,7 @@ namespace CourseProject_WPF_.ViewModel
             }
             else
             {
-                AlertWindow alertWindow = new AlertWindow($"Выбери объект, дЭбил!");
+                AlertWindow alertWindow = new AlertWindow($"Выберите объект");
                 alertWindow.ShowDialog();
             }
            

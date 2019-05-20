@@ -42,7 +42,7 @@ namespace CourseProject_WPF_.ViewModel.Instagram
         {            
         }
 
-        public async void auth(string password)
+        public async Task<bool> auth(string password)
         {
             try
             {
@@ -56,6 +56,7 @@ namespace CourseProject_WPF_.ViewModel.Instagram
                     {              
                         userRepository.update(userRepository.getByMail(user.mail),user);
                         CurrentUser.User = userRepository.getByMail(user.mail);
+                        App.authWindow.Close();
                         App.mainWindow = new MainWindow();
                         App.mainWindow.Show();
                     }
@@ -67,24 +68,21 @@ namespace CourseProject_WPF_.ViewModel.Instagram
                         App.mainWindow = new MainWindow();
                         App.mainWindow.Show();
                     }
+                    return true;
                 }
                 else
-                    throw new Exception();
+                {
+                    throw new Exception();                    
+                }
+                    
 
             }
             catch (Exception)
             {
                 Status = "Неверно указан логин или пароль";
+                return false;
             }
 
-        }
-
-        async Task<User> get()
-        {
-            InstaLogin instaLogin = new InstaLogin("vlad_xramyx", "armagedon15");
-            User tmp = await instaLogin.Get();           
-            MessageBox.Show(tmp.ToString());
-            return tmp;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

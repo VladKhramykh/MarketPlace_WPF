@@ -48,7 +48,7 @@
           <Property Name="telNumber" Type="varchar" MaxLength="20" />
           <Property Name="about" Type="nvarchar" MaxLength="1000" />
           <Property Name="image" Type="varbinary(max)" />
-          <Property Name="privilege" Type="nvarchar" MaxLength="5" />
+          <Property Name="privilege" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK__Announcem__idReg__46E78A0C">
           <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
@@ -174,7 +174,7 @@
           <Property Name="telNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="privilege" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="privilege" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Announcements" Relationship="Self.FK__Announcem__selle__45F365D3" FromRole="Users" ToRole="Announcements" />
           <NavigationProperty Name="TmpAnnouncements" Relationship="Self.FK__TmpAnnoun__selle__4222D4EF" FromRole="Users" ToRole="TmpAnnouncements" />
         </EntityType>

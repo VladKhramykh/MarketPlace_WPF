@@ -101,6 +101,40 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="OutButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Background" Value="#FF464648"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="LightGray" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+
+        <Style.Resources>
+            <Storyboard x:Key="OnMouseEnter1">
+                <ColorAnimationUsingKeyFrames BeginTime="00:00:00"  Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                    <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF303032"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OnMouseLeave1">
+                <ColorAnimationUsingKeyFrames BeginTime="00:00:00"  Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                    <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF464648"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </Style.Resources>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Mouse.MouseEnter" >
+                <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Mouse.MouseLeave" >
+                <BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}"/>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="OtherButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
         <Setter Property="Width" Value="120"/>
         <Setter Property="Height" Value="40"/>
@@ -171,6 +205,41 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="DownloadButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
+        <Setter Property="Width" Value="140"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="LightGray" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Cursor" Value="Hand" />
+
+        <Style.Resources>
+            <Storyboard x:Key="OnMouseEnter1">
+                <ColorAnimationUsingKeyFrames BeginTime="00:00:00"  Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                    <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="Gray"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OnMouseLeave1">
+                <ColorAnimationUsingKeyFrames BeginTime="00:00:00"  Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                    <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="LightGray"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </Style.Resources>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Mouse.MouseEnter" >
+                <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Mouse.MouseLeave" >
+                <BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}"/>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style x:Key="RegButton" TargetType="Button">
         <Setter Property="Foreground" Value="Gray"/>
         <Setter Property="Background" Value="{x:Null}"/>

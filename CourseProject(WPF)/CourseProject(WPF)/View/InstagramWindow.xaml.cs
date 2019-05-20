@@ -27,9 +27,10 @@ namespace CourseProject_WPF_.View
             DataContext = instagramLoginViewModel;
         }
 
-        private void authButton_Click(object sender, RoutedEventArgs e)
+        private async void authButton_Click(object sender, RoutedEventArgs e)
         {
-            instagramLoginViewModel.auth(password.Password);
+            if (await instagramLoginViewModel.auth(password.Password) == true)
+                Close();
                 
         }
         private void returnButton_Click(object sender, RoutedEventArgs e)

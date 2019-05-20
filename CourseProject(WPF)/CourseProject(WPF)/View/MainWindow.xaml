@@ -87,14 +87,14 @@
                         <ListViewItem Height="85" Width="100" >
                             <StackPanel HorizontalAlignment="Center">
                                 <materialDesign:PackIcon Kind="Lock" Margin="25,0,0,0" Height="40" Width="40" Foreground="#FFB6B6B6"/>
-                                <TextBlock Text="Админ" HorizontalAlignment="Center" Margin="20,5,0,0" FontSize="14" Foreground="#FF8C8C8D"/>
+                                <TextBlock Text="Управление" HorizontalAlignment="Center" Margin="10,5,-5,0" FontSize="14" Foreground="#FF8C8C8D"/>
                             </StackPanel>
                         </ListViewItem>
                     </ListView>
-                    <Button x:Name="outButton" Width="100" Height="80" BorderThickness="0" Background="{x:Null}" VerticalAlignment="Bottom" Click="outButton_Click">
+                    <Button x:Name="outButton" Width="100" Height="80" VerticalAlignment="Bottom" Click="outButton_Click" Style="{DynamicResource OutButtonStyle}">
                         <StackPanel Width="100" Margin="-15,0,0,0">
-                            <materialDesign:PackIcon Kind="ExitToApp"  Height="40" Width="61" Foreground="#FFB6B6B6" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Выйти" HorizontalAlignment="Center" Margin="15,5,0,0" FontSize="14" Foreground="#FF8C8C8D" Width="66"/>
+                            <materialDesign:PackIcon Kind="ExitToApp"  Height="40" Width="60" Foreground="#FFB6B6B6" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Выйти" HorizontalAlignment="Center" Margin="20,5,0,0" FontSize="14" Foreground="#FF8C8C8D" Width="60"/>
                         </StackPanel>
                     </Button>
                 </Grid>

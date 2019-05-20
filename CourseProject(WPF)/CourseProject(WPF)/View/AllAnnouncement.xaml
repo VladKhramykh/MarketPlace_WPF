@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:viewmodel="clr-namespace:CourseProject_WPF_.ViewModel"
       mc:Ignorable="d"
-      d:DesignWidth="1000" d:DesignHeight="600"
+      d:DesignWidth="1000" d:DesignHeight="700"
       Title="AllAnnouncement" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}">
 
     
@@ -21,16 +21,16 @@
             <Grid Grid.Column="0" Background="White">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Height="50" Margin="20,40,0,-10" Text="Поиск по критериям" FontSize="20"/>
-                    <TextBox Text="{Binding SearchText}" materialDesign:HintAssist.Hint="Search" Margin="20,30,20,20" FontSize="16" Height="40" SelectionBrush="#FF787878" Foreground="#FF292929" BorderBrush="#89DCD8D8" />
-                    <ComboBox ItemsSource="{Binding Categories}" Text="{Binding Category}" materialDesign:HintAssist.Hint="Category" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
-                    <ComboBox ItemsSource="{Binding Sellers}" Text="{Binding Seller}" materialDesign:HintAssist.Hint="Seller" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
-                    <ComboBox ItemsSource="{Binding Regions}" Text="{Binding Region}" materialDesign:HintAssist.Hint="Region" IsEditable="False" SelectedIndex="{Binding SelectedIndex}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
+                    <TextBox Text="{Binding SearchText}" materialDesign:HintAssist.Hint="Поиск" Margin="20,30,20,20" FontSize="16" Height="40" SelectionBrush="#FF787878" Foreground="#FF292929" BorderBrush="#89DCD8D8" />
+                    <ComboBox ItemsSource="{Binding Categories}" Text="{Binding Category}" materialDesign:HintAssist.Hint="Категория" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
+                    <ComboBox ItemsSource="{Binding Sellers}" Text="{Binding Seller}" materialDesign:HintAssist.Hint="Продавец" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
+                    <ComboBox ItemsSource="{Binding Regions}" Text="{Binding Region}" materialDesign:HintAssist.Hint="Регион" IsEditable="False" SelectedIndex="{Binding SelectedIndex}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" Margin="20" Foreground="#FF292929" BorderBrush="#89DCD8D8"/>
                     <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
                         <Label Content="Цена" Margin="20,20,20,0" FontSize="16" Foreground="#FF292929"/>
-                        <TextBox Text="{Binding MinCost}" Width="85" Margin="10,0,0,0" materialDesign:HintAssist.Hint="Min" CaretBrush="#FF104774" Foreground="#FF292929" BorderBrush="#89DCD8D8" SelectionBrush="#FF787878" />
-                        <TextBox Text="{Binding MaxCost}" Width="85" Margin="10,0,0,0" materialDesign:HintAssist.Hint="Max" CaretBrush="#FF104774" Foreground="#FF292929" BorderBrush="#89DCD8D8" SelectionBrush="#FF787878"/>
+                        <TextBox Text="{Binding MinCost}" Width="85" Margin="10,0,0,0" materialDesign:HintAssist.Hint="Мин" CaretBrush="#FF104774" Foreground="#FF292929" BorderBrush="#89DCD8D8" SelectionBrush="#FF787878" />
+                        <TextBox Text="{Binding MaxCost}" Width="85" Margin="10,0,0,0" materialDesign:HintAssist.Hint="Макс" CaretBrush="#FF104774" Foreground="#FF292929" BorderBrush="#89DCD8D8" SelectionBrush="#FF787878"/>
                     </StackPanel>
-                    <Button x:Name="searchButton" Width="120" Background="#FF555555" Margin="0,50,20,0" HorizontalAlignment="Right" Content="Search" Click="searchButton_Click" BorderBrush="#FFA6A6A6"/>
+                    <Button x:Name="searchButton" Width="120" Height="40" Background="#FF555555" Margin="0,50,20,0" HorizontalAlignment="Right" Content="Поиск" Click="searchButton_Click" BorderBrush="#FFA6A6A6"/>
                 </StackPanel>
             </Grid>
         </Border>

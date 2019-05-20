@@ -33,7 +33,12 @@ namespace CourseProject_WPF_
                 return true;
             return false;
         }
-
+        public static bool isModerator()
+        {
+            if (User.privilege.Equals("moderator"))
+                return true;
+            return false;
+        }
         public override string ToString()
         {
             return User.FirstName + " " + User.SecondName;

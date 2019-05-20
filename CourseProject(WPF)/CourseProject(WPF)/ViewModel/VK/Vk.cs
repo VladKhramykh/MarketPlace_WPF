@@ -18,19 +18,27 @@ namespace CourseProject_WPF_
         VkApi vkApi = new VkApi();
         const ulong AppId = 4268118;
 
-        public Vk(string login, string password)
+        public Vk(string login, string password, string code)
         {
-            auth(login, password);
+            auth(login, password, code);
         }
 
-        public void auth(string login, string password)
+        public void auth(string login, string password, string code)
         {
             vkApi.Authorize(new ApiAuthParams
             {
                 ApplicationId = AppId,
                 Login = login,
                 Password = password,
-                Settings = Settings.All
+                Settings = Settings.All,
+                TwoFactorAuthorization = () =>
+                {
+                    Enter enter = new Enter();
+                    enter.ShowDialog();
+                    return enter.getCode();
+                    //return code;
+                }
+
             });
         }
 

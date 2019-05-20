@@ -22,8 +22,8 @@
                     <GradientStop Color="#FFE2E2E2" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <TextBlock HorizontalAlignment="Left" FontSize="20" Foreground="Gray" Text="Меню администратора" VerticalAlignment="Center" Margin="20,0,0,0"/>
-            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="150,5,5,5">
+            <TextBlock HorizontalAlignment="Left" FontSize="20" Foreground="Gray" Text="Меню управления" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="100,5,5,5">
                 <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Пользователи" Checked="radio1_Checked" Cursor="Hand"/>
                 <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Актуальные" Checked="radio2_Checked" Cursor="Hand"/>
                 <RadioButton x:Name="radio3" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Не акутальные" Checked="radio3_Checked" Cursor="Hand"/>

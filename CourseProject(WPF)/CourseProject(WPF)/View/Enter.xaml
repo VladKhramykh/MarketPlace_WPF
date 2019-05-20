@@ -1,0 +1,16 @@
+﻿<Window x:Class="CourseProject_WPF_.View.Enter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseProject_WPF_.View"
+        mc:Ignorable="d"
+        Title="Enter" Height="150" Width="200">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBox x:Name="code" Height="50" FontSize="20" Margin="10"/>
+            <Button Width="110" Click="Button_Click" Content="Отправить"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

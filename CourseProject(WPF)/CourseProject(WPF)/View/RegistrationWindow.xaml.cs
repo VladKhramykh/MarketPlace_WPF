@@ -44,7 +44,7 @@ namespace CourseProject_WPF_.View
             if (registrationViewModel.registration(User.getHash(pass1NameTextBox.Password),User.getHash(pass2NameTextBox.Password)))
                 infoLabel.Foreground = Brushes.LimeGreen;
             else           
-                infoLabel.Foreground = Brushes.Red;
+                infoLabel.Foreground = Brushes.DarkRed;
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace CourseProject_WPF_.View
             if (!String.IsNullOrEmpty(firstNameTextBox.Text))
                 firstNameTextBox.BorderBrush = Brushes.LimeGreen;
             else
-                firstNameTextBox.BorderBrush = Brushes.Red;
+                firstNameTextBox.BorderBrush = Brushes.DarkRed;
 
             compare();
         }
@@ -70,7 +70,7 @@ namespace CourseProject_WPF_.View
             if (!String.IsNullOrEmpty(secondNameTextBox.Text))
                 secondNameTextBox.BorderBrush = Brushes.LimeGreen;
             else
-                secondNameTextBox.BorderBrush = Brushes.Red;
+                secondNameTextBox.BorderBrush = Brushes.DarkRed;
             compare();
         }
 
@@ -79,7 +79,7 @@ namespace CourseProject_WPF_.View
             if (!String.IsNullOrEmpty(mailTextBox.Text))
                 mailTextBox.BorderBrush = Brushes.LimeGreen;
             else
-                mailTextBox.BorderBrush = Brushes.Red;
+                mailTextBox.BorderBrush = Brushes.DarkRed;
             compare();
         }
 
@@ -93,8 +93,8 @@ namespace CourseProject_WPF_.View
             }
             else
             {
-                pass1NameTextBox.BorderBrush = Brushes.Red;
-                pass2NameTextBox.BorderBrush = Brushes.Red;                
+                pass1NameTextBox.BorderBrush = Brushes.DarkRed;
+                pass2NameTextBox.BorderBrush = Brushes.DarkRed;                
             }
 
             compare();
@@ -111,8 +111,8 @@ namespace CourseProject_WPF_.View
             }
             else
             {
-                pass1NameTextBox.BorderBrush = Brushes.Red;
-                pass2NameTextBox.BorderBrush = Brushes.Red;                
+                pass1NameTextBox.BorderBrush = Brushes.DarkRed;
+                pass2NameTextBox.BorderBrush = Brushes.DarkRed;                
             }
 
             compare();

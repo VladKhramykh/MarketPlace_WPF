@@ -38,19 +38,19 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <TextBox x:Name="firstNameTextBox" Text="{Binding FirstName}" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" TextChanged="firstNameTextBox_TextChanged" />
+            <TextBox x:Name="firstNameTextBox" Text="{Binding FirstName}" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="DarkRed" TextChanged="firstNameTextBox_TextChanged" />
         </Grid>
         <Grid Grid.Row="3">
-            <TextBox x:Name="secondNameTextBox" Text="{Binding SecondName}" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300"  BorderBrush="Red"  TextChanged="secondNameTextBox_TextChanged" />
+            <TextBox x:Name="secondNameTextBox" Text="{Binding SecondName}" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300"  BorderBrush="DarkRed"  TextChanged="secondNameTextBox_TextChanged" />
         </Grid>
         <Grid Grid.Row="4">
-            <TextBox x:Name="mailTextBox" Text="{Binding Mail}" materialDesign:HintAssist.Hint="Mail" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" TextChanged="mailTextBox_TextChanged" />
+            <TextBox x:Name="mailTextBox" Text="{Binding Mail}" materialDesign:HintAssist.Hint="Mail" Style="{StaticResource TextBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="DarkRed" TextChanged="mailTextBox_TextChanged" />
         </Grid>
         <Grid Grid.Row="5">
-            <PasswordBox x:Name="pass1NameTextBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource PasswordBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" PasswordChanged="pass1NameTextBox_PasswordChanged" />
+            <PasswordBox x:Name="pass1NameTextBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource PasswordBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="DarkRed" PasswordChanged="pass1NameTextBox_PasswordChanged" />
         </Grid>
         <Grid Grid.Row="6">
-            <PasswordBox x:Name="pass2NameTextBox" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource PasswordBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="Red" PasswordChanged="pass2NameTextBox_PasswordChanged" />
+            <PasswordBox x:Name="pass2NameTextBox" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource PasswordBoxes}" VerticalAlignment="Bottom" Width="300" BorderBrush="DarkRed" PasswordChanged="pass2NameTextBox_PasswordChanged" />
         </Grid>
         <Grid Grid.Row="7">
             <Button x:Name="registrationButton" Content="Регистрация" VerticalAlignment="Top"  Style="{DynamicResource AuthButtonStyle}" Margin="0,25,0,0"  IsEnabled="False" Click="registrationButton_Click" />

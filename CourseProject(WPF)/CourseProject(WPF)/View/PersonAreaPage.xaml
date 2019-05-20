@@ -29,26 +29,30 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical" Grid.RowSpan="2" Margin="100,0,100,0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Image x:Name="image" Source="{Binding BitmapImage}" Width="250" Height="250"/>
-
-
                     <StackPanel Orientation="Vertical">
-                        <Label Width="100" Content="Имя" Margin="0,30,0,0" />
-                        <TextBox Width="300" Margin="150,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding FirstName}"/>
-                        <Label Width="100" Content="Фамилия" Margin="0,5,0,0" />
-                        <TextBox Width="300" Margin="150,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding SecondName}"/>
-                        <Label Width="100" Content="Mail" Margin="0,5,0,0" />
-                        <TextBox Width="300" Margin="150,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding Mail}"/>
-                        <Label Width="100" Content="Номер телефона" Margin="0,5,0,0" />
-                        <TextBox Width="300" Margin="150,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding TelNumber}"/>
+                        <Image x:Name="image" Source="{Binding BitmapImage}" Width="280" Height="280" Margin="0,50,100,0"/>
+                        <Button Content="Загрузить" Width="120" Margin="0,10,100,0" Click="imageButton_Click" Style="{DynamicResource DownloadButtonStyle}"/>
+                    </StackPanel>                    
+                    <StackPanel Orientation="Vertical" >
+                        <Label Width="100" Content="Имя" Margin="30,30,0,0"  HorizontalAlignment="Left"/>
+                        <TextBox Width="300" Margin="20,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding FirstName}"/>
+                        <Label Width="100" Content="Фамилия" Margin="30,5,0,0" HorizontalAlignment="Left" />
+                        <TextBox Width="300" Margin="20,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding SecondName}"/>
+                        <Label Width="100" Content="Mail" Margin="30,5,0,0" HorizontalAlignment="Left"/>
+                        <TextBox Width="300" Margin="20,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding Mail}"/>
+                        <Label Width="100" Content="Номер телефона" Margin="30,5,0,0" HorizontalAlignment="Left"/>
+                        <TextBox Width="300" Margin="20,5,0,5" BorderThickness="1" FontSize="18" Text="{Binding TelNumber}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                     <Label Width="100" Content="О себе" Margin="0,5,600,0" />
                     <TextBox  Margin="0,5,0,10" BorderThickness="1" FontSize="18" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Text="{Binding About}"/>
-                    <Button Content="Сохранить" Width="150" Margin="0,30,0,0" Click="saveChangesButton_Click"/>
-                    <Button Content="Удалить себя" Width="150" Margin="0,10,0,0" Click="deleteUserButton_Click"/>
-                    <Button Content="Загр" Width="150" Margin="0,10,0,0" Click="imageButton_Click"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">                        
+                        <Button Content="Удалить себя" Width="150" Margin="0,20,50,0" Click="deleteUserButton_Click" Style="{DynamicResource CloseButtonStyle}"/>
+                        <Button Content="Сохранить" Width="150" Margin="50,20,0,0" Click="saveChangesButton_Click"/>
+                    </StackPanel>
+                    
+                    
                 </StackPanel>
             </StackPanel>
         </Grid>

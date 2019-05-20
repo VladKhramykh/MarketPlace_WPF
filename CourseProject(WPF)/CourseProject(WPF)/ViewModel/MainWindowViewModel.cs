@@ -76,7 +76,7 @@ namespace CourseProject_WPF_.ViewModel
                     break;
                 case 3:
                     {
-                        if (CurrentUser.isAdmin())
+                        if (CurrentUser.isAdmin() || CurrentUser.isModerator())
                             Content = new AdminPage();
                         else
                         {

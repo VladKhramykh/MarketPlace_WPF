@@ -250,6 +250,9 @@
     <Compile Include="View\EditWindow.xaml.cs">
       <DependentUpon>EditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Enter.xaml.cs">
+      <DependentUpon>Enter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\InstagramWindow.xaml.cs">
       <DependentUpon>InstagramWindow.xaml</DependentUpon>
     </Compile>
@@ -278,11 +281,11 @@
       <DependentUpon>VKLoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\VK\Vk.cs" />
-    <Page Include="Resourses\ButtonsDictionary.xaml">
+    <Page Include="Resources\ButtonsDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\Styles.xaml">
+    <Page Include="Resources\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +322,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Enter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
