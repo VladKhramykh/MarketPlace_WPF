@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CourseProject_WPF_.App" Collapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.CurrentUser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAkIAAAAAQAgAAEAAgAAAAAAAAAAQA=</HashCode>
+      <FileName>ViewModel\CurrentUser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.Vk" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQBAAAAAAAAAAAAAAEAAAABQAAAA=</HashCode>
+      <FileName>ViewModel\VK\Vk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.Model.NewMarketPlaceEntities1" Collapsed="true">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAyAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Model1.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.Model.Announcement" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAANIAAAgAAAAAEEIAABABQIgAAUAAAAAAAIAEAACgA=</HashCode>
+      <FileName>Model\Announcement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.Model.Region" Collapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Region.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.Model.TmpAnnouncement" Collapsed="true">
+    <Position X="18.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAANAAAAgAAAAAEEAAABABQAAAAUAAAAAAAIAEAACgA=</HashCode>
+      <FileName>Model\TmpAnnouncement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.Model.User" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIIkhAAABIAAEMKAABAAQIkEIAAAgDCAAEA0AAAgE=</HashCode>
+      <FileName>Model\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.Repositories.EFAnnouncementRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIAAAAAAAAAAAABAAQAAAAAAAAEAAAAASAICgAA=</HashCode>
+      <FileName>Repositories\EFAnnouncementRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.Repositories.EFRegionRepository" Collapsed="true">
+    <Position X="20.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\EFRegionRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CourseProject_WPF_.Repositories.EFTmpAnnouncementRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIAAAAAAAAAAAAAAAQAAAAAAAAAAAAAACAICAAA=</HashCode>
+      <FileName>Repositories\EFTmpAnnouncementRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.Repositories.EFUserRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAgAAIAAAQAAAAAAAAAABAAAiAIGAAA=</HashCode>
+      <FileName>Repositories\EFUserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.AddWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAhAAAAABA=</HashCode>
+      <FileName>View\AddWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.AdminPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAQQAAAAAAAAAAgAAAAAAAAAAIAAAAAEAAAAAA=</HashCode>
+      <FileName>View\AdminPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.AlertWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABIAAAACA=</HashCode>
+      <FileName>View\AlertWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.AllAnnouncement" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AllAnnouncement.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.AuthWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAACAAACAQAAEIAABABCAAAAAAABAAA=</HashCode>
+      <FileName>View\AuthWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.DialogWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>View\DialogWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.EditWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAIAAAAAAAAABAAAABAAAAABA=</HashCode>
+      <FileName>View\EditWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.Enter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAEAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Enter.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.InstagramWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\InstagramWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABAAAADAAAAAAAAAAAAAAAEAAAABAQAAAEAAABAAA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.MyAnnouncementPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAAAQAAAAAEAAAAEgAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>View\MyAnnouncementPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.PersonAreaPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABAAABAAA=</HashCode>
+      <FileName>View\PersonAreaPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.QuickViewWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>View\QuickViewWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.RegistrationWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAEAAAAAAEAgBAAAAABAACAAEAAAABQAk=</HashCode>
+      <FileName>View\RegistrationWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.UserViewWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAIAAAAAAAAAAAAAAAAAQAAAAAAQAAAAAA=</HashCode>
+      <FileName>View\UserViewWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.ViewWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAgAAAIAAAAAAAABAAAAAAAAABAAAAABA=</HashCode>
+      <FileName>View\ViewWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.View.VKLoginWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>View\VKLoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.AddWindowViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AECAAQAAgAIIAAEQpAABoBQAgAAUUAAAQAAYAEAADQA=</HashCode>
+      <FileName>ViewModel\AddWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.AdminPageViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAqCAAAKAAABAIAAAAQQAgEAAAAAABFAAIIAUBCQ=</HashCode>
+      <FileName>ViewModel\AdminPageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.AllAnnouncementViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACIIwAkgCIIIgQQpABAgAwAxCAEkAQBZbAIAcAQDAA=</HashCode>
+      <FileName>ViewModel\AllAnnouncementViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.165" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.AuthWindowViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAAACAAAAIAAAAAAAgAAAAAAGQAAQAkAAEAA=</HashCode>
+      <FileName>ViewModel\AuthWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.EditWindowViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAQAAgAIIAAEQpAQBoBQEgAAUUAAAQAAYAEAEDYA=</HashCode>
+      <FileName>ViewModel\EditWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.MainWindowViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAKCAAAAgAgAEAgAAAAYAAAAEEAAA=</HashCode>
+      <FileName>ViewModel\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.MyAnnouncementPageViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAAAIACAAAIAgAgEQAgEAAAAABBRAAAYAUBAA=</HashCode>
+      <FileName>ViewModel\MyAnnouncementPageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.PersonAreaViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIIEgAAAJAAAEAIAABIAAIgAAIABgBKAAAIYAAhSU=</HashCode>
+      <FileName>ViewModel\PersonAreaViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.QuickWindowViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAwAAAAEEQIAQBABYEgAAWAAAAQAAAAMAAAAA=</HashCode>
+      <FileName>ViewModel\QuickWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.RegistrationViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEgAAABAAAAAIAAAAAAAgAAAAAACSAQAA8AAAAE=</HashCode>
+      <FileName>ViewModel\RegistrationViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.TmpAnnouncementViewModel" Collapsed="true">
+    <Position X="18.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIgAABgAAggAAAAAAgAAAAAAAAAAAAUACAAAAAAA=</HashCode>
+      <FileName>ViewModel\TmpAnnouncementViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.UserViewWindowViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAQAAAAEEAIAQBAAYMgAAGAAABAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\UserViewWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.188" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.VkLoginViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAAAAAIAAgAAAAoAAAAAAAEAAQAIAAEAA=</HashCode>
+      <FileName>ViewModel\VK\VkLoginViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.Instagram.InstagramLoginViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAAAAAIAAAAAAAgAAAAAAAEAAQAIAAEAA=</HashCode>
+      <FileName>ViewModel\Instagram\InstagramLoginViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CourseProject_WPF_.ViewModel.Instagram.InstaLogin" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAABAAAAAAAEAAAAAAAAAECAQAgAAAQA=</HashCode>
+      <FileName>ViewModel\Instagram\InstaLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CourseProject_WPF_.Repositories.IAnnouncementRepository" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAQAAAAAAAAEAAAAACAICgAA=</HashCode>
+      <FileName>Repositories\IAnnouncementRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CourseProject_WPF_.Repositories.ITmpAnnouncementRepository" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAQAAAAAAAAAAAAAACAICAAA=</HashCode>
+      <FileName>Repositories\ITmpAnnouncementRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CourseProject_WPF_.Repositories.IUserRepository" Collapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAIAAAAAAAAAAAAAABAAAgAIGAAA=</HashCode>
+      <FileName>Repositories\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

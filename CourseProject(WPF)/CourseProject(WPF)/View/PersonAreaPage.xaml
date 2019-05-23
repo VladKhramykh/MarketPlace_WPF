@@ -51,8 +51,6 @@
                         <Button Content="Удалить себя" Width="150" Margin="0,20,50,0" Click="deleteUserButton_Click" Style="{DynamicResource CloseButtonStyle}"/>
                         <Button Content="Сохранить" Width="150" Margin="50,20,0,0" Click="saveChangesButton_Click"/>
                     </StackPanel>
-                    
-                    
                 </StackPanel>
             </StackPanel>
         </Grid>

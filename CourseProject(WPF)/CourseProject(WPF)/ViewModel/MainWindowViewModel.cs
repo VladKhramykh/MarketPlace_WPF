@@ -1,7 +1,9 @@
 ﻿using CourseProject_WPF_.Model;
 using CourseProject_WPF_.View;
+using System;
 using System.ComponentModel;
 using System.IO;
+using System.Windows;
 
 namespace CourseProject_WPF_.ViewModel
 {
@@ -89,8 +91,7 @@ namespace CourseProject_WPF_.ViewModel
                     }
                 default:
                     Content = new AllAnnouncement();
-                    break;
-                    
+                    break;                    
             }
             
         }

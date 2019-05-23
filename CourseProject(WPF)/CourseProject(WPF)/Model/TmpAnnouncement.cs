@@ -50,7 +50,7 @@ namespace CourseProject_WPF_.Model
             get { return name; }
             set
             {
-                name = value;
+                name = value;                
             }
         }
         public string Category

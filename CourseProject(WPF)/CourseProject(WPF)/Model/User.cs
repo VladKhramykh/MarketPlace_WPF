@@ -11,8 +11,8 @@ namespace CourseProject_WPF_.Model
     public partial class User : INotifyPropertyChanged
     {
 
-        public static readonly string filename = @"G:\УЧЁБА\Курсач ООП\CourseProject(WPF)\currentUserImage.png";
-        public static readonly string nophoto = @"G:\УЧЁБА\Курсач ООП\CourseProject(WPF)\nophoto.png";
+        //public static readonly string filename2 = @"G:\УЧЁБА\Курсач ООП\CourseProject(WPF)\currentUserImage.png";
+        public static readonly string filename = Environment.CurrentDirectory.ToString() + @"\currentUserImage.png";        
 
         public User()
         {
@@ -50,7 +50,11 @@ namespace CourseProject_WPF_.Model
         public string FirstName
         {
             get { return firstName; }
-            set { firstName = value; }
+            set
+            {
+                firstName = value;
+                OnPropertyChanged("FirstName");
+            }
         }
 
         public string SecondName

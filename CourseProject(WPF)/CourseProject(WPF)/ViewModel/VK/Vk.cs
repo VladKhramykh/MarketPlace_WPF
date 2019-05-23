@@ -33,10 +33,10 @@ namespace CourseProject_WPF_
                 Settings = Settings.All,
                 TwoFactorAuthorization = () =>
                 {
-                    Enter enter = new Enter();
-                    enter.ShowDialog();
-                    return enter.getCode();
-                    //return code;
+                    //Enter enter = new Enter();
+                    //enter.ShowDialog();
+                    //return enter.getCode();
+                    return code;
                 }
 
             });

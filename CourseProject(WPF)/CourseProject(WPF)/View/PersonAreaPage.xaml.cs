@@ -28,7 +28,6 @@ namespace CourseProject_WPF_.View
         {
             personAreaViewModel.deleteUser();            
         }
-
         
         private void imageButton_Click(object sender, RoutedEventArgs e)
         {

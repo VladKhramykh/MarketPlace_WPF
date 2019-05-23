@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
 {
-    /// <summary>
-    /// Логика взаимодействия для ViewWindow.xaml
-    /// </summary>
     public partial class ViewWindow : Window
     {
         AllAnnouncementViewModel mainViewModel;

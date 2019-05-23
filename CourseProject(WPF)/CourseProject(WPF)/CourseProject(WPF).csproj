@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>сойкель.ico</ApplicationIcon>
+    <ApplicationIcon>stickies.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiproSoftware.Docking.Wpf, Version=18.1.675.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL" />
@@ -202,6 +202,7 @@
     </Compile>
     <Compile Include="Repositories\EFRegionRepository.cs" />
     <Compile Include="Repositories\IAnnouncementRepository.cs" />
+    <Compile Include="Repositories\IRegionRepository.cs" />
     <Compile Include="Repositories\ITmpAnnouncementRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="ViewModel\AddWindowViewModel.cs" />
@@ -388,6 +389,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -416,6 +418,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="stickies.ico" />
     <Resource Include="сойкель.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

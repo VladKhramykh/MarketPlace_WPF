@@ -12,7 +12,6 @@ namespace CourseProject_WPF_.Repositories
         {
             context = new NewMarketPlaceEntities1();
         }
-
         
         public IEnumerable<TmpAnnouncement> getAll()
         {

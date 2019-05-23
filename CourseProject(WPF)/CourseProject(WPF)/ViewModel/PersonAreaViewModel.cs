@@ -53,7 +53,6 @@ namespace CourseProject_WPF_.ViewModel
                 OnPropertyChanged("BitmapImage");
             }
         }
-        
 
         public PersonAreaViewModel()
         {
@@ -61,8 +60,7 @@ namespace CourseProject_WPF_.ViewModel
             secondName = user.secondName;
             mail = user.mail;
             telNumber = user.telNumber;
-            about = user.about;
-            //LoadPhoto();
+            about = user.about;           
             BitmapImage = LoadPhoto(user.id);
         }
 
@@ -101,9 +99,8 @@ namespace CourseProject_WPF_.ViewModel
         {
             get { return telNumber; }
             set
-            {
-                //if (!String.IsNullOrEmpty(value))
-                    telNumber = value;
+            {                
+                telNumber = value;
                 OnPropertyChanged("TelNumber");
             }
         }
@@ -112,8 +109,7 @@ namespace CourseProject_WPF_.ViewModel
             get { return about; }
             set
             {
-                //if (!String.IsNullOrEmpty(value))
-                    about = value;
+                about = value;
                 OnPropertyChanged("About");
             }
         }
@@ -154,21 +150,6 @@ namespace CourseProject_WPF_.ViewModel
             return bitmapImage;
         }
 
-        //public void LoadPhoto()
-        //{
-        //    if(user.image != null)
-        //    {
-        //        using (var ms = new MemoryStream(user.image))
-        //        {
-        //            BitmapImage.BeginInit();
-        //            BitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-        //            BitmapImage.StreamSource = ms;
-        //            BitmapImage.EndInit();
-        //        }
-        //    }           
-        //    OnPropertyChanged("BitmapImage");
-        //}
-
         public void LoadImageFromFS()
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -188,8 +169,7 @@ namespace CourseProject_WPF_.ViewModel
                 }
             }
             else
-                return;
-            
+                return;            
         }
 
         public void changeDataOfUser()

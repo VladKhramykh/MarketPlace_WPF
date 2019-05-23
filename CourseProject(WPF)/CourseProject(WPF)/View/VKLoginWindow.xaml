@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseProject_WPF_.View"
         mc:Ignorable="d"
-        Title="Login VK" Height="350" Width="600" WindowStyle="None" ResizeMode="NoResize" BorderThickness="1" BorderBrush="#FF4A76A8" >
+        Title="Login VK" Height="350" Width="600" WindowStyle="None" ResizeMode="NoResize" BorderThickness="1" BorderBrush="#FF4A76A8" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

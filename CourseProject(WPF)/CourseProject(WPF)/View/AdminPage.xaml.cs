@@ -66,7 +66,7 @@ namespace CourseProject_WPF_.View
 
             OkButton.Content = "Принять";
             NoButton.Content = "Удалить";
-            infoButton.Visibility = Visibility.Hidden;
+            //infoButton.Visibility = Visibility.Hidden;
             OkButton.IsEnabled = false;
         }
 

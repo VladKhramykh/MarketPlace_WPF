@@ -9,8 +9,7 @@ using System.Windows;
 namespace CourseProject_WPF_.ViewModel
 {
     public class VkLoginViewModel : INotifyPropertyChanged
-    {
-        
+    {        
         EFUserRepository userRepository = new EFUserRepository();
 
         string login;                

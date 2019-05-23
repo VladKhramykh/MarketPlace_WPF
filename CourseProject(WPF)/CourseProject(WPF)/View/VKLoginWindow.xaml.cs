@@ -4,9 +4,6 @@ using System.Windows.Input;
 
 namespace CourseProject_WPF_.View
 {
-    /// <summary>
-    /// Логика взаимодействия для VKLoginWindow.xaml
-    /// </summary>
     public partial class VKLoginWindow : Window
     {
         VkLoginViewModel vkLoginViewModel = new VkLoginViewModel();

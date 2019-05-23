@@ -12,7 +12,8 @@ namespace CourseProject_WPF_.Repositories
         IEnumerable<User> getAll();
         void add(User user);
         User getByMail(string name);
-        void update(User oldUser, User newUser);
+        User getById(int? id);
+        void update(User oldUser, User newUser);       
         List<string> getAllNames();
         void changePrivelege(User user, string privelege);
     }

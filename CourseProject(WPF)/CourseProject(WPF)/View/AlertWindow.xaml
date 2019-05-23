@@ -20,7 +20,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Button Width="100" Height="30" Background="#FF464648" VerticalAlignment="Center" Content="Пониу" Click="Button_Click" Style="{DynamicResource AuthButtonStyle}"/>
+            <Button Width="100" Height="40" Background="#FF464648" VerticalAlignment="Center" Content="Понятно" Click="Button_Click" Style="{DynamicResource AuthButtonStyle}" FontSize="16"/>
         </Grid>
     </Grid>
 </Window>

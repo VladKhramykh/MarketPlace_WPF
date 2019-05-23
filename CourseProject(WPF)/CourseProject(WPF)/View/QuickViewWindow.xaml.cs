@@ -36,8 +36,7 @@ namespace CourseProject_WPF_.View
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
-            
+            Close();            
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

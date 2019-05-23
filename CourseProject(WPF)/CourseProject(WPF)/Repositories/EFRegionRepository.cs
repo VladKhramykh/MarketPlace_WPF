@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CourseProject_WPF_.Repositories
 {
-    public class EFRegionRepository
+    public class EFRegionRepository : IRegionRepository
     {
         private NewMarketPlaceEntities1 context;
 
@@ -25,10 +25,12 @@ namespace CourseProject_WPF_.Repositories
 
             return tmp.Distinct().ToList();
         }
+
         public string getRegion(int index)
         {
             return context.Regions.FirstOrDefault(x=> x.id == index).region1;
         }
+
         public int getIdRegion(string region)
         {
             return context.Regions.FirstOrDefault(x => x.region1.Equals(region)).id;

@@ -36,8 +36,7 @@ namespace CourseProject_WPF_.View
         }
 
         private void authButton_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {            
             if (authWindowViewModel.compareDataOfUser(passwordBox.Password))
                 Close();
 

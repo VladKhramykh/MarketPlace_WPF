@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace CourseProject_WPF_.View
 {
-    /// <summary>
-    /// Логика взаимодействия для UserViewWindow.xaml
-    /// </summary>
     public partial class UserViewWindow : Window
     {
         UserViewWindowViewModel userViewWindowViewModel;
@@ -35,7 +32,6 @@ namespace CourseProject_WPF_.View
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
-
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

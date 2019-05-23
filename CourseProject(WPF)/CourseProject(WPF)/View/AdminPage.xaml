@@ -26,7 +26,7 @@
             <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="100,5,5,5">
                 <RadioButton x:Name="radio1" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Пользователи" Checked="radio1_Checked" Cursor="Hand"/>
                 <RadioButton x:Name="radio2" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Актуальные" Checked="radio2_Checked" Cursor="Hand"/>
-                <RadioButton x:Name="radio3" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Не акутальные" Checked="radio3_Checked" Cursor="Hand"/>
+                <RadioButton x:Name="radio3" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="Неакутальные" Checked="radio3_Checked" Cursor="Hand"/>
             </StackPanel>
         </Grid>
 
@@ -36,7 +36,7 @@
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <ListBox x:Name="listBox" FontSize="14" SelectedItem="{Binding SelectedItem}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2"/>
+                <ListBox x:Name="listBox" FontSize="14" SelectedItem="{Binding SelectedItem}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2" Cursor="Hand"/>
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

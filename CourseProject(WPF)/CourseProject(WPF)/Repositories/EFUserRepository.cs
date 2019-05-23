@@ -72,19 +72,8 @@ namespace CourseProject_WPF_.Repositories
 
         public void changePrivelege(User user, string privelege)
         {
-            //if (context.Users.FirstOrDefault(x => x.id == user.id).privilege.Equals(privelege))
-            //    return false;
-            //else
-            //{
-            //    context.Users.FirstOrDefault(x => x.id == user.id).privilege = privelege;
-            //    context.SaveChanges();
-            //    return true;
-            //}
-
             context.Users.FirstOrDefault(x => x.id == user.id).privilege = privelege;
             context.SaveChanges();
-            
-            
         }
     }
 }

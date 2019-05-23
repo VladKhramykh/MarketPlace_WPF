@@ -34,9 +34,7 @@
             </Button>
         </Grid>
 
-
         <Grid Grid.Row="1">
-
             <DataGrid x:Name="listView" HeadersVisibility="None" FontSize="16" IsReadOnly="True" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <materialDesign:MaterialDataGridTextColumn Binding="{Binding Info}" Width="*"/>
@@ -58,36 +56,19 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Background" Value="Gainsboro"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Margin" Value="5,0,0,0"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
             </DataGrid>
-
         </Grid>
-
-
-
-
-
-
-
-        <!--
-        <ListBox x:Name="listView" FontSize="12" Margin="10,0,10,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel>
-                        <TextBlock x:Name="text" Text="{Binding}" HorizontalAlignment="Left"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="Подробнее"  VerticalAlignment="Center" Margin="0,0,10,0" Width="100" Height="30"  Click="infoButton_Click"/>
-                            <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" VerticalAlignment="Center" Margin="0,0,10,0" Width="30" Height="30" Background="{x:Null}" Foreground="Purple" BorderBrush="{x:Null}" BorderThickness="0" Click="changeItemButton_Click">
-                                <materialDesign:PackIcon Kind="Create" Height="25" Width="25"/>
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" VerticalAlignment="Center" Margin="0,0,10,0" Width="30" Height="30" BorderBrush="{x:Null}" BorderThickness="0" Click="deleteButton_Click">
-                                <materialDesign:PackIcon Kind="Delete" Height="25" Width="25"/>
-                            </Button>
-                        </StackPanel>
-                    </DockPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        -->
-
     </Grid>
 </Page>

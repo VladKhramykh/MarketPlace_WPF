@@ -49,17 +49,11 @@ namespace CourseProject_WPF_.ViewModel.Instagram
             {
                 IResult<InstaCurrentUser> result = await api.GetCurrentUserAsync();
 
-
                 var names = result.Value.FullName.Split(' ');
                 string firstname = names[0];
                 string secondName = secondName = names[1];
                 string mail = result.Value.Email;
                 string telNumber = result.Value.PhoneNumber;
-
-                //string about = (result.Value.HdProfilePicture.Uri);
-
-                //byte[] image = new byte[result.Value.HdProfilePicture.ImageBytes.Length];
-                //image = result.Value.HdProfilePicture.ImageBytes;
                 byte[] image;
                 using (WebClient client = new WebClient())
                 {
