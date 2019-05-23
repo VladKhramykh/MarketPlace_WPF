@@ -44,7 +44,11 @@ namespace CourseProject_WPF_
 
         public User getUser()
         {
-            var p = vkApi.Users.Get(new long[] { vkApi.UserId.Value }, ProfileFields.Contacts | ProfileFields.Country | ProfileFields.City | ProfileFields.About | ProfileFields.Photo200Orig).FirstOrDefault();   
+            var p = vkApi.Users.Get(
+                new long[] { vkApi.UserId.Value },
+                ProfileFields.Contacts | ProfileFields.Country |
+                ProfileFields.City | ProfileFields.About |
+                ProfileFields.Photo200Orig).FirstOrDefault();   
             
             return p;
         }

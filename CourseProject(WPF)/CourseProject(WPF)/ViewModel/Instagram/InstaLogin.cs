@@ -29,14 +29,12 @@ namespace CourseProject_WPF_.ViewModel.Instagram
             this.password = password;
             auth();
         }
-
         void auth()
         {
             user = new UserSessionData();
             user.UserName = username;
             user.Password = password;
         }
-
         async Task Login()
         {
             api = InstaApiBuilder.CreateBuilder()
@@ -69,7 +67,6 @@ namespace CourseProject_WPF_.ViewModel.Instagram
                 tmp = new User(firstname, secondName, mail, telNumber, about, image);
             }
         }
-
         public async Task<User> Get()
         {
             await Login();

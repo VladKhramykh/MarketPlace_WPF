@@ -12,7 +12,6 @@ namespace CourseProject_WPF_.Repositories
         {
             context = new NewMarketPlaceEntities1();
         }
-
         public List<string> getAllNames()
         {
             List<string> tmp = new List<string>();
@@ -20,39 +19,32 @@ namespace CourseProject_WPF_.Repositories
                 tmp.Add(s.getName());
             return tmp;
         }
-
         public IEnumerable<User> getAll()
         {
             return context.Users;
         }
-
         public void add(User user)
         {
             context.Users.Add(user);
             context.SaveChanges();
-        }    
-        
+        }            
         public void delete(User user)
         {
             context.Users.Remove(context.Users.FirstOrDefault(x=>x.id == user.id));
             context.SaveChanges();
         }
-
         public User getByMail(string mail)
         {
             return context.Users.FirstOrDefault(x =>x.mail == mail);
-        }
-        
+        }        
         public User getByName(string name)
         {
             return context.Users.FirstOrDefault(x => (x.firstName + " " + x.secondName) == name);
         }
-
         public  User getById(int? id)
         {
             return context.Users.FirstOrDefault(x => x.id == id);
         }
-
         public void update(User oldUser, User newUser)
         {
             var tmp = context.Users.FirstOrDefault(x => x.id == oldUser.id);
@@ -67,9 +59,7 @@ namespace CourseProject_WPF_.Repositories
                 tmp.TelNumber = newUser.telNumber;                
             }
             context.SaveChanges();
-
         }
-
         public void changePrivelege(User user, string privelege)
         {
             context.Users.FirstOrDefault(x => x.id == user.id).privilege = privelege;
