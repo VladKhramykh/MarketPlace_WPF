@@ -29,9 +29,23 @@ namespace CourseProject_WPF_.View
         {
             viewModel.search();
         }
-        
-        
 
-       
+        private void sortButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(down.Visibility == Visibility.Visible)
+            {
+                viewModel.sort();
+                down.Visibility = Visibility.Hidden;
+                up.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                viewModel.sort();
+                up.Visibility = Visibility.Hidden;
+                down.Visibility = Visibility.Visible;
+            }
+                
+            
+        }
     }
 }

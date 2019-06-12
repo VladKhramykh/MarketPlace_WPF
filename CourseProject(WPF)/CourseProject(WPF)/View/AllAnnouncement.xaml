@@ -37,8 +37,9 @@
         
         
         <Grid Grid.Column="1">
+
             <ListBox FontSize="16" Margin="0,70,0,0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Announcements}" SelectedItem="{Binding SelectedItem}" SelectionChanged="listView_SelectionChanged" Cursor="Hand">
-                <ListBox.ItemTemplate>                    
+                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel Margin="0,5,0,5">
                             <StackPanel Orientation="Horizontal">
@@ -53,13 +54,19 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" >
-                                <TextBlock Margin="0,0,0,50" Text="{Binding cost}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" />
+                                <TextBlock Margin="0,0,0,50" Text="{Binding Cost}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" />
                                 <TextBlock Text="руб." Margin="10,0,0,0" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"  />
-                            </StackPanel>                           
-                        </DockPanel>                        
+                            </StackPanel>
+                        </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Button x:Name="down" Width="60" Background="{x:Null}" BorderThickness="0" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden" Margin="0,40,50,0" Click="sortButton_Click">
+                <materialDesign:PackIcon Kind="ExpandMore" Foreground="Black" HorizontalAlignment="Center" />
+            </Button>
+            <Button x:Name="up" Width="60" Background="{x:Null}" BorderThickness="0" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top"  Margin="0,40,50,0" Click="sortButton_Click">
+                <materialDesign:PackIcon Kind="ExpandLess" Foreground="Black" HorizontalAlignment="Center" />
+            </Button>
             <Label Content="Все объявления" Foreground="Gray" FontSize="24" Margin="30,15,0,0" VerticalAlignment="Top" />
             <Label Content="{Binding Info}" Foreground="Gray" FontSize="16" Margin="0,20,140, 0" VerticalAlignment="Top" HorizontalAlignment="Right" />
         </Grid>        

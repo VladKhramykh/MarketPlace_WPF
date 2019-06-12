@@ -52,3 +52,6 @@ insert into Regions (region) values('Гродненская');
 insert into Regions (region) values('Минская');
 insert into Regions (region) values('Могилёвская');
 insert into Regions (region) values('Минск');
+
+insert into Users (firstName,secondName,mail, password, telNumber, about, privilege)
+	values ('admin','admin','admin@mail.ru','ISMvKXpXpadDiUoOSoAfww==','+375292807908', 'i am admin)', 'admin');

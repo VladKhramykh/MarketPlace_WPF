@@ -39,6 +39,8 @@ namespace CourseProject_WPF_.ViewModel
         string region;
         int selectedIndex;
 
+        bool flag = false;
+
         public ObservableCollection<Announcement> Announcements
         {
             get { return tmpAnnouncements; }
@@ -366,6 +368,24 @@ namespace CourseProject_WPF_.ViewModel
         {
             if (Announcements.IndexOf(SelectedItem) > 0)
                 SelectedItem = Announcements.ElementAt(Announcements.IndexOf(SelectedItem) - 1);
+        }
+
+        public void sort()
+        {
+            if (flag)
+            {
+                Announcements.Clear();
+                foreach (Announcement ann in getAnnouncements().OrderBy(x => x.cost))
+                    Announcements.Add(ann);
+                flag = false;
+            }
+            else
+            {
+                Announcements.Clear();
+                foreach (Announcement ann in getAnnouncements().OrderByDescending(x => x.cost))
+                    Announcements.Add(ann);
+                flag = true;
+            }                
         }
 
         

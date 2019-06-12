@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock x:Name="alertBlock" Text="{Binding Message}" TextWrapping="Wrap" Background="{x:Null}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF464648" />
+            <TextBlock x:Name="alertBlock" Margin="20,0,20,0" Text="{Binding Message}" TextWrapping="Wrap" Background="{x:Null}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF464648" />
         </Grid>
 
         <Grid Grid.Row="1">

@@ -22,15 +22,13 @@ namespace CourseProject_WPF_.ViewModel
         string region;
         string about;
         decimal cost;
-        string info;
-       
+        string info;       
 
         string statusName;
         string statusRegion;
         string statusCategory;
         string statusCost;
         string statusAbout;
-
 
         List<string> tmpCategories = new List<string>();
         List<string> tmpRegions = new List<string>();

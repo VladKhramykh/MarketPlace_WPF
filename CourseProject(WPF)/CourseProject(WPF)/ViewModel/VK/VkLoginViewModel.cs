@@ -51,9 +51,7 @@ namespace CourseProject_WPF_.ViewModel
             {
                 Status = "Подождите нексолько секунд";
                 Vk vk = new Vk(Login, password, Code);
-                VkNet.Model.User user = vk.getUser();
-
-                
+                VkNet.Model.User user = vk.getUser();                
 
                 string firstName = "";
                 string lastName = "";
